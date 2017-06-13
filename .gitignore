@@ -1,1 +1,9 @@
+# All PDF files except the university logo
+*.pdf
+!/img/logo-en.pdf
+
+# All SyncTeX files
+*.synctex.gz
+
+# Validation Script
 /validation/verapdf
