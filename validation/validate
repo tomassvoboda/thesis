@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./verapdf/verapdf --format text -p ./profile_UK-7987_0.6.xml "$1"
