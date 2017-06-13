@@ -4,15 +4,20 @@
     "version": "0.1",
     // language - current active spelling language
     "language": "en",
-    "allowCompoundWords": true,
     // words - list of words to be always considered correct
     "words": [
-        "pdfx"
+        "pdfx",
+        "Tomáš",
+        "Svoboda",
+        "Štěpán",
+        "Holub",
+        "MMIB"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
     // For example "hte" should be "the"
     "flagWords": [
         "hte"
-    ]
+    ],
+    "allowCompoundWords": true
 }
