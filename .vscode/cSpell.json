@@ -20,5 +20,14 @@
     "flagWords": [
         "hte"
     ],
-    "allowCompoundWords": true
+    "allowCompoundWords": true,
+    "languageSettings": [
+        {
+            "languageId": "latex",
+            "ignoreRegExpList": [
+                "\\\\(begin|end)(\\[[A-Za-z0-9_-]*\\]|){[A-Za-z0-9_-]*}"
+            ],
+            "allowCompoundWords": true
+        }
+    ]
 }
