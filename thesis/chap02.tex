@@ -1,5 +1,38 @@
-\chapter{Title of the second chapter}
+\chapter{Eggan's question}
 
-\section{Title of the first subchapter of the second chapter}
+\cite{Eggan63} asks whether there are languages with arbitrarily large star height. In this section we present proof first due to~\cite{DejeanSchutzenberger66} and recently formulated in~\cite{Sakarovitch09}.
 
-\section{Title of the second subchapter of the second chapter}
+Throughout this chapter we use language $W_q = {\{f \mid |f|_a \equiv |f|_b \bmod 2^q \}}$.
+
+\begin{lemma}
+    For language~$W_q$ there is an expression of star height~$q$, that denotes~$W_q$.
+\end{lemma}
+
+\begin{proof}
+    $W_q$ is recognised by an automaton~${\mathcal{R}(2^q)}$. By following a specific order~$\omega$ in the elimination method on $W_q$ we get an expression of a~star height $q$. First we set expressions
+    \begin{alignat*}{5}
+        X_1 = a^2 , \quad Y_1 = b^2, \quad &\text{ and } \quad Z_1 = ab + ba.
+    \intertext{Then for every integer $n$ we have}
+        X_{n+1} = X_n Z_n^* X_n , \quad Y_{n+1} = Y_n Z_n^* Y_n, \quad &\text{ and } \quad Z_{n+1} = Z_n + X_n Z_n^* Y_n + Y_n Z_n^* X_n.
+    \end{alignat*}
+    It follows that
+    \[
+        W_q = {(X_q + Y_q + Z_q)}^*.
+    \]
+    Since $X_n , Y_n , \text{ and } Z_n$ have star height~$n~-~1$, we have got an expression denoting~$W_q$ of star height~$q$.
+\end{proof}
+
+\begin{figure}[h]
+    \centering
+        \input{./figures/automaton_R8}
+    \caption{Automaton~${\mathcal{R}(8)}$}\label{fig:automaton_R8}
+\end{figure}
+
+\begin{thm}\label{thm:main}
+    The language $W_q = {\{f \mid |f|_a \equiv |f|_b \bmod 2^q \}}$ over ${\{a, b\}}^*$ has star height~$q$.
+\end{thm}
+
+\begin{proof}[Proof of \autoref*{thm:main}]
+\end{proof}
+
+\section{Title of the first subchapter of the first chapter}
