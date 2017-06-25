@@ -1,0 +1,25 @@
+\begin{tikzpicture}[->,>=latex,semithick]
+    \tikzstyle{every state}=[circle, very thick, minimum size=3pt]
+    \tikzstyle{initial}=[initial by arrow, initial text=]
+    \tikzstyle{accepting}=[accepting by arrow]
+    %\draw[help lines] (-1.5,1.5) grid (1.5,-1.5);
+    \node[state, initial, initial, accepting] (0) at (180:1.5) {};
+    \node[state] (2) at (90:1.5) {};
+    \node[state] (4) at (0:1.5) {};
+    \node[state] (6) at (-90:1.5) {};
+
+    \path
+        (0) edge [loop above, left, rotate=20] node {$ab+ba$} ()
+        (0) edge [above, bend left = 20] node [above] {$a^2$} (2)
+        (2) edge [above, bend left = 20] node [near start, below=+1mm] {$b^2$} (0)
+        (2) edge [loop above] node {$ab+ba$} ()
+        (2) edge [above, bend left = 20] node [above right=-1mm] {$a^2$} (4)
+        (4) edge [above, bend left = 20] node [below left=-1mm] {$b^2$} (2)
+        (4) edge [loop right] node {$ab+ba$} ()
+        (4) edge [above, bend left = 20] node [right] {$a^2$} (6)
+        (6) edge [above, bend left = 20] node [above] {$b^2$} (4)
+        (6) edge [loop below] node {$ab+ba$} ()
+        (6) edge [above, bend left = 20] node [below left=-1mm] {$a^2$} (0)
+        (0) edge [above, bend left = 20] node [above right=-1mm] {$b^2$} (6)
+    ;
+\end{tikzpicture}
