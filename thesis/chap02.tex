@@ -4,7 +4,13 @@
 
 Throughout this chapter we use language $W_q = {\{f \mid |f|_a \equiv |f|_b \bmod 2^q \}}$.
 
-\begin{lemma}
+\begin{thm}\label{thm:main}
+    The language $W_q$ has star height~$q$.
+\end{thm}
+
+For the~proof we need to find an~expression of star height~$q$ denoting~$W_q$. That is done in~Lemma~\ref*{lm:expression_existence}. Then it remains to show that $W_q$ has the star height of at~least~$q$.
+
+\begin{lemma}\label{lm:expression_existence}
     For each $q \in \N$ there is an expression of star height~$q$, that denotes~$W_q$.
 \end{lemma}
 
@@ -55,15 +61,9 @@ Throughout this chapter we use language $W_q = {\{f \mid |f|_a \equiv |f|_b \bmo
     \subfloat[][]{%
         \label{fig:automaton_R8_state_removal_steps-e}%
         \input{./figures/automaton_R8_removed7}}%
-    \caption{First through seventh step of the~state removal algorithm with order~$\omega$}%
+    \caption{First through seventh steps of the~state removal algorithm with order~$\omega$}%
     \label{fig:automaton_R8_state_removal_steps}%
 \end{figure}
 
-\begin{thm}\label{thm:main}
-    The language $W_q = {\{f \mid |f|_a \equiv |f|_b \bmod 2^q \}}$ over ${\{a, b\}}^*$ has star height~$q$.
-\end{thm}
-
 \begin{proof}[Proof of \autoref*{thm:main}]
 \end{proof}
-
-\section{Title of the first subchapter of the first chapter}
