@@ -1,20 +1,36 @@
 \chapter{Introduction}
 
-In the first section we state same definitions that are considered and lay down notation that is used in the work. In the second section we provide some additional definitions and observations that are more specific to the presented problem.
+In the first section we state same definitions that are considered standard and lay down notation that is used in the work. In the second section we provide some additional definitions and observations that are more specific to the presented problem.
 
 \section{Basic definitions \& notation}
 
 \begin{defn} \X{List of definitions and notation that need to be introduced:}\\
     \X{Word, factors, $|\cdot|_a$}\\
-    \X{Automaton}\\
-    \X{Expression, expression equivalence, star height (of expression, of language)}
+    \X{Automaton}
 \end{defn}
 
 \begin{defn} \X{State removal algorithm}\\
 \end{defn}
 
-\begin{lemma} \X{Distributivity od sum over product}\\
+\begin{defn}
+    \X{Expression, expression equivalence, star height (of expression, of language)}
+\end{defn}
+
+\begin{lemma}
+    Every language $L$ over $A$ with star height~$h$ is denoted by a finite sum of expressions:
+    \[
+        L = \sum_{j=1}^n \mathsf{E}_j,
+    \]
+    where each $\mathsf{E}_j$ if product of the form:
+    \[
+        \mathsf{E}_j = u_0{(\mathsf{F}_1)}^*u_1 \dotsm u_{m-1}{(\mathsf{F}_m)}^*u_m,
+    \]
+    where each $u_k, 0 \leq k \leq m$, is a word in $A^*$ and each $\mathsf{E}_j, 1 \leq k \leq m$, is an expression over $A$ of star height less then or equal to $h-1$.
 \end{lemma}
+
+\begin{proof}
+    By induction on $h$. For language of star height 1 the fact that sum distributes over product gives us the result immediately. \X{Finish the proof.}
+\end{proof}
 
 \begin{lemma} \X{Block Star Lemma}\\
 \end{lemma}
