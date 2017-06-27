@@ -65,5 +65,34 @@ For the~proof we need to find an~expression of star height~$q$ denoting~$W_q$. T
     \label{fig:automaton_R8_state_removal_steps}%
 \end{figure}
 
+\begin{defn}
+    For~each integer~$n$ we define the~sequence $w_{0,n}, w_{1,n}, \dotsc , w_{q-1,n}$ of $q$~words in~$W_q$ recursively:
+    \begin{alignat*}{2}
+        w_{0,n} &= ab,\\
+        w_{1,n} &= a^2{(ab)}^{n}b^2{(ab)}^{n},\\
+                &\; \vdots \\
+        w_{k,n} &= a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n},\\
+                &\; \vdots \\
+        w_{q-1,n} &= a^{2^{q-1}}{(w_{q-2,n})}^{n}b^{2^{q-1}}{(w_{q-2,n})}^{n}.\\
+    \end{alignat*}
+    We call these words \emph{witness words}.
+\end{defn}
+
+\begin{lemma}
+    Any left factor $u$ and right factor $v$ of ${(w_{k,n})}^n$ satisfy the equations:
+    \begin{equation}\label{witness_words_inequalities}
+        0 \leq |u|_a - |u|_b \leq 2^{k+1}-1 \; , \qquad 0 \leq |v|_b - |v|_a \leq 2^{k+1}-1.
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    $|w_{k,n}|_a = |w_{k,n}|_b$, therefore any whole word $w_{k,n}$ that is a factor of either $u$ or $v$ does not affect the inequalities we are proving. We only need to examine the differences in letters of the left (resp.~right) factor of the word $w_{k,n}$. We proceed by indunction on~$k$. Trivially the inequalities hold for $w_{0,n}$.
+    \[
+        w_{k,n} = a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n}
+    \] begins with $2^k$ $a$'s and from the induction hypothesis, we know that $w_{k-1,n}$ can have at most $2^k-1$ more $a$'s than $b$'s. That proves the case of the left factor.
+    Similarly the right factor of $w_{k-1,n}$ can have at most $2^k-1$ more $b$'s than $a$'s.
+\end{proof}
+
 \begin{proof}[Proof of \autoref*{thm:main}]
+    Lemma~\ref*{lm:expression_existence} gives us an~expression with star height~$q$ denoting the~language~$W_q$. Now we show that the~height has to be at~least~$q$. 
 \end{proof}
