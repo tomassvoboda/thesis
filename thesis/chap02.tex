@@ -83,7 +83,7 @@ For the~proof we need to find an~expression of star height~$q$ denoting~$W_q$. T
     \[
         w_{k,n} = a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n}
     \] begins with $2^k$ $a$'s and from the induction hypothesis, we know that $w_{k-1,n}$ can have at most $2^k-1$ more $a$'s than $b$'s. That proves the case of the left factor.
-    Similarly the right factor of $w_{k-1,n}$ can have at most $2^k-1$ more $b$'s than $a$'s.
+    Similarly for the case of the right factor $v$. From the induction hypothesis we know that the right factor of $w_{k-1,n}$ can have at most $2^k-1$ more $b$'s than $a$'s. Therefore if $b^{2^k}{(w_{k-1,n})}^{n}$ is a right factor of $v$, the right factor of ${(w_{k-1,n})}^{n}$ is the left factor of $v$. We can see that $|v|_b - |v|_a \leq 2^k + 2^k -1$.
 \end{proof}
 
 \begin{proof}[Proof of \autoref*{thm:main}]
