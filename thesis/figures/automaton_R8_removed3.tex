@@ -1,9 +1,9 @@
-\begin{tikzpicture}[->,>=latex,semithick]
-    \tikzstyle{every state}=[circle, very thick, minimum size=3pt]
-    \tikzstyle{initial}=[initial by arrow, initial text=]
-    \tikzstyle{accepting}=[accepting by arrow]
+\begin{tikzpicture}[my_automaton]
+    \tikzstyle{every state}=[my_state]
+    \tikzstyle{initial}=[my_initial_state]
+    \tikzstyle{accepting}=[my_accepting_state]
     %\draw[help lines] (-1.5,1.5) grid (1.5,-1.5);
-    \node[state, initial, initial, accepting] (0) at (180:1.5) {};
+    \node[state, initial, accepting] (0) at (180:1.5) {};
     \node[state] (2) at (90:1.5) {};
     \node[state] (4) at (0:1.5) {};
     \node[state] (6) at (-90:1.5) {};
@@ -15,7 +15,7 @@
         (2) edge [above, bend left = 20] node [near start, below=+1mm] {$b^2$} (0)
         (2) edge [loop above] node [right=+1mm] {$ab+ba$} ()
         (2) edge [above, bend left = 20] node [above right=-1mm] {$a^2$} (4)
-        (4) edge [above, bend left = 20] node [below left=-1mm] {$b^2$} (2)
+        (4) edge [above, bend left = 20] node [below left=-1.5mm] {$b^2$} (2)
         (4) edge [loop right] node {$ab+ba$} ()
         (4) edge [above, bend left = 20] node [right] {$a^2$} (6)
         (6) edge [above, bend left = 20] node [above] {$b^2$} (4)
@@ -23,6 +23,6 @@
         (6) edge [above, bend left = 20] node [below] {$a$} (7)
         (7) edge [above, bend left = 20] node [above] {$b$} (6)
         (7) edge [above, bend left = 20] node [left] {$a$} (0)
-        (0) edge [above, bend left = 20] node [right] {$b$} (7)
+        (0) edge [above, bend left = 20] node [above right=-1mm] {$b$} (7)
     ;
 \end{tikzpicture}

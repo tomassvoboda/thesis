@@ -1,9 +1,9 @@
-\begin{tikzpicture}[->,>=latex,semithick]
-    \tikzstyle{every state}=[circle, very thick, minimum size=3pt]
-    \tikzstyle{initial}=[initial by arrow, initial text=]
-    \tikzstyle{accepting}=[accepting by arrow]
+\begin{tikzpicture}[my_automaton]
+    \tikzstyle{every state}=[my_state]
+    \tikzstyle{initial}=[my_initial_state]
+    \tikzstyle{accepting}=[my_accepting_state]
     %\draw[help lines] (-1.5,1.5) grid (1.5,-1.5);
-    \node[state, initial, initial above, accepting below] (0) at (180:1.5) {};
+    \node[state, initial, initial above, accepting] (0) at (180:1.5) {};
 
     \path
         (0) edge [loop right] node {$Z_2 + {(X_2 + Y_2)}Z_2^*{(X_2 + Y_2)}$} ()
