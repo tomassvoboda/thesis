@@ -6,10 +6,7 @@ In the first section we state same definitions that are considered standard and 
 
 \begin{defn} \X{List of definitions and notation that need to be introduced:}\\
     \X{Word, factors, $|\cdot|_a$}\\
-    \X{Automaton}
-\end{defn}
-
-\begin{defn} \X{State removal algorithm}\\
+    \X{Automaton, automaton equivalence, generalized automaton}
 \end{defn}
 
 \begin{defn}
@@ -42,6 +39,12 @@ In the first section we state same definitions that are considered standard and 
         u v_1 v_2 \dotsm v_j {(v_{j+1} \dotsm v_k)}^* v_{k+1} \dotsm v_N w \subseteq L.
     \]
 \end{lemma}
+
+\subsection{State removal algorithm}
+
+State removal algorithm is a~means of deriving an~expression denoting the same language that is recognised by a~provided automaton. First, we begin with an~automaton $\mathcal{A} = \langle Q, A, E, I, T \rangle$ with a~finite number of states. Second, we create an~automaton $\mathcal{B}$ from $\mathcal{A}$ by adding two states $i$, $t$, distinct and not belonging to $Q$, spontaneous transitions from $i$ to each state of $I$, and spontaneous transitions from each state of $T$ to $t$. Clearly $\mathcal{A}$ and $\mathcal{B}$ are equivalent and since $\mathcal{A}$ is finite, $\mathcal{B}$ is also finite.
+
+Next part has as many steps as there are states in $Q$. In each step we proceed by consecutively removing a state in $Q$ from $\mathcal{B}$ and modifying the transitions in a way that the derived automaton is equivalent to that of the previous step. Let us chose a particular state $q \in Q$, let $p_1, \dotsc , p_k$ be states of $\mathcal{B}$, $p_j \neq q$, that are the sources of transitions with destination in $q$, and $\mathsf{E}_1, \dotsc , \mathsf{E}_k$ the labels of these transitions. And let $r_1, \dotsc , r_l$ be states of $\mathcal{B}$, $r_j \neq q$, that are the destinations of transitions whose source is $q$, and $\mathsf{G}_1, \dotsc , \mathsf{G}_l$ the labels of these transitions. Some states $p_j$ can be the same as states $r_m$.
 
 \section{\X{Additional definitions}}
 
