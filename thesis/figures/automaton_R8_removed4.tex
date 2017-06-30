@@ -10,16 +10,16 @@
 
     \path
         (0) edge [loop above, left, rotate=20] node {$ab+ba$} ()
-        (0) edge [above, bend left] node [above] {$a^2$} (2)
-        (2) edge [above, bend left] node [near start, below=+1mm] {$b^2$} (0)
+        (0) edge [bend left] node [above] {$a^2$} (2)
+        (2) edge [bend left] node [near start, below=+1mm] {$b^2$} (0)
         (2) edge [loop above] node [right=+1mm] {$ab+ba$} ()
-        (2) edge [above, bend left] node [above right=-1mm] {$a^2$} (4)
-        (4) edge [above, bend left] node [below left=-1.5mm] {$b^2$} (2)
+        (2) edge [bend left] node [above right=-1mm] {$a^2$} (4)
+        (4) edge [bend left] node [below left=-1.5mm] {$b^2$} (2)
         (4) edge [loop right] node {$ab+ba$} ()
-        (4) edge [above, bend left] node [right] {$a^2$} (6)
-        (6) edge [above, bend left] node [above] {$b^2$} (4)
+        (4) edge [bend left] node [right] {$a^2$} (6)
+        (6) edge [bend left] node [above] {$b^2$} (4)
         (6) edge [loop below] node [right] {$ab+ba$} ()
-        (6) edge [above, bend left] node [below left=-1.5mm] {$a^2$} (0)
-        (0) edge [above, bend left] node [above right=-1.5mm] {$b^2$} (6)
+        (6) edge [bend left] node [below left=-1.5mm] {$a^2$} (0)
+        (0) edge [bend left] node [above right=-1.5mm] {$b^2$} (6)
     ;
 \end{tikzpicture}
