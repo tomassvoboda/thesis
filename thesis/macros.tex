@@ -45,11 +45,12 @@
 \newtheorem*{cor}{Corollary}
 \newtheorem*{rem}{Remark}
 \newtheorem*{example}{Example}
+\AtEndEnvironment{example}{\hfill$\square$}
 
 \newcommand{\thmautorefname}{Theorem}
 
 %%% An environment for proofs
-
+\renewcommand{\qedsymbol}{$\blacksquare$}
 %%% FIXME %%% \newenvironment{proof}{
 %%% FIXME %%%   \par\medskip\noindent
 %%% FIXME %%%   \textit{Proof}.
