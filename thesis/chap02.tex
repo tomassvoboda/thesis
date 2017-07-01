@@ -74,10 +74,7 @@ For the~proof we need to find an~expression of star height~$q$ denoting~$W_q$. T
 \end{proof}
 
 \begin{example}
-    Let us have language~$W_3$ recognised by an automaton~${\mathcal{R}(8)}$. In~\autoref*{fig:automaton_R8_state_removal_steps} we show how the~state removal algorithm finds the~expression of star height~$3$ that denotes~$W_3$. For the expression at the end of the algorithm we can see the equivalence:
-    \[
-        {(Z_2 + {(X_2 + Y_2)}Z_2^*{(X_2 + Y_2)})}^* = {(X_3 + Y_3 + Z_3)}^* = W_3.
-    \]
+    According to the procedure described in the Proof of~Lemma~\ref*{lm:expression_existence}, we apply the state removal algorithm on the automaton~${\mathcal{R}(8)}$, recognizing language~$W_3$. The steps of the creation of rational expression ${(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*$, denoting $W_3$, are shown in~\autoref*{fig:automaton_R8_state_removal_steps}. \X{Fix the automatons in the figure!}
 \end{example}
 
 \begin{figure}%
