@@ -127,11 +127,12 @@ We have found a~rational expression of star height $q$ denoting the language $W_
 \end{lemma}
 
 \begin{proof}
-    $|w_{k,n}|_a = |w_{k,n}|_b$, therefore any whole word $w_{k,n}$ that is a factor of either $u$ or $v$ does not affect the inequalities we are proving. We only need to examine the differences in letters of the left (resp.~right) factor of the word $w_{k,n}$. We proceed by indunction on~$k$. Trivially the inequalities hold for $w_{0,n}$.
+    We immediately see that $|w_{k,n}|_a = |w_{k,n}|_b$, therefore any whole word $w_{k,n}$ that is a factor of either $u$ or $v$ does not affect the inequalities we are trying to prove. We only need to examine the differences in the frequency of letters of the left, or~right, factor of the word $w_{k,n}$. We proceed by indunction on~$k$. Trivially the inequalities hold for $w_{0,n}$. The word
     \[
         w_{k,n} = a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n}
-    \] begins with $2^k$ $a$'s and from the induction hypothesis, we know that $w_{k-1,n}$ can have at most $2^k-1$ more $a$'s than $b$'s. That proves the case of the left factor.
-    Similarly for the case of the right factor $v$. From the induction hypothesis we know that the right factor of $w_{k-1,n}$ can have at most $2^k-1$ more $b$'s than $a$'s. Therefore if $b^{2^k}{(w_{k-1,n})}^{n}$ is a right factor of $v$, the right factor of ${(w_{k-1,n})}^{n}$ is the left factor of $v$. We can see that $|v|_b - |v|_a \leq 2^k + 2^k -1$.
+    \] begins with $2^k$ $a$'s and from the induction hypothesis, we know that $w_{k-1,n}$ can have at most $2^k-1$ more $a$'s than $b$'s. We can also see that in the left factor $u$ there is always at least as many $a$'s as there is $b$'s. That proves the inequalities fot the left factor.
+
+    Similarly we prove the case for the right factor $v$. From the induction hypothesis we know that the right factor of $w_{k-1,n}$ can have at most $2^k-1$ more $b$'s than $a$'s. Therefore if $b^{2^k}{(w_{k-1,n})}^{n}$ is a right factor of $v$, we can assume that the right factor of ${(w_{k-1,n})}^{n}$ is the left factor of $v$. From this fallows, that $|v|_b - |v|_a \leq 2^k + 2^k -1$. The fact, that there is at least as many $b$'s as there is $a$'s in the right factor $v$ is obvious.
 \end{proof}
 
 Next we use the witness words to define a property of languages.
