@@ -1,0 +1,31 @@
+\begin{tikzpicture}[my_automaton]
+    \tikzstyle{every state}=[my_named_state]
+    \tikzstyle{initial}=[my_initial_state]
+    \tikzstyle{accepting}=[my_accepting_state]
+    %\draw[help lines] (-1.5,1.5) grid (1.5,-1.5);
+    \node[state] (0) at (180:1.5) {$0$};
+    \node[state] (1) at (115:1.7) {$1$};
+    \node[state, dashed] (2) at (60:2.2) {};
+    \node[state, dashed] (2q-2) at (-60:2.2) {};
+    \node[state] (2q-1) at (-115:1.7) {$2^q \scriptstyle - \displaystyle 1$};
+    \node[state, initial] (i) at (155:3) {$i$};
+    \node[state, accepting] (t) at (-155:3) {$t$};
+
+    \path
+        (0) edge [loop right] node {$\re{Z}_0$} ()
+        (0) edge [bend left] node [above left=-1.5mm] {$\re{X}_0$} (1)
+        (1) edge [bend left] node [right] {$\re{Y}_0$} (0)
+        (1) edge [loop above, left] node {$\re{Z}_0$} ()
+        (1) edge [bend left, dashed] node [above] {$\re{X}_0$} (2)
+        (2) edge [bend left, dashed] node [below right=-1mm] {$\re{Y}_0$} (1)
+
+        (2q-2) edge [bend left, dashed] node [below] {$\re{X}_0$} (2q-1)
+        (2q-1) edge [bend left, dashed] node [above=-1mm] {$\re{Y}_0$} (2q-2)
+        (2q-1) edge [loop below, left] node {$\re{Z}_0$} ()
+        (2q-1) edge [bend left] node [near start, left=-1mm] {$\re{X}_0$} (0)
+        (0) edge [bend left] node [right=-1mm] {$\re{Y}_0$} (2q-1)
+
+        (i) edge [bend right] node [left] {$1$} (0)
+        (0) edge [bend right] node [above left=-1mm] {$1$} (t)
+    ;
+\end{tikzpicture}

@@ -1,0 +1,21 @@
+\begin{tikzpicture}[my_automaton]
+    \tikzstyle{every state}=[my_named_state]
+    \tikzstyle{initial}=[my_initial_state]
+    \tikzstyle{accepting}=[my_accepting_state]
+    %\draw[help lines] (-1.5,1.5) grid (1.5,-1.5);
+    \node[state] (0) at (180:1.4) {$0$};
+    \node[state] (1) at (0:1.4) {$1$};
+
+    \node[state, initial] (i) at (145:2.7) {$i$};
+    \node[state, accepting] (t) at (-145:2.7) {$t$};
+
+    \path
+        (0) edge [loop left] node [left=-1mm] {$\re{Z}_{q-1}$} ()
+        (0) edge [bend left] node [above=-1mm] {$\re{X}_{q-1} + \re{Y}_{q-1}$} (1)
+        (1) edge [bend left] node [below=-0.5mm] {$\re{X}_{q-1} + \re{Y}_{q-1}$} (0)
+        (1) edge [loop above] node {$\re{Z}_{q-1}$} ()
+
+        (i) edge [bend left] node [left] {$1$} (0)
+        (0) edge [bend left] node [above left=-1mm] {$1$} (t)
+    ;
+\end{tikzpicture}

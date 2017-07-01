@@ -56,11 +56,13 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows}
 \tikzset{my_automaton/.style={->,>=latex,semithick,bend angle=20}}
-\tikzset{my_state/.style={circle, very thick, minimum size=3pt}}
+\tikzset{my_state/.style={circle, very thick, minimum size=0.4cm}}
+\tikzset{my_named_state/.style={circle, thick, minimum size=0.7cm, inner sep=0.05cm}}
 \tikzset{my_initial_state/.style={initial by arrow, initial text=}}
 \tikzset{my_accepting_state/.style={accepting by double, thick}}
 
 \usepackage{subfig}
+\captionsetup{format=hang,margin=5pt}
 
 %% SPECIMEN
 % Parts marked as SPECIMEN are used for building the example PDF.

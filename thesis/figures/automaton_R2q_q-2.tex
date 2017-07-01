@@ -1,0 +1,31 @@
+\begin{tikzpicture}[my_automaton]
+    \tikzstyle{every state}=[my_named_state]
+    \tikzstyle{initial}=[my_initial_state]
+    \tikzstyle{accepting}=[my_accepting_state]
+    %\draw[help lines] (-1.5,1.5) grid (1.5,-1.5);
+    \node[state] (0) at (180:1.8) {$0$};
+    \node[state] (1) at (90:1.8) {$1$};
+    \node[state] (2) at (0:1.8) {$2$};
+    \node[state] (3) at (-90:1.8) {$3$};
+
+    \node[state, initial] (i) at (155:3) {$i$};
+    \node[state, accepting] (t) at (-155:3) {$t$};
+
+    \path
+        (0) edge [loop left] node {$\re{Z}_{q-2}$} ()
+        (0) edge [bend left] node [above left=-1.5mm] {$\re{X}_{q-2}$} (1)
+        (1) edge [bend left=10] node [near end, below right=-1.5mm] {$\re{Y}_{q-2}$} (0)
+        (1) edge [loop above] node [right=+1mm] {$\re{Z}_{q-2}$} ()
+        (1) edge [bend left] node [above right=-2mm] {$\re{X}_{q-2}$} (2)
+        (2) edge [bend left=10] node [below left=-3mm] {$\re{Y}_{q-2}$} (1)
+        (2) edge [loop left] node [left=-1mm] {$\re{Z}_{q-2}$} ()
+        (2) edge [bend left] node [near end, below right=-1mm] {$\re{X}_{q-2}$} (3)
+        (3) edge [bend left=10] node [above left=-2mm] {$\re{Y}_{q-2}$} (2)
+        (3) edge [loop below] node [right=+1mm] {$\re{Z}_{q-2}$} ()
+        (3) edge [bend left] node [near start, below left=-3mm] {$\re{X}_{q-2}$} (0)
+        (0) edge [bend left=10] node [near start, above right=-3mm] {$\re{Y}_{q-2}$} (3)
+
+        (i) edge [bend left] node [left] {$1$} (0)
+        (0) edge [bend left] node [above left=-1mm] {$1$} (t)
+    ;
+\end{tikzpicture}

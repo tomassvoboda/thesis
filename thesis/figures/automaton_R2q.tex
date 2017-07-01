@@ -1,0 +1,23 @@
+\begin{tikzpicture}[my_automaton]
+    \tikzstyle{every state}=[my_named_state]
+    \tikzstyle{initial}=[my_initial_state]
+    \tikzstyle{accepting}=[my_accepting_state]
+    %\draw[help lines] (-1.5,1.5) grid (1.5,-1.5);
+    \node[state, initial, accepting] (0) at (180:1.5) {$0$};
+    \node[state] (1) at (115:1.7) {$1$};
+    \node[state, dashed] (2) at (60:2.2) {};
+    \node[state, dashed] (2q-2) at (-60:2.2) {};
+    \node[state] (2q-1) at (-115:1.7) {$2^q \scriptstyle - \displaystyle 1$};
+
+    \path
+        (0) edge [bend left] node [above left=-1.5mm] {$a$} (1)
+        (1) edge [bend left] node [right] {$b$} (0)
+        (1) edge [bend left, dashed] node [above] {$a$} (2)
+        (2) edge [bend left, dashed] node [below right=-1mm] {$b$} (1)
+
+        (2q-2) edge [bend left, dashed] node [below] {$a$} (2q-1)
+        (2q-1) edge [bend left, dashed] node [above=-0.5mm] {$b$} (2q-2)
+        (2q-1) edge [bend left] node [near start, left] {$a$} (0)
+        (0) edge [bend left] node [right] {$b$} (2q-1)
+    ;
+\end{tikzpicture}
