@@ -8,7 +8,7 @@ Throughout this chapter we use language $W_q = {\{f \mid |f|_a \equiv |f|_b \pmo
     The language $W_q$ has star height~$q$.
 \end{thm}
 
-For the~proof we need to find an~expression of star height~$q$ denoting~$W_q$. That is done in~Lemma~\ref*{lm:expression_existence}. Then it remains to show that $W_q$ has the star height of at~least~$q$.
+The proof has two parts. First we find a~rational expression of star height~$q$, denoting $W_q$, and then we show that the star height of the language has to be at~least $q$. The first part is done as proof of Lemma~\ref*{lm:expression_existence}, which leaves the second part to be done in the Proof of~\autoref*{thm:main}.
 
 \begin{lemma}\label{lm:expression_existence}
     Language $W_q$ is denoted by a rational expression of star height $q$.
@@ -19,7 +19,7 @@ For the~proof we need to find an~expression of star height~$q$ denoting~$W_q$. T
     \begin{align*}
         \re{X}_0 &= a, & \re{Y}_0 &= b, & &\text{ and } & \re{Z}_0 &= 0, \\
         \re{X}_1 &= a^2, & \re{Y}_1 &= b^2, & &\text{ and } & \re{Z}_1 &= ab+ba, \\
-        &\; \vdots & &\; \vdots & &\text{  } & &\; \vdots \\
+        &\; \vdots & &\; \vdots & & & &\; \vdots \\
         \re{X}_{n+1} &= \re{X}_n \re{Z}_n^* \re{X}_n, & \re{Y}_{n+1} &= \re{Y}_n \re{Z}_n^* \re{Y}_n, & &\text{ and } & \re{Z}_{n+1} &= \re{Z}_n + \re{X}_n \re{Z}_n^* \re{Y}_n + \re{Y}_n \re{Z}_n^* \re{X}_n.
     \end{align*}
 
