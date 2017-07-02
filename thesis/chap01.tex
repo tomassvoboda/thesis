@@ -6,7 +6,7 @@ In the first section we state same definitions that are considered standard and 
 
 \begin{defn} \X{List of definitions and notation that need to be introduced:}\\
     \X{Word, factors, $|\cdot|_a$, ``word is a factor of language''}\\
-    \X{Automaton, automaton equivalence, generalised automaton}
+    \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
 \end{defn}
 
 \begin{defn}
@@ -42,9 +42,16 @@ In the first section we state same definitions that are considered standard and 
 
 \subsection{State removal algorithm}
 
-State removal algorithm is a~means of deriving an~expression denoting the same language that is recognised by a~provided automaton. First, we begin with an~automaton $\mathcal{A} = \langle Q, A, E, I, T \rangle$ with a~finite number of states. Second, we create an~automaton $\mathcal{B}$ from $\mathcal{A}$ by adding two states $i$, $t$, distinct and not belonging to $Q$, spontaneous transitions from $i$ to each state of $I$, and spontaneous transitions from each state of $T$ to $t$. Clearly $\mathcal{A}$ and $\mathcal{B}$ are equivalent and since $\mathcal{A}$ is finite, $\mathcal{B}$ is also finite.
+State removal algorithm takes provided finite automaton and derives a~rational expression that denotes the same language as is accepted by the original automaton. Let $\mathcal{A}~=~\langle Q, A, E, I, T \rangle$ be the provided automaton. Next, we construct an~automaton $\mathcal{B}$, from $\mathcal{A}$, by adding two states $i$ and $t$, distinct and not belonging to $Q$, a spontaneous transition from $i$ to each initial state of $\mathcal{A}$, and a spontaneous transition from each final state of $\mathcal{A}$ to $t$. We consider the state $i$ to be the only initial state, and $t$ the only final state, of automaton $\mathcal{B}$. Clearly $\mathcal{A}$ and $\mathcal{B}$ are equivalent and since $\mathcal{A}$ is finite, $\mathcal{B}$ is also finite.
 
-Next part has as many steps as there are states in $Q$. In each step we proceed by consecutively removing a state in $Q$ from $\mathcal{B}$ and modifying the transitions in a way that the derived automaton is equivalent to that of the previous step. Let us chose a particular state $q \in Q$, let $p_1, \dotsc , p_k$ be states of $\mathcal{B}$, $p_j \neq q$, that are the sources of transitions with destination in $q$, and $\mathsf{E}_1, \dotsc , \mathsf{E}_k$ the labels of these transitions. And let $r_1, \dotsc , r_l$ be states of $\mathcal{B}$, $r_j \neq q$, that are the destinations of transitions whose source is $q$, and $\mathsf{G}_1, \dotsc , \mathsf{G}_l$ the labels of these transitions. Some states $p_j$ can be the same as states $r_m$.
+Next part of the algorithm has as many steps as there are states in $Q$. In each step we remove a state in $Q$ from $\mathcal{B}$ and modify the transitions in a way that the derived automaton is equivalent to that of the previous step. Let $q$ be a~particular state in $Q$, let $p_1, \dotsc , p_k$ be states of $\mathcal{B}$, $p_j \neq q$, that are the sources of transitions which have $q$ as a destination, and $\re{E}_1, \dotsc , \re{E}_k$ the labels of these transitions. And let $r_1, \dotsc , r_l$ be states of $\mathcal{B}$, $r_j \neq q$, that are the destinations of transitions whose source is $q$, and $\re{G}_1, \dotsc , \re{G}_l$ the labels of these transitions. Note that some states $p_j$ can be the same as states $r_m$. If there is a transition with source and destination $q$, we will denote it by $\re{F}$. Otherwise we set $\re{F} = 0$ and therefore we have $\re{F}^* = 1$.
+
+Let $\mathcal{B}'$ be an automaton obtained from $\mathcal{B}$ by first removing the state $q$ and all of the following transitions described above
+\[
+    (p_1, \re{E}_1, q), \dotsc, (p_k, \re{E}_k, q), (q, \re{G}_1, r_1), \dotsc, (q, \re{G}_l, r_l), (q, \re{F}, q),
+\]
+and second by adding, for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ and $1 \leq j \leq l$, the transition $(p_h, \re{E}_h \re{F}^* \re{G}_j, r_j)$
+
 
 \section{\X{Additional definitions}}
 
