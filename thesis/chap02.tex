@@ -1,6 +1,6 @@
 \chapter{Eggan's question}
 
-In this chapter we present an answer to the question whether there are rational languages with arbitrarily large star heights. The first examples of those languages are given by~\cite{Eggan63}. \X{Should be a citation?$\to$} Eggan's examples use an~alphabet of size $2^n - 1$ for the language with star height $n$. He therefore asked whether there are some examples of languages over binary alphabets. Answer to that question, which is affirmative, was provided shortly after by~\cite{DejeanSchutzenberger66}. Their answer is also reformulated by~\cite{Sakarovitch09}, which provided a basis for this work.
+In this chapter we present an answer to the question whether there are rational languages with arbitrarily large star heights. The first examples of those languages are given by~\cite{Eggan63}. \X{Should this also be a citation?$\to$} Eggan's examples use an~alphabet of size $2^n - 1$ for the language with star height $n$. He therefore asked whether there are some examples of languages over binary alphabets. Answer to that question, which is affirmative, was provided shortly after by~\cite{DejeanSchutzenberger66}. Their answer is also reformulated by~\cite{Sakarovitch09}, which provided a basis for this work.
 
 Throughout this chapter we use language $W_q = {\{f \mid |f|_a \equiv |f|_b \pmod{2^q} \}}$.
 
@@ -35,7 +35,7 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
         \caption{Construction of ${\mathcal{R}(2^q)}_0$ from ${\mathcal{R}(2^q)}$}\label{fig:construction_of_R2q_0}%
     \end{figure}
 
-    This phase of the proof has $q-2$ steps. In each step $i$, for $1 \leq i \leq q-2$, we construct ${\mathcal{R}(2^q)}_i$ from ${\mathcal{R}(2^q)}_{i-1}$ without changing the recognised language. Each step $i$ of this phase comprises of $2^{q-i}$ steps of the state removal algorithm. The states removed are all the odd states of the ${\mathcal{R}(2^q)}_{i-1}$ automaton. That means that if ${\mathcal{R}(2^q)}$ has $2^q$ states, then ${\mathcal{R}(2^q)}_0$ has $2^q + 2$ states, ${\mathcal{R}(2^q)}_1$ has $2^{q-1} + 2$ states, and so on, which leaves the automaton produced by the last step of this phase, ${\mathcal{R}(2^q)}_{q-2}$, with $2^{q-(q-2)} + 2 = 6$ states. After the removal of the $2^{q-i}$ odd states, the remaining $2^{q-i}$ even states, that is excluding the two special states~$i$, and~$t$, are renamed as members of $\Z_{2^{q-i}}$. \autoref*{fig:construction_of_R2q_i} illustrates the $i$-th step of this phase. \X{Can the \autoref*{fig:construction_of_R2q_i} overflow the text margins?}
+    This phase of the proof has $q-2$ steps. In each step $i$, for $1 \leq i \leq q-2$, we construct ${\mathcal{R}(2^q)}_i$ from ${\mathcal{R}(2^q)}_{i-1}$ without changing the recognised language. Each step $i$ of this phase comprises of $2^{q-i}$ steps of the state removal algorithm. The states removed are all the odd states of the ${\mathcal{R}(2^q)}_{i-1}$ automaton. That means that if ${\mathcal{R}(2^q)}$ has $2^q$ states, then ${\mathcal{R}(2^q)}_0$ has $2^q + 2$ states, ${\mathcal{R}(2^q)}_1$ has $2^{q-1} + 2$ states, and so on, which leaves the automaton produced by the last step of this phase, ${\mathcal{R}(2^q)}_{q-2}$, with $2^{q-(q-2)} + 2 = 6$ states. After the removal of the $2^{q-i}$ odd states, the remaining $2^{q-i}$ even states, that is excluding the two special states~$i$, and~$t$, are renamed as members of $\Z_{2^{q-i}}$. \autoref*{fig:construction_of_R2q_i} illustrates the $i$-th step of this phase.
 
     \begin{figure}[h]%
         \centerline{
@@ -49,14 +49,14 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
             \subfloat[Automaton from figure~\ref*{fig:odd_states_removed} with renamed states, which is an automaton~${\mathcal{R}(2^q)}_i$]{%
                 \input{./figures/automaton_R2q_i}}%
         }
-        \caption{Construction of ${\mathcal{R}(2^q)}_i$ from ${\mathcal{R}(2^q)}_{i-1}$}\label{fig:construction_of_R2q_i}%
+        \caption{Construction of ${\mathcal{R}(2^q)}_i$ from ${\mathcal{R}(2^q)}_{i-1}$\\ \X{Can the image overflow the text margins?}}\label{fig:construction_of_R2q_i}%
     \end{figure}
 
     The result of the $q-2$ steps described above is an automaton~${\mathcal{R}(2^q)}_{q-2}$, shown in Figure~\ref*{fig:automaton_R2q_q-2}. ${\mathcal{R}(2^q)}_{q-1}$ is clearly a result of the states $1$, and $3$ being removed from the automaton~${\mathcal{R}(2^q)}_{q-2}$ by the state removal algorithm. The equivalence
     \[
         {(\re{Z}_{q-1} + {(\re{X}_{q-1} + \re{Y}_{q-1})}\re{Z}_{q-1}^*{(\re{X}_{q-1} + \re{Y}_{q-1})})}^* = {(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*
     \]
-    shows, that after applying the state removal algorithm on the state $1$ of ${\mathcal{R}(2^q)}_{q-1}$, we get ${\mathcal{R}(2^q)}_{q}$. These two last steps are shown in the~\autoref*{fig:construction_of_R2q_q}. \X{Fix the vertical space of the subfigures!}
+    shows, that after applying the state removal algorithm on the state $1$ of ${\mathcal{R}(2^q)}_{q-1}$, we get ${\mathcal{R}(2^q)}_{q}$. These two last steps are shown in the~\autoref*{fig:construction_of_R2q_q}.
 
     \begin{figure}[h]%
         \centerline{
@@ -70,14 +70,14 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
             \subfloat[An automaton~${\mathcal{R}(2^q)}_{q}$]{%
                 \input{./figures/automaton_R2q_q}}%
         }
-        \caption{Steps $q-2, \: q-1$, and $q$ of the construction of ${\mathcal{R}(2^q)}_q$}\label{fig:construction_of_R2q_q}%
+        \caption{Steps $q-2, \: q-1$, and $q$ of the construction of ${\mathcal{R}(2^q)}_q$\\ \X{Fix the vertical space of the subfigures!}}\label{fig:construction_of_R2q_q}%
     \end{figure}
 
     Each of the rational expressions $\re{X}_q, \re{Y}_q$, and $\re{Z}_q$ has star height of $q-1$, therefore ${(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*$ has star height of $q$. Since none of the automaton constructions changed the recognised language, it follows that $W_q$ is denoted by ${(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*$.
 \end{proof}
 
 \begin{example}
-    According to the procedure described in the Proof of~Lemma~\ref*{lm:expression_existence}, we apply the state removal algorithm on the automaton~${\mathcal{R}(8)}$, recognising language~$W_3$. The steps of the creation of rational expression ${(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*$, denoting $W_3$, are shown in~\autoref*{fig:automaton_R8_state_removal_steps}. \X{Fix the automatons in the figure!}
+    According to the procedure described in the Proof of~Lemma~\ref*{lm:expression_existence}, we apply the state removal algorithm on the automaton~${\mathcal{R}(8)}$, recognising language~$W_3$. The steps of the creation of rational expression ${(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*$, denoting $W_3$, are shown in~\autoref*{fig:automaton_R8_state_removal_steps}.
 
     \begin{figure}%
         \centering
@@ -99,7 +99,7 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
         \hspace{40pt}%
         \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-g}%
             \input{./figures/automaton_R8_removed7}}%
-        \caption{First through seventh steps of the~state removal algorithm with order~$\omega$}\label{fig:automaton_R8_state_removal_steps}%
+        \caption{First through seventh steps of the~state removal algorithm with order~$\omega$\\ \X{Fix the automatons in the figure!}}\label{fig:automaton_R8_state_removal_steps}%
     \end{figure}
 \end{example}
 
