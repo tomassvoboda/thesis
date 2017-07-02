@@ -50,25 +50,20 @@ Let $\mathcal{B}'$ be an automaton obtained from $\mathcal{B}$ by first removing
 \[
     (p_1, \re{E}_1, q), \dotsc, (p_k, \re{E}_k, q), (q, \re{G}_1, r_1), \dotsc, (q, \re{G}_l, r_l), (q, \re{F}, q),
 \]
-and second by adding, for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ and $1 \leq j \leq l$, the transition $(p_h, \re{E}_h \re{F}^* \re{G}_j, r_j)$
-
+and second by adding, for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ and $1 \leq j \leq l$, the transition $(p_h, \re{E}_h \re{F}^* \re{G}_j, r_j)$.
 
 \section{\X{Additional definitions}}
 
 \begin{defn}
-    For an alphabet $A = {\{a,b\}}$, an automaton $\mathcal{A} = \langle Q, A, E, \{p\}, \{p\} \rangle$ is called \emph{ring automaton~${\mathcal{R}(n)}$}, if there is a bijection $\varphi: \Z_n \to Q$, that
-    \begin{multline*}
-        \forall \, z \in Z_n \; \forall \varphi(z) \in Q: (\{\varphi(z)\} \times \{a\} \times Q) \cap E = \{(\varphi(z),a,\varphi(z+1))\} \quad \land \\
-            (\{\varphi(z)\} \times \{b\} \times Q) \cap E = \{(\varphi(z),b,\varphi(z-1))\}.
-    \end{multline*}
+    Let $A = {\{a,b\}}$. An automaton $\langle \Z_n, A, E, 0, 0 \rangle$ is called \emph{ring automaton~${\mathcal{R}(n)}$}, if for each state $z \in \Z_n$ there are exactly two transitions with $z$ as a~source and they are $(z, a, z+1)$ and $(z, b, z-1)$.
 \end{defn}
 
 \begin{example}
     \autoref*{fig:automaton_R8} shows ring automaton~${\mathcal{R}(8)}$.
-\end{example}
 
-\begin{figure}[h]
-    \centering
-    \input{./figures/automaton_R8}
-    \caption{Automaton~${\mathcal{R}(8)}$}\label{fig:automaton_R8}
-\end{figure}
+    \begin{figure}[h]
+        \centering
+        \input{./figures/automaton_R8}
+        \caption{Automaton~${\mathcal{R}(8)}$}\label{fig:automaton_R8}
+    \end{figure}
+\end{example}
