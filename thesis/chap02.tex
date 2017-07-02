@@ -1,6 +1,6 @@
 \chapter{Eggan's question}
 
-In this chapter we present an answer to the question whether there are rational languages with arbitrarily large star heights. The first examples of those languages are given by~\cite{Eggan63}. \X{Should this also be a citation?$\to$} Eggan's examples use an~alphabet of size $2^n - 1$ for the language with star height $n$. He therefore asked whether there are some examples of languages over binary alphabets. Answer to that question, which is affirmative, was provided shortly after by~\cite{DejeanSchutzenberger66}. Their answer is also reformulated by~\cite{Sakarovitch09}, which provided a basis for this work.
+In this chapter we present an answer to the question whether there are rational languages with arbitrarily large star heights. The first examples of those languages are given by~\cite{Eggan63}. \X{Should this also be a citation?$\to$} Eggan's examples use an~alphabet of size $2^n - 1$ for the language with star height $n$. He therefore asked whether there are some examples of languages over binary alphabets. Answer to that question, which is affirmative, was provided shortly after by~\cite{DejeanSchutzenberger66}. Their answer is also reformulated by~\cite{Sakarovitch09}, which \X{or who? (Book provided, or person provided?)} provided a basis for this work.
 
 Throughout this chapter we use language $W_q = {\{f \mid |f|_a \equiv |f|_b \pmod{2^q} \}}$.
 
@@ -23,7 +23,7 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
         \re{X}_{n+1} &= \re{X}_n \re{Z}_n^* \re{X}_n, & \re{Y}_{n+1} &= \re{Y}_n \re{Z}_n^* \re{Y}_n, & &\text{ and } & \re{Z}_{n+1} &= \re{Z}_n + \re{X}_n \re{Z}_n^* \re{Y}_n + \re{Y}_n \re{Z}_n^* \re{X}_n.
     \end{align*}
 
-    Next, we look at constructing an~automaton, which we will call ${\mathcal{R}(2^q)}_0$, from ${\mathcal{R}(2^q)}$. The construction is shown in~\autoref*{fig:construction_of_R2q_0}. Every transition labelled~$a$ is replaced by one labelled $\re{X}_0$, every transition labelled~$b$ is replaced by one labelled $\re{Y}_0$, and a~loop labelled $\re{Z}_0$ is added to every state. Finally, we add two new distinct states in the same way as in the beginning of the state removal algorithm. It is clear, that ${\mathcal{R}(2^q)}_0$ accepts the same language as ${\mathcal{R}(2^q)}$.
+    Next, we look at constructing an~automaton, which we will call ${\mathcal{R}(2^q)}_0$, from ${\mathcal{R}(2^q)}$. The construction is shown in~\autoref*{fig:construction_of_R2q_0}. Every transition labelled~$a$ is replaced by one labelled $\re{X}_0$, every transition labelled~$b$ is replaced by one labelled $\re{Y}_0$, and a~loop labelled $\re{Z}_0$ is added to every state. Finally, we add two new distinct states $i$ and $t$, and related spontaneous transitions, in the same way as in the beginning of the state removal algorithm. It is clear, that ${\mathcal{R}(2^q)}_0$ accepts the same language as ${\mathcal{R}(2^q)}$.
 
     \begin{figure}[h]%
         \centering
