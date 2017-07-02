@@ -15,7 +15,7 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
 \end{lemma}
 
 \begin{proof}
-    $W_q$ is recognised by an automaton~${\mathcal{R}(2^q)}$. The rational expression of star height $q$ will be obtained by applying the state removal algorithm on~${\mathcal{R}(2^q)}$. That means that the only transition left in the final automaton will be labeled by the desired rational expression. First we inductively define the following rational expressions:
+    $W_q$ is recognised by an automaton~${\mathcal{R}(2^q)}$. The rational expression of star height $q$ will be obtained by applying the state removal algorithm on~${\mathcal{R}(2^q)}$. That means that the only transition left in the final automaton will be labelled by the desired rational expression. First we inductively define the following rational expressions:
     \begin{align*}
         \re{X}_0 &= a, & \re{Y}_0 &= b, & &\text{ and } & \re{Z}_0 &= 0, \\
         \re{X}_1 &= a^2, & \re{Y}_1 &= b^2, & &\text{ and } & \re{Z}_1 &= ab+ba, \\
@@ -78,7 +78,7 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
 \end{proof}
 
 \begin{example}
-    According to the procedure described in the Proof of~Lemma~\ref*{lm:expression_existence}, we apply the state removal algorithm on the automaton~${\mathcal{R}(8)}$, recognizing language~$W_3$. The steps of the creation of rational expression ${(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*$, denoting $W_3$, are shown in~\autoref*{fig:automaton_R8_state_removal_steps}. \X{Fix the automatons in the figure!}
+    According to the procedure described in the Proof of~Lemma~\ref*{lm:expression_existence}, we apply the state removal algorithm on the automaton~${\mathcal{R}(8)}$, recognising language~$W_3$. The steps of the creation of rational expression ${(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*$, denoting $W_3$, are shown in~\autoref*{fig:automaton_R8_state_removal_steps}. \X{Fix the automatons in the figure!}
 
     \begin{figure}%
         \centering
@@ -127,7 +127,7 @@ We have found a~rational expression of star height $q$ denoting the language $W_
 \end{lemma}
 
 \begin{proof}
-    We immediately see that $|w_{k,n}|_a = |w_{k,n}|_b$, therefore any whole word $w_{k,n}$ that is a factor of either $u$ or $v$ does not affect the inequalities we are trying to prove. We only need to examine the differences in the frequency of letters of the left, or~right, factor of the word $w_{k,n}$. We proceed by indunction on~$k$. Trivially the inequalities hold for $w_{0,n}$. The word
+    We immediately see that $|w_{k,n}|_a = |w_{k,n}|_b$, therefore any whole word $w_{k,n}$ that is a factor of either $u$ or $v$ does not affect the inequalities we are trying to prove. We only need to examine the differences in the frequency of letters of the left, or~right, factor of the word $w_{k,n}$. We proceed by induction on~$k$. Trivially the inequalities hold for $w_{0,n}$. The word
     \[
         w_{k,n} = a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n}
     \] begins with $2^k$ $a$'s and from the induction hypothesis, we know that $w_{k-1,n}$ can have at most $2^k-1$ more $a$'s than $b$'s. We can also see that in the left factor $u$ there is always at least as many $a$'s as there is $b$'s. That proves the inequalities fot the left factor.
@@ -138,56 +138,51 @@ We have found a~rational expression of star height $q$ denoting the language $W_
 Next we use the witness words to define a property of languages.
 
 \begin{defn}
-    We say that language $L$ \emph{satisfies property $(P_k)$} if there exists an infinite number of values of $n$ such that ${(w_{k,n})}^n$ is a~factor of at~least one word in~L.
+    We say that language $L$ \emph{satisfies property $P_k$} if there exists an infinite number of values of $n$ such that ${(w_{k,n})}^n$ is a~factor of at~least one word in~L.
 \end{defn}
 
-Note that if $L$ satisfies $(P_k)$, it also satisfies $(P_l)$ for $l \leq k$ since ${(w_{k-1,n})}^n$ is a factor of ${(w_{k,n})}^n$.
+Note that if $L$ satisfies $P_k$, it also satisfies $P_l$ for $l < k$ since ${(w_{l,n})}^n$ is a~factor of ${(w_{k,n})}^n$.
 
 \begin{proof}[Proof of \autoref*{thm:main}]
-    Lemma~\ref*{lm:expression_existence} gives us an~expression with star height~$q$ denoting the~language~$W_q$. Now we show that the~height has to be at~least~$q$.\\
+    Lemma~\ref*{lm:expression_existence} shows that the star height of $W_q$ is at~most~$q$. Now we show that it also has to be at~least~$q$.
+
     By $\mathfrak{W}_k$ we denote a family of languages $L$ that satisfy the following conditions:
-    \begin{enumerate}
+    \begin{itemize}
         \item[(i)] $L \subseteq W_q$,
-        \item[(ii)] $L$ satisfies $(P_k)$,
+        \item[(ii)] $L$ satisfies $P_k$,
         \item[(iii)] $L$ has a minimum star height of any language satisfying the first two conditions.
-    \end{enumerate}
-    Let $h_k$ be the common value of the star height of the languages in $\mathfrak{W}_k$, then we have
+    \end{itemize}
+
+    Let $h_k$ be the common value of the star height of the languages in $\mathfrak{W}_k$. Languages in $\mathfrak{W}_0$ are necessarily infinite, therefore $0 < h_0$. $P_k$ implies $P_{k-1}$, which means that \X{(Probably not true.) $\mathfrak{W}_k \subseteq \mathfrak{W}_{k-1}$, and} $h_{k-1} \leq h_k$. $W_q$ obviously satisfies (i). It also satisfies $P_{q-1}$ since $|{(w_{q-1,n})}^n|_a = |{(w_{q-1,n})}^n|_b$ for each $n$. Because we have found a~rational expression of star height $q$ denoting $W_q$, it follows that $h_{q-1} \leq q$. Therefore we have
     \[
         0 < h_0 \leq h_1 \leq \dotsb \leq h_{q-1} \leq q.
     \]
-    Language in $\mathfrak{W}_0$ is necessarily infinite, therefore $0 < h_0$. Since $(P_k)$ implies $(P_{k-1})$, $h_{k-1} \leq h_k$. $W_q$ obviously satisfies (i), but it also satisfies $(P_{q-1})$ because for each $n$, $|{(w_{q-1,n})}^n|_a = |{(w_{q-1,n})}^n|_b$, and because in Lemma~\ref*{lm:expression_existence} we have found an expression of star height $q$, to satisfy the condition (iii), $h_{q-1} \leq q$.
 
-    To prove the theorem it is enough to show that
+    To prove the theorem it is enough to show that $h_{k-1} < h_k$ for each $k$, $k=1, \dotsc, q-1$. Let $L$ be in $\mathfrak{W}_k$. Due to Lemma~\ref*{lm:star_height_distributivity} $L$ can be written as a finite union of languages $E_j$, each denoted by a~rational expression of the form
     \[
-        \forall \, k \in \{1,\dotsc,q-1\}: h_{k-1} < h_k.
+        \mathsf{E}_j = u_0{(\mathsf{H}_1)}^*u_1 \dotsm u_{m-1}{(\mathsf{H}_m)}^*u_m,
     \]
-    Let $L \in \mathfrak{W}_k$ with star height $h_k$. Due to Lemma~\ref*{lm:distributivity} $L$ can be written as a finite union of languages $E_j$, each denoted by a expression of the form:
-    \[
-        \mathsf{E}_j = u_0{(\mathsf{H}_1)}^*u_1 \dotsm u_{m-1}{(\mathsf{H}_m)}^*u_m.
-    \]
-    Each expression $\mathsf{H}_i$ denotes a~language~$H_i$ with star height less then or equal to $h_k-1$. At least one of the languages $E_j$ has to satisfy $(P_k)$ since $L$ satisfies it and there in only a finite number of languages $E_j$ in the union equal to $L$. It is therefore safe to assume that $L$ is denoted by an expression of the same form as $E_j$.
+    where each rational expression $\mathsf{H}_i$ denotes a~language~$H_i$ with star height less then or equal to $h_k-1$. Since $L$ satisfies $P_k$ and the union of the languages $E_j$ is finite, it follows that at least one of $E_j$ has to satisfy $P_k$. We can therefore safely assume that $L$ itself is denoted by a~rational expression of the same form as $E_j$.
 
-    Each of the $H_i$ must be contained in $W_q$. For contradiction, let us have word $g \in H_i$, that $|g|_a \not\equiv |g|_b \pmod{2^q}$. Then it must be true that both
-    \[
-        u_0 u_1 \dotsm u_m \in L \qquad \text{and} \qquad u_0 u_1 \dotsm u_{i-1} g u_{i+1} \dotsm u_m \in L,
-    \]
-    which contradicts the fact that $\forall f \in L: |f|_a \equiv |f|_b \pmod{2^q}$.
+    For each word $g$ in $H_i$, words $u_0 u_1 \dotsm u_m$ and $u_0 u_1 \dotsm u_{i-1} g u_i \dotsm u_m$ are both in language $L$. Therefore, because it has to be true that $|g|_a \equiv |g|_b \pmod{2^q}$, $H_i \subseteq W_q$.
 
-    Since $L$ is of a minimal star height to satisfy $(P_k)$, none of the $H_i$ satisfies $(P_k)$. Now we need to show that some $H_i$ satisfies $(P_{k-1})$. In fact we will have $h_{k-1} \leq h_k - 1$.
+    Since $L$ is of a minimal star height to satisfy $P_k$, none of the $H_i$ satisfies $P_k$. Now we need to show that some $H_i$ satisfies $P_{k-1}$. As a matter of fact, we will have $h_{k-1} \leq h_k - 1$.
 
-    $L$ satisfies $(P_k)$, so for arbitrarily large $n$, words ${(w_{k,n})}^n$ are factors of $L$. \X{Meaning that $\forall n \; \exists f \in L: {(w_{k,n})}^n$ is a factor of $f$? Hopefully.} Lemma~\ref*{lm:block_star_lemma} shows, that we can find $N$ large enough, that ${(w_{k,N})}^N$ will be a factor of $f \in L$, which still gives us infinitely many $n' \geq N$, that ${(w_{k,n'})}^{n'}$ is a factor some word, and for each of those $n'$ we have infinitely many $l$'s, that ${(w_{k,n})}^l$ is a factor of $L$\X{?}, again due to Lemma~\ref*{lm:block_star_lemma}. Since $m$ is finite and fixed for $L$, there has to be infinitely many $n$'s, that ${(w_{k,n})}^n$ is a factor a word $r_n \in H_i^*$, for some $i$, $1 \leq i \leq m$, therefore $H_i^*$ satisfies $(P_k)$. We will show that for these $n$'s, ${(w_{k-1,n})}^n$ is a factor of a word in $H_i$, meaning $H_i$ satisfies $(P_{k-1})$.
+    $L$ satisfies $P_k$, therefore words ${(w_{k,n})}^n$ are factors of~$L$ for arbitrarily large $n$. Lemma~\ref*{lm:block_star_lemma} shows that we can find $N$ large enough, such that there is infinitely many $n' \geq N$, that ${(w_{k,n'})}^{n'}$ is a factor of $L$, and, for each $n'$, we have infinitely many $l$'s, that ${(w_{k,n'})}^l$ is a factor of $L$.
 
-    We write $r_n$ as a factorization $r_n = g_0 g_1 \dotsm g_l$, where $g_j \in H_i$, for $0 \leq j \leq l$. If $w_{k,n}$, from ${(w_{k,n})}^n$, is a factor of some $g_j$, the condition is satisfied, since ${(w_{k-1,n})}^n$ is a factor of $w_{k,n}$. Otherwise we will examine how a factor ${(w_{k,n})}^2$ is covered by the factorization of $r_n$. Written explicitly, we have
+    Let $H_i^*$ be the language recognised by $\mathsf{H}_i^*$. Since $m$ is finite and fixed for $L$, there has to be infinitely many $n$'s, that ${(w_{k,n})}^n$ is a factor of $r_n \in H_i^*$ for some~$i$, $1 \leq i \leq m$. This means that $H_i^*$ satisfies $P_k$. Next we show that for these $n$'s, ${(w_{k-1,n})}^n$ is a factor of a word in $H_i$, meaning $H_i$ satisfies $P_{k-1}$.
+
+    We write $r_n$ as a factorisation $r_n = g_0 g_1 \dotsm g_l$, where $g_j \in H_i$, for $0 \leq j \leq l$. If $w_{k,n}$, from ${(w_{k,n})}^n$, is a factor of some $g_j$, the condition is satisfied, since ${(w_{k-1,n})}^n$ is a factor of $w_{k,n}$. Otherwise, let us show how a~factor ${(w_{k,n})}^2$ is covered by the factorisation of $r_n$. Written explicitly, we have
     \[
         {(w_{k,n})}^2 = a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n}a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n}.
     \]
-    Let us consider $g_j$, that the leftmost factor $b^{2^k}$ is covered by it, at least partially. There are two possibilities:
-    \begin{enumerate}
+    Let us consider the $g_j$ that covers, at least partially, the factor $b^{2^k}$. There are two possibilities:
+    \begin{itemize}
         \item[(i)] $b^{2^k}$ is a factor of $g_j$,
         \item[(ii)] a left factor of $b^{2^k}$ is a right factor of $g_j$.
-    \end{enumerate}
+    \end{itemize}
 
-    In the case (i), we have $g_j = v b^{2^k} u$. If $v$ covers the factor ${(w_{k-1,n})}^{n}$ to the left of $b^{2^k}$, or $u$ covers the factor ${(w_{k-1,n})}^{n}$ to the right of $b^{2^k}$, the condition is satisfied. If not, $u$ is a left factor of ${(w_{k-1,n})}^{n}$ and $v$ is a right factor. Set
+    In case (i), we have $g_j = v b^{2^k} u$. If $v$ covers the factor ${(w_{k-1,n})}^{n}$ to the left of $b^{2^k}$, or $u$ covers the factor ${(w_{k-1,n})}^{n}$ to the right of $b^{2^k}$, the condition is satisfied. If not, $u$ is a left factor of ${(w_{k-1,n})}^{n}$ and $v$ is a right factor. Set
     \[
         x = |g_j|_b - |g_j|_a, \quad y = |u|_a - |u|_b, \quad \text{ and } \quad z = |v|_b - |v|_a.
     \]
@@ -201,7 +196,7 @@ Note that if $L$ satisfies $(P_k)$, it also satisfies $(P_l)$ for $l \leq k$ sin
     \]
     which contradicts the fact that $g_j \in H_i \subseteq W_q$.
 
-    In the case (ii) we have $g_j = v b^{r}, \: 0 < r < 2^k$. If ${(w_{k-1,n})}^{n}$ is a factor of $v$, the condition is satisfied. Otherwise $v$ is a right factor of ${(w_{k-1,n})}^{n}$ and, similarly as above, we set
+    In case (ii), we have $g_j = v b^{r}, \: 0 < r < 2^k$. If ${(w_{k-1,n})}^{n}$ is a factor of $v$, the condition is satisfied. Otherwise $v$ is a right factor of ${(w_{k-1,n})}^{n}$ and, similarly as above, we set
     \[
         x = |g_j|_b - |g_j|_a, \quad \text{ and } \quad z = |v|_b - |v|_a.
     \]
@@ -211,7 +206,7 @@ Note that if $L$ satisfies $(P_k)$, it also satisfies $(P_l)$ for $l \leq k$ sin
     \]
     Therefore, due to Lemma~\ref*{lm:witness_words_inequalities},
     \[
-        r \leq x \leq r + 2^k - 1 < 2^{k+1} < 2^q.
+        r \leq x \leq r + 2^k - 1 < 2^{k+1} \leq 2^q.
     \]
     which produces the same contradiction as the case (i).
 \end{proof}

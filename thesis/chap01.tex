@@ -5,15 +5,15 @@ In the first section we state same definitions that are considered standard and 
 \section{Basic definitions \& notation}
 
 \begin{defn} \X{List of definitions and notation that need to be introduced:}\\
-    \X{Word, factors, $|\cdot|_a$}\\
-    \X{Automaton, automaton equivalence, generalized automaton}
+    \X{Word, factors, $|\cdot|_a$, ``word is a factor of language''}\\
+    \X{Automaton, automaton equivalence, generalised automaton}
 \end{defn}
 
 \begin{defn}
     \X{Expression, expression equivalence, star height (of expression, of language)}
 \end{defn}
 
-\begin{lemma}\label{lm:distributivity}
+\begin{lemma}\label{lm:star_height_distributivity}
     Every language $L$ over $A$ with star height~$h$ is denoted by a finite sum of expressions:
     \[
         L = \sum_{j=1}^n \mathsf{E}_j,
@@ -30,7 +30,7 @@ In the first section we state same definitions that are considered standard and 
 \end{proof}
 
 \begin{lemma}\label{lm:block_star_lemma}
-    Let $L$ be a recognizable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorization of the form
+    Let $L$ be a recognisable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorisation of the form
     \[
         f = u v_1 v_2 \dotsm v_N w \; , \quad \text{where every $v_i$ is a non-empty word.}
     \]
