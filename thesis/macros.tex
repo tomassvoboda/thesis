@@ -45,10 +45,12 @@
 \newtheorem*{cor}{Corollary}
 \newtheorem*{rem}{Remark}
 \newtheorem*{example}{Example}
-\AtEndEnvironment{example}{\hfill$\square$}
 
 \newcommand{\thmautorefname}{Theorem}
 
+% Squares at the end of the definitions and examples
+\AtEndEnvironment{defn}{\hfill$\square$}
+\AtEndEnvironment{example}{\hfill$\square$}
 %%% An environment for proofs
 \renewcommand{\qedsymbol}{$\blacksquare$}
 %%% FIXME %%% \newenvironment{proof}{
@@ -69,6 +71,8 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 
+% Commands for power sets and rational expressions
+\newcommand{\ps}[1]{\mathbb{P}(#1)}
 \newcommand{\re}[1]{{\mathsf{#1}}}
 
 %%% Useful operators for statistics and probability

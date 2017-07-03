@@ -5,12 +5,62 @@ In the first section we state same definitions that are considered standard and 
 \section{Basic definitions \& notation}
 
 \begin{defn} \X{List of definitions and notation that need to be introduced:}\\
-    \X{Word, factors, $|\cdot|_a$, ``word is a factor of language''}\\
+    \X{``word is a factor of language''}\\
     \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
 \end{defn}
 
 \begin{defn}
     \X{Expression, expression equivalence, star height (of expression, of language)}
+\end{defn}
+
+\X{Should the heavy inspiration for the following sections, taken from~\cite{Sakarovitch09}, be explicitly stated here?}
+
+\section{Words and languages}
+
+An alphabet is a non-empty, usually finite, set of symbols. Let $A$ be an alphabet. The elements of $A$, the symbols, are called letters, and finite sequences of letters are called words. The set of words, sequences of letters of A, is written $A^*$. \X{Should a reason for this notation be given?} Word $f$ can therefore be written
+\[
+    f = (a_1, a_2, \dotsc, a_n),
+\]
+with $a_i$ in $A$, $1 \leq i \leq n$. \emph{Product} on the set of words is equivalent to the operation of concatenation:
+\[
+    (a_1, \dotsc, a_n) \cdot (b_1, \dotsc, b_m) = (a_1, \dotsc, a_n, b_1, \dotsc, b_m).
+\]
+This operation has a neutral element: the empty sequence or empty word, which is written $1$, or $1_{A^*}$ when there could be some ambiguity. Note, that concatenation is associative, but it is not commutative. The definition of product implies that each word is a product of its letters and therefore can be written
+\[
+    f = (a_1, a_2, \dotsc, a_n) = (a_1) \cdot (a_2) \dotsm (a_n).
+\]
+By identifying the sequence $(a)$ with the word $a$ and omitting the explicit symbol for product, we are able to write the word $f$ as
+\[
+    f = a_1 a_2 \dotsm a_n.
+\]
+Similarly for the product of two words $f$ and $g$ we write $fg$.
+
+\subsubsection*{Length}
+
+The \emph{length} of a word is the length of the sequence of letters the word contains. The length of $f = a_1 a_2 \dotsm a_n$ is $n$. It is written $|f|$. For the number of occurrences of the letter $a$ in $f$ we write $|f|_a$. If $f$ is a word in $A^*$ we then have
+\[
+    |f| = \sum_{a \in A} |f|_a.
+\]
+
+\subsubsection*{Factors}
+
+Let $f, g, h$ and $u$ be words in $A^*$. Word $g$ is a \emph{left factor} or \emph{prefix} of $f$ if there exists $h$ such that $f = g h$. Word $h$ is a \emph{right factor} or \emph{suffix} of $f$ if there exists $g$ such that $f = g h$. Word $u$ is a factor of $f$ if there exist $g$ and $h$ such that $f = g u h$.
+
+\subsubsection*{Languages}
+
+A \emph{language over $A$}, or \emph{language of $A^*$}, is any set of words written in the alphabet $A$. In other words, a language of $A^*$ is a subset of $A^*$. A language is therefore an element of $\ps{A^*}$, the set of all the subsets of $A^*$. We can thus naturally define for languages all the usual operations on the subsets of a set: union, intersection, complement and difference, with the usual notation.
+
+\section{Rational expressions}
+
+Let $A$ be an alphabet and let $\{0, 1, +, \cdot, *\}$ be five function symbols. Constants $0$ and $1$ are nullary operations, $+$ and $\cdot$ are binary, and $*$ is unary.
+
+\begin{defn}
+    \emph{A rational expression over $A$} is a formula obtained inductively from the letters of $A$ and the functions $\{0, 1, +, \cdot, *\}$ by the following process:
+    \begin{itemize}
+        \item[(i)] $0, 1$, and $a$, for $a$ in $A$, are rational expressions,
+        \item[(ii)] if $\re{E}$ and $\re{F}$ are rational expressions, then $(\re{E} + \re{F})$, $(\re{E} \cdot \re{F})$, and $\re{E}^*$ are rational expressions.
+    \end{itemize}
+    We write $\re{RatE} A^*$ for the set of rational expressions over $A$.
 \end{defn}
 
 \begin{lemma}\label{lm:star_height_distributivity}
