@@ -9,11 +9,7 @@ In the first section we state same definitions that are considered standard and 
     \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
 \end{defn}
 
-\begin{defn}
-    \X{Expression, expression equivalence, star height (of expression, of language)}
-\end{defn}
-
-\X{Should the heavy inspiration for the following sections, taken from~\cite{Sakarovitch09}, be explicitly stated here?}
+\X{Should the heavy inspiration for the following sections, drawn from~\cite{Sakarovitch09}, be explicitly stated here?}
 
 \section{Words and languages}
 
@@ -21,7 +17,11 @@ An \emph{alphabet} is a non-empty, usually finite, set of symbols. Let $A$ be an
 \[
     f = (a_1, a_2, \dotsc, a_n),
 \]
-with $a_i$ in $A$, $1 \leq i \leq n$. \emph{Product} on the set of words is equivalent to the operation of concatenation:
+with $a_i$ in $A$, $1 \leq i \leq n$.
+
+\subsubsection*{Product}
+
+\emph{Product} on the set of words is equivalent to the operation of concatenation:
 \[
     (a_1, \dotsc, a_n) \cdot (b_1, \dotsc, b_m) = (a_1, \dotsc, a_n, b_1, \dotsc, b_m).
 \]
@@ -58,26 +58,52 @@ Let $A$ be an alphabet and let $\{0, 1, +, \cdot, *\}$ be five function symbols.
     \emph{A rational expression over $A$} is a formula obtained inductively from the letters of $A$ and the functions $\{0, 1, +, \cdot, *\}$ by the following process:
     \begin{itemize}
         \item[(i)] $0, 1$, and $a$, for $a$ in $A$, are rational expressions,
-        \item[(ii)] if $\re{E}$ and $\re{F}$ are rational expressions, then $(\re{E} + \re{F})$, $(\re{E} \cdot \re{F})$, and $\re{E}^*$ are rational expressions.
+        \item[(ii)] if $\re{E}$ and $\re{F}$ are rational expressions, then $(\re{E} + \re{F})$, $(\re{E} \cdot \re{F})$, and $(\re{E}^*)$ are rational expressions.
     \end{itemize}
     We write $\re{RatE} A^*$ for the set of rational expressions over $A$.
 \end{defn}
 
+To be able to simplify the notation by omitting the parentheses in the rational expressions, we need to specify the order of operator precedence for $+, \: \cdot \:$, and $*$. We say that $*$ takes precedence over $\cdot$ which takes precedence over $+$. With this convention we write, for example,
+\begin{align*}
+    &ab + ba & &\text{for} & &((a \cdot b) + (b \cdot a)), \; \text{or}\\
+    &{(a + b \cdot ({((a \cdot b^* ) \cdot a)}^* \cdot b))}^* & &\text{for} & &({(a + (b \cdot (({((a \cdot (b^*)) \cdot a)}^* ) \cdot b)))}^* ) .
+\end{align*}
+
+\X{expression denotes language $L[\re{E}]$}
+
+We say that a language of $A^*$ is \emph{rational} if and only if it is denoted by a rational expression over $A$. We consider two rational expressions \emph{equivalent} if they denote the same language.
+
+\section{Star height}
+
+The operator $*$ defined for rational expressions is the only one that takes a rational expression $\re{E}$ which denotes a finite language and gives $\re{E^*}$ denoting an infinite language. \X{Good example?} Hence the idea of measuring the complexity of expressions by counting the number of nested uses of this operator, a number which is called the \emph{star height}, which we will write $\h{\re{E}}$, for $\re{E} \in \re{RatE} A^*$, and which is defined by induction:
+\begin{align*}
+    &\text{if } \re{E} = 0, \re{E} = 1 \text{ or } \re{E} = a, \text{ for } a \in A \; , & &\h{\re{E}} = 0 \; , \\
+    &\text{if } \re{E} = \re{F} + \re{G} \text{ or } \re{E} = \re{F} \cdot \re{G}\; , & &\h{\re{E}} = \max{(\h{\re{F}}, \h{\re{G}})} \; , \\
+    &\text{if } \re{E} = \re{F}^* \; , & &\h{\re{E}} = 1 + \h{\re{F}} \; .
+\end{align*}
+
+The star height of a rational language $L$ over $A^*$, written $\h{L}$, is the minimum of the star heights of the rational expressions that denote $L$:
+\[
+    \h{L} = \min \{ \h{\re{E}} \mid \re{E} \in \re{RatE} A^*: L[\re{E}] \} \; .
+\]
+
 \begin{lemma}\label{lm:star_height_distributivity}
-    Every language $L$ over $A$ with star height~$h$ is denoted by a finite sum of expressions:
+    Every language $L$ over $A$ with star height~$h$ is denoted by a finite sum of rational expressions:
     \[
-        L = \sum_{j=1}^n \mathsf{E}_j,
+        L = L \left[ \, \sum_{j=1}^n \mathsf{E}_j \right] ,
     \]
     where each $\mathsf{E}_j$ if product of the form:
     \[
         \mathsf{E}_j = u_0{(\mathsf{F}_1)}^*u_1 \dotsm u_{m-1}{(\mathsf{F}_m)}^*u_m,
     \]
-    where each $u_k, 0 \leq k \leq m$, is a word in $A^*$ and each $\mathsf{E}_j, 1 \leq k \leq m$, is an expression over $A$ of star height less then or equal to $h-1$.
+    where each $u_k, 0 \leq k \leq m$, is a word in $A^*$ and each $\mathsf{E}_j, 1 \leq k \leq m$, is a rational expression over $A$ of star height less then or equal to $h-1$.
 \end{lemma}
 
 \begin{proof}
-    By induction on $h$. For language of star height 1 the fact that sum distributes over product gives us the result immediately. \X{Finish the proof.}
+    By induction on $h$, follows from the fact that product distributes over sum. \X{Sufficient?}
 \end{proof}
+
+\section{Automatons}
 
 \begin{lemma}\label{lm:block_star_lemma}
     Let $L$ be a recognisable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorisation of the form
