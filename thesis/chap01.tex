@@ -2,12 +2,6 @@
 
 In the first section we state same definitions that are considered standard and lay down notation that is used later in the work. In the second section we provide some additional definitions and observations that are more specific to the presented problem.
 
-\section{Basic definitions \& notation}
-
-\begin{defn} \X{List of definitions and notation that need to be introduced:}\\
-    \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
-\end{defn}
-
 \X{Should the heavy inspiration for the following sections, drawn from~\cite{Sakarovitch09}, be explicitly stated here?}
 
 \section{Words and languages}
@@ -85,9 +79,21 @@ To be able to simplify the notation by omitting the parentheses in the rational 
     &{(a + b \cdot ({((a \cdot b^* ) \cdot a)}^* \cdot b))}^* & &\text{for} & &({(a + (b \cdot (({((a \cdot (b^*)) \cdot a)}^* ) \cdot b)))}^* ) .
 \end{align*}
 
-\X{expression denotes language $L[\re{E}]$}
+\begin{defn}
+    To each rational expression $\re{E}$ in $\re{RatE} A^*$ we assign a corresponding language of $A^*$, written $L[\re{E}]$, and defined inductively:
+    \[
+        L[0] = \emptyset \, , \quad L[1] = 1_{A*} \, , \quad \text{and} \quad L[a] = \{a\} \quad \text{for all $a$ in $A$}
+    \]
+    for the atomic rational expressions and then for the composite rational expressions:
+    \[
+        L[\re{E} + \re{F}] = L[\re{E}] \cup L[\re{F}] \; , \quad L[\re{E} \cdot \re{F}] = L[\re{E}] \cdot L[\re{E}] \; , \quad L[\re{E}^*] = {(L[\re{E}])}^*.
+    \]
+    We say that $\re{E}$ \emph{denotes} the language $L[\re{E}]$.
+\end{defn}
 
-We say that a language of $A^*$ is \emph{rational} if and only if it is denoted by a rational expression over $A$. We consider two rational expressions \emph{equivalent} if they denote the same language.
+We say that a language of $A^*$ is \emph{rational} if and only if it is denoted by a rational expression over $A$.
+
+Two rational expressions are \emph{equivalent} if they denote the same language. That means $\re{E}$ and $\re{F}$ are equivalent if $L[\re{E}] = L[\re{F}]$ and we write it as $\re{E} = \re{F}$.
 
 \section{Star height}
 
@@ -121,6 +127,10 @@ The star height of a rational language $L$ over $A^*$, written $\h{L}$, is the m
 
 \section{Automatons}
 
+\begin{defn} \X{List of definitions and notation that need to be introduced:}\\
+    \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
+\end{defn}
+
 \begin{lemma}\label{lm:block_star_lemma}
     Let $L$ be a recognisable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorisation of the form
     \[
@@ -132,19 +142,9 @@ The star height of a rational language $L$ over $A^*$, written $\h{L}$, is the m
     \]
 \end{lemma}
 
-\subsection{State removal algorithm}
-
-State removal algorithm takes provided finite automaton and derives a~rational expression that denotes the same language as is accepted by the original automaton. Let $\mathcal{A}~=~\langle Q, A, E, I, T \rangle$ be the provided automaton. Next, we construct an~automaton $\mathcal{B}$, from $\mathcal{A}$, by adding two states $i$ and $t$, distinct and not belonging to $Q$, a spontaneous transition from $i$ to each initial state of $\mathcal{A}$, and a spontaneous transition from each final state of $\mathcal{A}$ to $t$. We consider the state $i$ to be the only initial state, and $t$ the only final state, of automaton $\mathcal{B}$. Clearly $\mathcal{A}$ and $\mathcal{B}$ are equivalent and since $\mathcal{A}$ is finite, $\mathcal{B}$ is also finite.
-
-Next part of the algorithm has as many steps as there are states in $Q$. In each step we remove a state in $Q$ from $\mathcal{B}$ and modify the transitions in a way that the derived automaton is equivalent to that of the previous step. Let $q$ be a~particular state in $Q$, let $p_1, \dotsc , p_k$ be states of $\mathcal{B}$, $p_j \neq q$, that are the sources of transitions which have $q$ as a destination, and $\re{E}_1, \dotsc , \re{E}_k$ the labels of these transitions. And let $r_1, \dotsc , r_l$ be states of $\mathcal{B}$, $r_j \neq q$, that are the destinations of transitions whose source is $q$, and $\re{G}_1, \dotsc , \re{G}_l$ the labels of these transitions. Note that some states $p_j$ can be the same as states $r_m$. If there is a transition with source and destination $q$, we will denote it by $\re{F}$. Otherwise we set $\re{F} = 0$ and therefore we have $\re{F}^* = 1$.
-
-Let $\mathcal{B}'$ be an automaton obtained from $\mathcal{B}$ by first removing the state $q$ and all of the following transitions described above
-\[
-    (p_1, \re{E}_1, q), \dotsc, (p_k, \re{E}_k, q), (q, \re{G}_1, r_1), \dotsc, (q, \re{G}_l, r_l), (q, \re{F}, q),
-\]
-and second by adding, for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ and $1 \leq j \leq l$, the transition $(p_h, \re{E}_h \re{F}^* \re{G}_j, r_j)$.
-
-\section{\X{Additional definitions}}
+\begin{proof}
+    \X{Proof?}
+\end{proof}
 
 \begin{defn}
     Let $A = {\{a,b\}}$. An automaton $\langle \Z_n, A, E, 0, 0 \rangle$ is called \emph{ring automaton~${\mathcal{R}(n)}$}, if for each state $z \in \Z_n$ there are exactly two transitions with $z$ as a~source and they are $(z, a, z+1)$ and $(z, b, z-1)$.
@@ -159,3 +159,15 @@ and second by adding, for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ an
         \caption{Automaton~${\mathcal{R}(8)}$}\label{fig:automaton_R8}
     \end{figure}
 \end{example}
+
+\subsection{State removal algorithm}
+
+State removal algorithm takes provided finite automaton and derives a~rational expression that denotes the same language as is accepted by the original automaton. Let $\mathcal{A}~=~\langle Q, A, E, I, T \rangle$ be the provided automaton. Next, we construct an~automaton $\mathcal{B}$, from $\mathcal{A}$, by adding two states $i$ and $t$, distinct and not belonging to $Q$, a spontaneous transition from $i$ to each initial state of $\mathcal{A}$, and a spontaneous transition from each final state of $\mathcal{A}$ to $t$. We consider the state $i$ to be the only initial state, and $t$ the only final state, of automaton $\mathcal{B}$. Clearly $\mathcal{A}$ and $\mathcal{B}$ are equivalent and since $\mathcal{A}$ is finite, $\mathcal{B}$ is also finite.
+
+Next part of the algorithm has as many steps as there are states in $Q$. In each step we remove a state in $Q$ from $\mathcal{B}$ and modify the transitions in a way that the derived automaton is equivalent to that of the previous step. Let $q$ be a~particular state in $Q$, let $p_1, \dotsc , p_k$ be states of $\mathcal{B}$, $p_j \neq q$, that are the sources of transitions which have $q$ as a destination, and $\re{E}_1, \dotsc , \re{E}_k$ the labels of these transitions. And let $r_1, \dotsc , r_l$ be states of $\mathcal{B}$, $r_j \neq q$, that are the destinations of transitions whose source is $q$, and $\re{G}_1, \dotsc , \re{G}_l$ the labels of these transitions. Note that some states $p_j$ can be the same as states $r_m$. If there is a transition with source and destination $q$, we will denote it by $\re{F}$. Otherwise we set $\re{F} = 0$ and therefore we have $\re{F}^* = 1$.
+
+Let $\mathcal{B}'$ be an automaton obtained from $\mathcal{B}$ by first removing the state $q$ and all of the following transitions described above
+\[
+    (p_1, \re{E}_1, q), \dotsc, (p_k, \re{E}_k, q), (q, \re{G}_1, r_1), \dotsc, (q, \re{G}_l, r_l), (q, \re{F}, q),
+\]
+and second by adding, for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ and $1 \leq j \leq l$, the transition $(p_h, \re{E}_h \re{F}^* \re{G}_j, r_j)$.
