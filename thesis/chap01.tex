@@ -51,6 +51,21 @@ A \emph{language over $A$}, or \emph{language of $A^*$}, is any set of words wri
 
 We say that word $f$ is \emph{a factor of language $L$}, if there is at least one word $g \in L$ that $f$ is a factor of $g$.
 
+The product of words extends to a product of languages, which is denoted, as in the case of words, by a dot, $X \cdot Y$, or by simple concatenation, $X Y$:
+\[
+    X \cdot Y = \{ f \cdot g \mid f \in X \, , \; g \in Y \}.
+\]
+From this we obtain, by induction on $n$, the definition of the $n$th power of $X$, for all $X$ in $\ps{A^*}$:
+\begin{align*}
+    X^0 &= 1_{A^*} \: ,\\
+    X^{n+1} &= X \cdot X^n = X^n \cdot X.
+\end{align*}
+
+The star of a language $X$ is the union of all the powers of $X$, and is written as $X^*$:
+\[
+    X^* = \bigcup_{n \in \N} X^n.
+\]
+
 \section{Rational expressions}
 
 Let $A$ be an alphabet and let $\{0, 1, +, \cdot, *\}$ be five function symbols. Constants $0$ and $1$ are nullary operations, $+$ and $\cdot$ are binary, and $*$ is unary.
