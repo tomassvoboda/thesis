@@ -141,6 +141,10 @@ An automaton is a \emph{directed graph} which is \emph{labelled} with rational e
     We write $\aut{A} = \langle Q, A, E, I, T \rangle$ and we say that $\aut{A}$ is \emph{an automaton over $A$}.
 \end{defn}
 
+Let $A$ be a finite alphabet. We call an automaton over $A$ \emph{finite} if set its states is finite.
+
+If $e = (p, \re{E}, q)$ is a transition of $\aut{A}$, that is, if $e$ is in $E$, we say that $\re{E}$ is the \emph{label} of $e$ and we will write $p \tr{\re{E}} q$, or $p \tr[\aut{A}]{\re{E}} q$ where it might be ambiguous which automaton we are considering. We also say that $p$ is the \emph{source} and $q$ the \emph{destination} of the transition $e$.
+
 \begin{defn} \X{List of definitions and notation that need to be introduced:}\\
     \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
 \end{defn}
