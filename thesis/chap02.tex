@@ -159,9 +159,9 @@ Note that if $L$ satisfies $P_k$, it also satisfies $P_l$ for $l < k$ since ${(w
 
     To prove the theorem it is enough to show that $h_{k-1} < h_k$ for each $k$, $k=1, \dotsc, q-1$. Let $L$ be in $\mathfrak{W}_k$. Due to Lemma~\ref*{lm:star_height_distributivity} $L$ can be written as a finite union of languages $E_j$, each denoted by a~rational expression of the form
     \[
-        \mathsf{E}_j = u_0{(\mathsf{H}_1)}^*u_1 \dotsm u_{m-1}{(\mathsf{H}_m)}^*u_m,
+        \re{E}_j = u_0{(\re{H}_1)}^*u_1 \dotsm u_{m-1}{(\re{H}_m)}^*u_m,
     \]
-    where each rational expression $\mathsf{H}_i$ denotes a~language~$H_i$ with star height less then or equal to $h_k-1$. Since $L$ satisfies $P_k$ and the union of the languages $E_j$ is finite, it follows that at least one of $E_j$ has to satisfy $P_k$. We can therefore safely assume that $L$ itself is denoted by a~rational expression of the same form as $E_j$.
+    where each rational expression $\re{H}_i$ denotes a~language~$H_i$ with star height less then or equal to $h_k-1$. Since $L$ satisfies $P_k$ and the union of the languages $E_j$ is finite, it follows that at least one of $E_j$ has to satisfy $P_k$. We can therefore safely assume that $L$ itself is denoted by a~rational expression of the same form as $E_j$.
 
     For each word $g$ in $H_i$, words $u_0 u_1 \dotsm u_m$ and $u_0 u_1 \dotsm u_{i-1} g u_i \dotsm u_m$ are both in language $L$. Therefore, because it has to be true that $|g|_a \equiv |g|_b \pmod{2^q}$, $H_i \subseteq W_q$.
 
@@ -169,7 +169,7 @@ Note that if $L$ satisfies $P_k$, it also satisfies $P_l$ for $l < k$ since ${(w
 
     $L$ satisfies $P_k$, therefore words ${(w_{k,n})}^n$ are factors of~$L$ for arbitrarily large $n$. Lemma~\ref*{lm:block_star_lemma} shows that we can find $N$ large enough, such that there is infinitely many $n' \geq N$, that ${(w_{k,n'})}^{n'}$ is a factor of $L$, and, for each $n'$, we have infinitely many $l$'s, that ${(w_{k,n'})}^l$ is a factor of $L$.
 
-    Let $H_i^*$ be the language recognised by $\mathsf{H}_i^*$. Since $m$ is finite and fixed for $L$, there has to be infinitely many $n$'s, that ${(w_{k,n})}^n$ is a factor of $r_n \in H_i^*$ for some~$i$, $1 \leq i \leq m$. This means that $H_i^*$ satisfies $P_k$. Next we show that for these $n$'s, ${(w_{k-1,n})}^n$ is a factor of a word in $H_i$, meaning $H_i$ satisfies $P_{k-1}$.
+    Let $H_i^*$ be the language recognised by $\re{H}_i^*$. Since $m$ is finite and fixed for $L$, there has to be infinitely many $n$'s, that ${(w_{k,n})}^n$ is a factor of $r_n \in H_i^*$ for some~$i$, $1 \leq i \leq m$. This means that $H_i^*$ satisfies $P_k$. Next we show that for these $n$'s, ${(w_{k-1,n})}^n$ is a factor of a word in $H_i$, meaning $H_i$ satisfies $P_{k-1}$.
 
     We write $r_n$ as a factorisation $r_n = g_0 g_1 \dotsm g_l$, where $g_j \in H_i$, for $0 \leq j \leq l$. If $w_{k,n}$, from ${(w_{k,n})}^n$, is a factor of some $g_j$, the condition is satisfied, since ${(w_{k-1,n})}^n$ is a factor of $w_{k,n}$. Otherwise, let us show how a~factor ${(w_{k,n})}^2$ is covered by the factorisation of $r_n$. Written explicitly, we have
     \[
