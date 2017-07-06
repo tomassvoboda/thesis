@@ -127,6 +127,20 @@ The star height of a rational language $L$ over $A^*$, written $\h{L}$, is the m
 
 \section{Automatons}
 
+An automaton is a \emph{directed graph} which is \emph{labelled} with rational expressions over an alphabet, and in which two subsets of vertices are distinguished.
+
+\begin{defn}
+    An automaton $\aut{A}$ is specified by giving the following elements:
+    \begin{itemize}
+        \item[(i)] a non-empty set $Q$, called the set of \emph{states} of $\aut{A}$,
+        \item[(ii)] a set $A$, also non-empty, called the \emph{(input) alphabet} of $\aut{A}$,
+        \item[(iii)] a subset $I$ of $Q$, called the set of \emph{initial states}, of $\aut{A}$,
+        \item[(iv)] a subset $T$ of $Q$, called the set of \emph{final states} of $\aut{A}$,
+        \item[(v)] a subset $E$ of $Q \times \re{RatE} A^* \times Q$, called the set of \emph{transitions} of $\aut{A}$.
+    \end{itemize}
+    We write $\aut{A} = \langle Q, A, E, I, T \rangle$ and we say that $\aut{A}$ is \emph{an automaton over $A$}.
+\end{defn}
+
 \begin{defn} \X{List of definitions and notation that need to be introduced:}\\
     \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
 \end{defn}
