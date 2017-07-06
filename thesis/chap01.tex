@@ -145,6 +145,8 @@ Let $A$ be a finite alphabet. We call an automaton over $A$ \emph{finite} if set
 
 If $e = (p, \re{E}, q)$ is a transition of $\aut{A}$, that is, if $e$ is in $E$, we say that $\re{E}$ is the \emph{label} of $e$ and we will write $p \tr{\re{E}} q$, or $p \tr[\aut{A}]{\re{E}} q$ where it might be ambiguous which automaton we are considering. We also say that $p$ is the \emph{source} and $q$ the \emph{destination} of the transition $e$.
 
+Note that we can always assume that there is, between each pair of states of an automaton, \emph{at most one transition}. This is due to us choosing rational expressions as the labels of transitions, instead of just the letters of $A$ as is standard. The judiciousness of our generalisation has to do with fundamental result, known as Kleene’s Theorem, originally from~\cite{Kleene56}.
+
 A \emph{computation} $c$ in $A$ is a sequence of transitions where the source of each is the destination of the previous one, which can be written:
 \[
     p_0 \tr{\re{E}_1} p_1 \tr{\re{E}_2} p_2 \dotsm p_{n-1} \tr{\re{E}_{n-1}} p_n,
@@ -165,10 +167,6 @@ A computation in $\aut{A}$ is successful if its source is an initial state and i
 \end{defn}
 
 Two automata are \emph{equivalent} if they recognise the same language.
-
-\begin{defn} \X{List of definitions and notation that need to be introduced:}\\
-    \X{Automaton, finite automaton, automaton equivalence, generalised automaton}
-\end{defn}
 
 \begin{lemma}\label{lm:block_star_lemma}
     Let $L$ be a recognisable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorisation of the form
