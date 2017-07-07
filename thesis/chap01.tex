@@ -51,7 +51,7 @@ The product of words extends to a product of languages, which is denoted, as in 
 \]
 From this we obtain, by induction on $n$, the definition of the $n$th power of $X$, for all $X$ in $\ps{A^*}$:
 \begin{align*}
-    X^0 &= 1_{A^*} \: ,\\
+    X^0 &= \{1_{A^*}\} \: ,\\
     X^{n+1} &= X \cdot X^n = X^n \cdot X.
 \end{align*}
 
@@ -82,7 +82,7 @@ To be able to simplify the notation by omitting the parentheses in the rational 
 \begin{defn}
     To each rational expression $\re{E}$ in $\re{RatE} A^*$ we assign a corresponding language of $A^*$, written $L[\re{E}]$, and defined inductively:
     \[
-        L[0] = \emptyset \, , \quad L[1] = 1_{A*} \, , \quad \text{and} \quad L[a] = \{a\} \quad \text{for all $a$ in $A$}
+            L[0] = \emptyset \, , \quad L[1] = \{1_{A*}\} \, , \quad \text{and} \quad L[a] = \{a\} \quad \text{for all $a$ in $A$}
     \]
     for the atomic rational expressions and then for the composite rational expressions:
     \[
