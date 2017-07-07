@@ -79,27 +79,43 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
 \begin{example}
     According to the procedure described in the Proof of~Lemma~\ref*{lm:expression_existence}, we apply the state removal algorithm on the automaton~${\mathcal{R}(8)}$, recognising language~$W_3$. The steps of the creation of rational expression ${(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*$, denoting $W_3$, are shown in~\autoref*{fig:automaton_R8_state_removal_steps}.
 
-    \begin{figure}%
-        \centering
-        \hspace{-20pt}%
-        \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-a}%
-            \input{./figures/automaton_R8_removed1}}%
-        \hspace{70pt}%
-        \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-b}%
-            \input{./figures/automaton_R8_removed2}}\\
-        \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-c}%
-            \input{./figures/automaton_R8_removed3}}%
-        \hspace{8pt}%
-        \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-d}%
-            \input{./figures/automaton_R8_removed4}}\\
-        \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-e}%
-            \input{./figures/automaton_R8_removed5}}\\
-        \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-f}%
-            \input{./figures/automaton_R8_removed6}}%
-        \hspace{40pt}%
-        \subfloat[][]{\label{fig:automaton_R8_state_removal_steps-g}%
-            \input{./figures/automaton_R8_removed7}}%
-        \caption{First through seventh steps of the~state removal algorithm with order~$\omega$\\ \X{Fix the automatons in the figure!}}\label{fig:automaton_R8_state_removal_steps}%
+    \begin{figure}[h]%
+        \centerline{
+            \hspace{-15mm}%
+            \subfloat[An automaton~${\mathcal{R}(8)}$]{%
+                \input{./figures/automaton_R8}}%
+            \qquad
+            \subfloat[An automaton~${\mathcal{R}(8)}_0$]{%
+                \input{./figures/automaton_R8_0}}%
+            \qquad
+            \subfloat[]{%
+                \input{./figures/automaton_R8_0_removed1}}
+        }
+        \vspace{5mm}
+        \centerline{
+            \hspace{-15mm}%
+            \subfloat[]{%
+                \input{./figures/automaton_R8_0_removed2}}%
+            \quad
+            \subfloat[]{%
+                \input{./figures/automaton_R8_0_removed3}}
+            \quad
+            \subfloat[An automaton~${\mathcal{R}(8)}_1$]{%
+                \input{./figures/automaton_R8_1}}
+        }
+        \vspace{5mm}
+        \centerline{
+            \hspace{-15mm}%
+            \subfloat[]{%
+                \input{./figures/automaton_R8_1_removed1}}%
+            \quad
+            \subfloat[An automaton~${\mathcal{R}(8)}_2$]{%
+                \input{./figures/automaton_R8_2}}
+            \quad
+            \subfloat[An automaton~${\mathcal{R}(8)}_3$]{%
+                \input{./figures/automaton_R8_3}}
+        }
+        \caption{Steps of the state removal algorithm on $\aut{R}(8)$ executed in the order described in the Proof of~Lemma~\ref*{lm:expression_existence}}\label{fig:automaton_R8_state_removal_steps}%
     \end{figure}
 \end{example}
 

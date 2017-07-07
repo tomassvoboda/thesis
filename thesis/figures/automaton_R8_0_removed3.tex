@@ -1,0 +1,35 @@
+\begin{tikzpicture}[my_automaton]
+    \tikzstyle{every state}=[my_named_state]
+    \tikzstyle{initial}=[my_initial_state]
+    \tikzstyle{accepting}=[my_accepting_state]
+    %\draw[help lines] (-1.8,1.8) grid (1.8,-1.8);
+    \node[state] (0) at (180:1.8) {0};
+    \node[state] (2) at (90:1.8) {2};
+    \node[state] (4) at (0:1.8) {4};
+    \node[state] (6) at (-90:1.8) {6};
+    \node[state] (7) at (-135:1.8) {7};
+
+    \node[state, initial, initial above] (i) at (155:3) {$i$};
+    \node[state, accepting] (t) at (-155:3) {$t$};
+
+    \path
+        (0) edge [loop left] node {$ab$} ()
+        (0) edge [bend left] node [above] {$a^2$} (2)
+        (2) edge [bend left=15] node [near start, below=+1mm] {$b^2$} (0)
+        (2) edge [loop above] node [right=+1mm] {$ab+ba$} ()
+        (2) edge [bend left] node [above right=-1mm] {$a^2$} (4)
+        (4) edge [bend left=15] node [near end, below left=-1.5mm] {$b^2$} (2)
+        (4) edge [loop left] node {$ab+ba$} ()
+        (4) edge [bend left] node [right] {$a^2$} (6)
+        (6) edge [bend left=15] node [near start, above] {$b^2$} (4)
+        (6) edge [loop below] node [right] {$ba$} ()
+        (6) edge [bend left] node [below] {$a$} (7)
+        (7) edge [bend left] node [above] {$b$} (6)
+        (7) edge [in=-155, out=-120, distance=0.7cm, loop, below] node {$0$} ()
+        (7) edge [bend left] node [near start, below left=-1mm] {$a$} (0)
+        (0) edge [bend left] node [near end, above right=-1.2mm] {$b$} (7)
+
+        (i) edge [bend left] node [left] {$1$} (0)
+        (0) edge [bend left] node [above left=-1mm] {$1$} (t)
+    ;
+\end{tikzpicture}
