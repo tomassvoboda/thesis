@@ -169,18 +169,26 @@ A computation in $\aut{A}$ is successful if its source is an initial state and i
 Two automata are \emph{equivalent} if they recognise the same language.
 
 \begin{lemma}\label{lm:block_star_lemma}
-    Let $L$ be a recognisable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorisation of the form
-    \[
-        f = u v_1 v_2 \dotsm v_N w \; , \quad \text{where every $v_i$ is a non-empty word.}
-    \]
-    Then there is a pair $(j,k)$ of indices, $0 \leq j < k \leq N$, that
+    Let $L$ be a recognisable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorisation of the form $f = u v_1 v_2 \dotsm v_N w$, where every $v_i$ is a non-empty word, there is a pair $(j,k)$ of indices, $0 \leq j < k \leq N$, that
     \[
         u v_1 v_2 \dotsm v_j {(v_{j+1} \dotsm v_k)}^* v_{k+1} \dotsm v_N w \subseteq L.
     \]
 \end{lemma}
 
 \begin{proof}
-    \X{Proof?}
+    Let $\aut{A} = \langle Q, A, E, I, T \rangle$ be an automaton that recognises $L$. Set $N = |Q|$, meaning $N$ is a size of the set $Q$. A computation that accepts $f$ can be written
+    \[
+        i \tr{\re{E}} q_0 \tr{\re{F}_1} q_1 \tr{\re{F}_2} q_2 \tr{\re{F}_3} \dotsm \tr{\re{F}_{N-1}} q_{N-1} \tr{\re{F}_{N}} q_N \tr{\re{G}} t,
+    \]
+    where $u \in L[\re{E}], \quad v_i \in L[\re{F}_i], $ for $ 1 \leq i \leq N$, \; and $w \in L[\re{G}]$. The $N + 1$ states $q_i$ cannot all be distinct, and at least two, say $q_j$ and $q_k$, are equal to the same state $p$. The computation can therefore be written
+    \[
+        i \tr{\re{E}} q_0 \tr{\re{F}_1 \re{F}_2 \dotsm \re{F}_j} p \tr{\re{F}_{j+1} \dotsm \re{F}_k} p \tr{\re{F}_{k+1} \dotsm \re{F}_N} q_N \tr{\re{G}} t,
+    \]
+    where $L[\re{F}_{j+1} \dotsm \re{F}_k]$ contains the non-empty word $v_{j+1} \dotsm v_k$. Hence, for every integer $n$,
+    \[
+        i \tr{\re{E}} q_0 \tr{\re{F}_1 \re{F}_2 \dotsm \re{F}_j} p \tr{{(\re{F}_{j+1} \dotsm \re{F}_k)}^n} p \tr{\re{F}_{k+1} \dotsm \re{F}_N} q_N \tr{\re{G}} t,
+    \]
+    is a successful computation of $\aut{A}$ and $u v_1 v_2 \dotsm v_j {(v_{j+1} \dotsm v_k)}^n v_{k+1} \dotsm v_N w$ is accepted by $\aut{A}$.
 \end{proof}
 
 \begin{defn}
