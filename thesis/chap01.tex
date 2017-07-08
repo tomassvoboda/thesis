@@ -192,16 +192,16 @@ Two automata are \emph{equivalent} if they recognise the same language.
 \end{proof}
 
 \begin{defn}
-    Automaton $\langle \Z_n, \{a,b\}, E, \{0\}, \{0\} \rangle$ is called \emph{ring automaton~${\mathcal{R}(n)}$}, if for each state $z \in \Z_n$ there are exactly two transitions with $z$ as a~source and they are $(z, a, z+1)$ and $(z, b, z-1)$.
+    Automaton $\langle \Z_n, \{a,b\}, E, \{0\}, \{0\} \rangle$ is called \emph{ring automaton~${\aut{R}(n)}$}, if for each state $z \in \Z_n$ there are exactly two transitions with $z$ as a~source and they are $(z, a, z+1)$ and $(z, b, z-1)$.
 \end{defn}
 
 \begin{example}
-    \autoref*{fig:automaton_R8} shows ring automaton~${\mathcal{R}(8)}$.
+    \autoref*{fig:automaton_R8} shows ring automaton~${\aut{R}(8)}$.
 
     \begin{figure}[h]
         \centering
         \input{./figures/automaton_R8}
-        \caption{Automaton~${\mathcal{R}(8)}$}\label{fig:automaton_R8}
+        \caption{Automaton~${\aut{R}(8)}$}\label{fig:automaton_R8}
     \end{figure}
 \end{example}
 
