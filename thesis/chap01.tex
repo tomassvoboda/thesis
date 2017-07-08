@@ -145,7 +145,7 @@ Let $A$ be a finite alphabet. We call an automaton over $A$ \emph{finite} if set
 
 If $e = (p, \re{E}, q)$ is a transition of $\aut{A}$, that is, if $e$ is in $E$, we say that $\re{E}$ is the \emph{label} of $e$ and we will write $p \tr{\re{E}} q$, or $p \tr[\aut{A}]{\re{E}} q$ where it might be ambiguous which automaton we are considering. We also say that $p$ is the \emph{source} and $q$ the \emph{destination} of the transition $e$.
 
-Note that we can always assume that there is, between each pair of states of an automaton, \emph{at most one transition}. This is due to us choosing rational expressions as the labels of transitions, instead of just the letters of $A$ as is standard. The judiciousness of our generalisation has to do with fundamental result, known as Kleene’s Theorem, originally from~\cite{Kleene56}.
+Note that we can always assume that there is, between each pair of states of an automaton, \emph{at most one transition}. This is because we chose rational expressions as the labels of transitions, rather than just the letters of $A$, as is usual. The judiciousness of our generalisation has to do with fundamental result, known as Kleene’s Theorem, due to~\cite{Kleene56}.
 
 A \emph{computation} $c$ in $A$ is a sequence of transitions where the source of each is the destination of the previous one, which can be written:
 \[
