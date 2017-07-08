@@ -180,7 +180,7 @@ Two automata are \emph{equivalent} if they recognise the same language.
     \[
         i \tr{\re{E}} q_0 \tr{\re{F}_1} q_1 \tr{\re{F}_2} q_2 \tr{\re{F}_3} \dotsm \tr{\re{F}_{N-1}} q_{N-1} \tr{\re{F}_{N}} q_N \tr{\re{G}} t,
     \]
-    where $u \in L[\re{E}], \quad v_i \in L[\re{F}_i], $ for $ 1 \leq i \leq N$, \; and $w \in L[\re{G}]$. The $N + 1$ states $q_i$ cannot all be distinct, and at least two, say $q_j$ and $q_k$, are equal to the same state $p$. The computation can therefore be written
+    where $u \in L[\re{E}], \; v_i \in L[\re{F}_i], $ for $ 1 \leq i \leq N$, and $w \in L[\re{G}]$. The $N + 1$ states $q_i$ cannot all be distinct, and at least two, say $q_j$ and $q_k$, are equal to the same state $p$. The computation can therefore be written
     \[
         i \tr{\re{E}} q_0 \tr{\re{F}_1 \re{F}_2 \dotsm \re{F}_j} p \tr{\re{F}_{j+1} \dotsm \re{F}_k} p \tr{\re{F}_{k+1} \dotsm \re{F}_N} q_N \tr{\re{G}} t,
     \]
