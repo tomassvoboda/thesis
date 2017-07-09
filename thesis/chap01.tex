@@ -135,7 +135,7 @@ The star height of a rational language $L$ over $A^*$, written $\h{L}$, is the m
     \]
     where each $\re{E}_j$ is a product of the form:
     \[
-        \re{E}_j = u_0{(\re{F}_1)}^*u_1 \dotsm u_{m-1}{(\re{F}_m)}^*u_m,
+        \re{E}_j = u_0\re{F}_1^*u_1 \dotsm u_{m-1}\re{F}_m^*u_m,
     \]
     where each $u_k, 0 \leq k \leq m$, is a word in $A^*$ and each $\re{F}_k, 1 \leq k \leq m$, is a rational expression over $A$ of star height less then or equal to $h-1$.
 \end{lemma}
@@ -164,11 +164,11 @@ When referencing any of the elements defining an automaton, we use subscript to 
 
 Let $A$ be a finite alphabet. We call an automaton over $A$ \emph{finite} if set its states is finite.
 
-If $e = (p, \re{E}, q)$ is a transition of $\aut{A}$, that is, if $e$ is in $E$, we say that $\re{E}$ is the \emph{label} of $e$ and we will write $p \tr{\re{E}} q$, or $p \tr[\aut{A}]{\re{E}} q$ where it might be ambiguous which automaton we are considering. We also say that $p$ is the \emph{source} and $q$ the \emph{destination} of the transition $e$. Transition is a \emph{loop}, if its source and destination are the same state.
+If $e = (p, \re{E}, q)$ is a transition of $\aut{A}$, that is, if $e$ is in $E$, we say that $\re{E}$ is the \emph{label} of $e$ and we will write $p \tr{\re{E}} q$, or $p \tr[\aut{A}]{\re{E}} q$ where it might be ambiguous which automaton we are considering. We also say that $p$ is the \emph{source} and $q$ the \emph{destination} of the transition $e$. Transition is a \emph{loop}, if its source and destination are the same state. When transition has label $\re{1}$, it is called \emph{spontaneous}.
 
 Note that we can always assume that there is, between each pair of states of an automaton, \emph{at most one transition}. This is because we chose rational expressions as the labels of transitions, rather than the usual letters of $A$.
 
-A \emph{computation} $c$ in $A$ is a sequence of transitions where the source of each is the destination of the previous one, which can be written:
+A \emph{computation} $c$ in $A$ is a sequence of transitions where the source of each is the destination of the previous one, which can be written as:
 \[
     p_0 \tr{\re{E}_1} p_1 \tr{\re{E}_2} p_2 \dotsm p_{n-1} \tr{\re{E}_n} p_n,
 \]
@@ -178,7 +178,7 @@ or
 \]
 The state $p_0$ is the \emph{source} of the computation $c$, and $p_n$ its \emph{destination}. The \emph{length} of the computation $c$ is $n$, the number of transitions which make up $c$. The \emph{label} of $c$ is the product of the labels of the transitions of $c$. In the above case, the label of $c$ is $\re{E}_1 \re{E}_2 \dotsm \re{E}_n$.
 
-A computation in $\aut{A}$ is successful if its source is an initial state and its destination is a final state. A word in $A^*$ is called \emph{accepted} or \emph{recognised} by $\aut{A}$ if it is in a language denoted by a label of a successful computation in $\aut{A}$.
+A computation in $\aut{A}$ is \emph{successful} if its source is an initial state and its destination is a final state. A word in $A^*$ is called \emph{accepted} or \emph{recognised} by $\aut{A}$ if it is in a language denoted by a label of a successful computation in $\aut{A}$.
 
 \begin{defn}
     The language accepted, or recognised by $\aut{A}$, written $L(\aut{A})$, is the set of words \emph{accepted} (or \emph{recognised}) by $\aut{A}$:
@@ -187,10 +187,10 @@ A computation in $\aut{A}$ is successful if its source is an initial state and i
     \]
 \end{defn}
 
-Two automata are \emph{equivalent} if they recognise the same language.
+Two automata are \emph{equivalent} if they recognise the same language. If $L$ is a language, and a finite automaton $\aut{A}$ exists such that $L = L(\aut{A})$, we call $L$ \emph{recognisable}.
 
 \begin{lemma}\label{lm:block_star_lemma}
-    Let $L$ be a recognisable language over $A$. There exists $N \in \N$ that for every word $f$ in $L$ and every factorisation of the form $f = u v_1 v_2 \dotsm v_N w$, where every $v_i$ is a non-empty word, there is a pair $(j,k)$ of indices, $0 \leq j < k \leq N$, that
+    Let $L$ be a recognisable language over $A$. There exists $N \in \N$ such that for every word $f$ in $L$ and every factorisation of the form $f = u v_1 v_2 \dotsm v_N w$, where every $v_i$ is a non-empty word, there is a pair $(j,k)$ of indices, $0 \leq j < k \leq N$, that
     \[
         u v_1 v_2 \dotsm v_j {(v_{j+1} \dotsm v_k)}^* v_{k+1} \dotsm v_N w \subseteq L.
     \]
