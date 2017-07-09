@@ -6,14 +6,11 @@
     "language": "en-GB",
     // words - list of words to be always considered correct
     "words": [
-        "pdfx",
-        "Tomáš",
-        "Svoboda",
-        "Štěpán",
-        "Holub",
-        "MMIB",
-        "recognised", "Eggan's", "bijection", "distributivity",
-        "defn", "multline"
+        "pdfx", "defn", "multline",
+        
+        "Tomáš", "Svoboda", "Štěpán", "Holub",
+        "recognised", "bijection", "distributivity",
+        "Eggan", "Eggan's", "Dejean", "Schützenberger", "Kleene"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
