@@ -66,12 +66,12 @@ Note that if we consider an alphabet $A$ a language of words of length $1$ over 
 
 \section{Rational expressions}
 
-Let $A$ be an alphabet and let $\{0, 1, +, \cdot, *\}$ be five function symbols. Constants $0$ and $1$ are nullary operations, $+$ and $\cdot$ are binary, and $*$ is unary.
+Let $A$ be an alphabet and let $\{\re{0}, \re{1}, +, \cdot, *\}$ be five function symbols. Constants $\re{0}$ and $\re{1}$ are nullary operations, $+$ and $\cdot$ are binary, and $*$ is unary.
 
 \begin{defn}
-    \emph{A rational expression over $A$} is a formula obtained inductively from the letters of $A$ and the functions $\{0, 1, +, \cdot, *\}$ by the following process:
+    \emph{A rational expression over $A$} is a formula obtained inductively from the letters of $A$ and the functions $\{\re{0}, \re{1}, +, \cdot, *\}$ by the following process:
     \begin{itemize}
-        \item[(i)] $0, 1$, and $a$, for $a$ in $A$, are rational expressions,
+        \item[(i)] $\re{0}, \re{1}$, and $a$, for $a$ in $A$, are rational expressions,
         \item[(ii)] if $\re{E}$ and $\re{F}$ are rational expressions, then $(\re{E} + \re{F})$, $(\re{E} \cdot \re{F})$, and $(\re{E}^*)$ are rational expressions.
     \end{itemize}
     We write $\re{RatE} A^*$ for the set of rational expressions over $A$.
@@ -86,7 +86,7 @@ To be able to simplify the notation by omitting the parentheses in the rational 
 \begin{defn}
     To each rational expression $\re{E}$ in $\re{RatE} A^*$ we assign a language of $A^*$, written $L[\re{E}]$, and defined inductively:
     \[
-            L[0] = \emptyset \, , \quad L[1] = \{1_{A*}\} \, , \quad \text{and} \quad L[a] = \{a\} \quad \text{for all $a$ in $A$}
+            L[\re{0}] = \emptyset \, , \quad L[\re{1}] = \{1_{A*}\} \, , \quad \text{and} \quad L[a] = \{a\} \quad \text{for all $a$ in $A$}
     \]
     for the atomic rational expressions and then for the composite rational expressions:
     \[
@@ -101,24 +101,24 @@ Two rational expressions are \emph{equivalent} if they denote the same language.
 
 \subsubsection*{Classical identities}
 
-The series of following identities expresses the fact that expressions will be \emph{interpreted in a semiring}. That means, that the defined function symbols \X{?} will satisfy the corresponding axioms: $+$ and $\cdot$ are associative, $+$ is commutative, $0$ is an identity element for $+$ and a zero for $\cdot \:$, $1$ is an identity element for $\cdot$, and $\cdot$ is left and right distributive over $+$:
+The series of following identities expresses the fact that expressions will be \emph{interpreted in a semiring}. That means, that the defined function symbols \X{?} will satisfy the corresponding axioms: $+$ and $\cdot$ are associative, $+$ is commutative, $\re{0}$ is an identity element for $+$ and a zero for $\cdot \:$, $\re{1}$ is an identity element for $\cdot$, and $\cdot$ is left and right distributive over $+$:
 \begin{gather*}
     (\re{E} + \re{F}) + \re{G} \equiv \re{E} + (\re{F} + \re{G}) \; , \quad \text{and} \quad (\re{E} \cdot \re{F}) \cdot \re{G} \equiv \re{E} \cdot (\re{F} \cdot \re{G}) \; ,\\[1ex]
     \re{E} + \re{F} \equiv \re{F} + \re{E} \; ,\\[1ex]
-    \re{E} + 0 \equiv 0 + \re{E} \equiv \re{E} \; , \quad \re{E} \cdot 0 \equiv 0 \cdot \re{E} \equiv 0 \; , \quad \re{E} \cdot 1 \equiv 1 \cdot \re{E} \equiv \re{E} \; ,\\[1ex]
+    \re{E} + \re{0} \equiv \re{0} + \re{E} \equiv \re{E} \; , \quad \re{E} \cdot \re{0} \equiv \re{0} \cdot \re{E} \equiv \re{0} \; , \quad \re{E} \cdot \re{1} \equiv \re{1} \cdot \re{E} \equiv \re{E} \; ,\\[1ex]
     \re{E} \cdot (\re{F} + \re{G}) \equiv \re{E} \cdot \re{F} + \re{E} \cdot \re{G} \; , \quad \text{and} \quad (\re{E} + \re{F}) \cdot \re{G} \equiv \re{E} \cdot \re{G} + \re{F} \cdot \re{G} \; .
 \end{gather*}
 
 By the definition of star, we also have
 \[
-    0^* \equiv 1.
+    \re{0}^* \equiv \re{1}.
 \]
 
 \section{Star height}
 
 Of all the operators defined for rational expressions, $*$ is the only one that `gives access to the infinite'. Hence the idea of measuring the complexity of expressions by counting the number of nested uses of this operator, a number which is called the \emph{star height}, which we will write $\h{\re{E}}$, for $\re{E} \in \re{RatE} A^*$, and which is defined by induction:
 \begin{align*}
-    &\text{if } \re{E} = 0, \re{E} = 1 \text{ or } \re{E} = a, \text{ for } a \in A \; , & &\h{\re{E}} = 0 \; , \\
+    &\text{if } \re{E} = \re{0}, \re{E} = \re{1} \text{ or } \re{E} = a, \text{ for } a \in A \; , & &\h{\re{E}} = 0 \; , \\
     &\text{if } \re{E} = \re{F} + \re{G} \text{ or } \re{E} = \re{F} \cdot \re{G}\; , & &\h{\re{E}} = \max{(\h{\re{F}}, \h{\re{G}})} \; , \\
     &\text{if } \re{E} = \re{F}^* \; , & &\h{\re{E}} = 1 + \h{\re{F}} \; .
 \end{align*}
@@ -230,12 +230,12 @@ Two automata are \emph{equivalent} if they recognise the same language.
 
 State removal algorithm takes $\aut{A}$, a~provided finite automaton, and derives a~rational expression that denotes $L(\aut{A})$, the language accepted by the original automaton. First we construct an~automaton $\aut{B}$ from $\aut{A}$. That is done by adding two states $i$ and $t$, distinct and not belonging to $Q_{\aut{A}}$, a spontaneous transition from $i$ to each initial state of $\aut{A}$, and a spontaneous transition from each final state of $\aut{A}$ to $t$. We set $I_{\aut{B}} = \{i\}$ and $T_{\aut{B}} = \{t\}$. Clearly $\aut{A}$ and $\aut{B}$ are equivalent and since $\aut{A}$ is finite, $\aut{B}$ is also finite. Let us also set $\aut{B}_0 = \aut{B}$.
 
-Next part of the algorithm has as many steps as there are states in $Q_{\aut{A}}$. Let $N = |Q_{\aut{A}}|$. In $j$th step we take an automaton $\aut{B}_{j-1}$ and create $\aut{B}_j$. Let $q$ be a~particular state in $\aut{B}_{j-1}$ that is also in $\aut{A}$. Next, let $p_1, \dotsc , p_k$ be states of $\aut{B}_{j-1}$, distinct from $q$, that are sources of transitions which have $q$ as its destination, and let $\re{E}_1, \dotsc , \re{E}_k$ be labels of these transitions. Similarly for the transitions leaving the state $q$, we let $r_1, \dotsc , r_l$ be states of $\aut{B}_{j-1}$, distinct from $q$, that are the destinations of transitions whose source is $q$, and let $\re{G}_1, \dotsc , \re{G}_l$ be labels of these transitions. Note that some $p_m$ can be the same as some $r_n$. If $q$ has a loop, we will denote it by $\re{F}$. Otherwise we set $\re{F} = 0$.
+Next part of the algorithm has as many steps as there are states in $Q_{\aut{A}}$. Let $N = |Q_{\aut{A}}|$. In $j$th step we take an automaton $\aut{B}_{j-1}$ and create $\aut{B}_j$. Let $q$ be a~particular state in $\aut{B}_{j-1}$ that is also in $\aut{A}$. Next, let $p_1, \dotsc , p_k$ be states of $\aut{B}_{j-1}$, distinct from $q$, that are sources of transitions which have $q$ as its destination, and let $\re{E}_1, \dotsc , \re{E}_k$ be labels of these transitions. Similarly for the transitions leaving the state $q$, we let $r_1, \dotsc , r_l$ be states of $\aut{B}_{j-1}$, distinct from $q$, that are the destinations of transitions whose source is $q$, and let $\re{G}_1, \dotsc , \re{G}_l$ be labels of these transitions. Note that some $p_m$ can be the same as some $r_n$. If $q$ has a loop, we will denote it by $\re{F}$. Otherwise we set $\re{F} = \re{0}$.
 
 Consider the automaton $\aut{B}_{j-1}$. We first remove the state $q$ and all of the following transitions described above:
 \[
     (p_1, \re{E}_1, q), \dotsc, (p_k, \re{E}_k, q), (q, \re{G}_1, r_1), \dotsc, (q, \re{G}_l, r_l), (q, \re{F}, q).
 \]
-Second, for each pair of states $(p_m, r_n)$, $1 \leq m \leq k$ and $1 \leq n \leq l$, we look if there is a transition from $p_m$ to $r_n$ in $\aut{B}_{j-1}$. If it is, we denote its label by $\re{H}$ and we remove that transition, $(p_m, \re{H}, r_n)$, from $\aut{B}_{j-1}$, otherwise we set $\re{H} = 0$. We then finally add the transition $(p_m, \re{H} + \re{E}_m \re{F}^* \re{G}_n, r_n)$ to $\aut{B}_{j-1}$. After traversing all of $k l$ state pairs, we obtain the automaton $\aut{B}_j$.
+Second, for each pair of states $(p_m, r_n)$, $1 \leq m \leq k$ and $1 \leq n \leq l$, we look if there is a transition from $p_m$ to $r_n$ in $\aut{B}_{j-1}$. If it is, we denote its label by $\re{H}$ and we remove that transition, $(p_m, \re{H}, r_n)$, from $\aut{B}_{j-1}$, otherwise we set $\re{H} = \re{0}$. We then finally add the transition $(p_m, \re{H} + \re{E}_m \re{F}^* \re{G}_n, r_n)$ to $\aut{B}_{j-1}$. After traversing all of $k l$ state pairs, we obtain the automaton $\aut{B}_j$.
 
-At the end we are left with automaton $\aut{B}_N$. It has three states and three transitions. The states are $i, t$, and $q$, and the transitions are $(i, 1, q), (q, \re{E}, q)$, and $(q, 1, t)$, where $\re{E}$ is a rational expression that denotes $L(\aut{A})$.
+At the end we are left with automaton $\aut{B}_N$. It has three states and three transitions. The states are $i, t$, and $q$, and the transitions are $(i, \re{1}, q), (q, \re{E}, q)$, and $(q, \re{1}, t)$, where $\re{E}$ is a rational expression that denotes $L(\aut{A})$.

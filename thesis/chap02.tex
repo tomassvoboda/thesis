@@ -24,7 +24,7 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
 \begin{proof}
     $W_q$ is recognised by an automaton~${\mathcal{R}(2^q)}$. The rational expression of star height $q$ will be obtained by applying the state removal algorithm on~${\mathcal{R}(2^q)}$. That means that the only transition left in the final automaton will be labelled by the desired rational expression. First we inductively define the following rational expressions:
     \begin{align*}
-        \re{X}_0 &= a, & \re{Y}_0 &= b, & &\text{ and } & \re{Z}_0 &= 0, \\
+        \re{X}_0 &= a, & \re{Y}_0 &= b, & &\text{ and } & \re{Z}_0 &= \re{0}, \\
         \re{X}_1 &= a^2, & \re{Y}_1 &= b^2, & &\text{ and } & \re{Z}_1 &= ab+ba, \\
         &\; \vdots & &\; \vdots & & & &\; \vdots \\
         \re{X}_{n+1} &= \re{X}_n \re{Z}_n^* \re{X}_n, & \re{Y}_{n+1} &= \re{Y}_n \re{Z}_n^* \re{Y}_n, & &\text{ and } & \re{Z}_{n+1} &= \re{Z}_n + \re{X}_n \re{Z}_n^* \re{Y}_n + \re{Y}_n \re{Z}_n^* \re{X}_n.
