@@ -66,10 +66,10 @@ Note that if we consider an alphabet $A$ a language of words of length $1$ over 
 
 \section{Rational expressions}
 
-Let $A$ be an alphabet and let $\{\re{0}, \re{1}, +, \cdot, *\}$ be five function symbols. Constants $\re{0}$ and $\re{1}$ are nullary operations, $+$ and $\cdot$ are binary, and $*$ is unary.
+Let $A$ be an alphabet and let $\{\re{0}, \re{1}, +, \cdot, *\}$ be five function symbols.
 
 \begin{defn}
-    \emph{A rational expression over $A$} is a formula obtained inductively from the letters of $A$ and the functions $\{\re{0}, \re{1}, +, \cdot, *\}$ by the following process:
+    \emph{A rational expression over $A$} is a formula obtained inductively from the letters of $A$ and the symbols $\{\re{0}, \re{1}, +, \cdot, *\}$ by the following process:
     \begin{itemize}
         \item[(i)] $\re{0}, \re{1}$, and $a$, for $a$ in $A$, are rational expressions,
         \item[(ii)] if $\re{E}$ and $\re{F}$ are rational expressions, then $(\re{E} + \re{F})$, $(\re{E} \cdot \re{F})$, and $(\re{E}^*)$ are rational expressions.
@@ -77,7 +77,7 @@ Let $A$ be an alphabet and let $\{\re{0}, \re{1}, +, \cdot, *\}$ be five functio
     We write $\re{RatE} A^*$ for the set of rational expressions over $A$.
 \end{defn}
 
-To be able to simplify the notation by omitting the parentheses in the rational expressions, we need to specify the order of operator precedence for $+, \: \cdot \:$, and $*$. We let $*$ take precedence over $\cdot \:$, which in turn takes precedence over $+ \:$. As for letters, we omit the symbol $\cdot \:$. With this convention we write, for example,
+To be able to simplify the notation, we can think of the function symbols as symbols representing operations and we can omit the parentheses in the rational expressions if we specify the order of precedence for $+, \: \cdot \:$, and $*$. We let $*$ take precedence over $\cdot \:$, which in turn takes precedence over $+ \:$. As for letters, we omit the symbol $\cdot \:$. With this convention we write, for example,
 \begin{align*}
     &ab + ba & &\text{for} & &((a \cdot b) + (b \cdot a)), \; \text{or}\\
     &{(a + b \, {(a b^* a)}^* b)}^* & &\text{for} & &({(a + (b \cdot (({((a \cdot (b^*)) \cdot a)}^* ) \cdot b)))}^* ) .
