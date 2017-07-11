@@ -146,7 +146,7 @@ since
 
 \section{Star height}
 
-Of all the operators defined for rational expressions, $*$ is the only one that `gives access to the infinite'. Hence the idea of measuring the complexity of expressions by counting the number of nested uses of this operator, a number which is called the \emph{star height}, which we will write $\h{\re{E}}$, for $\re{E} \in \re{RatE} A^*$, and which is defined by induction:
+The symbol $*$ defined for rational expressions is the only one that takes a rational expression $\re{E}$ denoting a finite language and gives $E^*$ denoting an infinite language. Hence the idea of measuring the complexity of expressions by counting the number of nested uses of this symbol, a number which is called the \emph{star height}, which we will write $\h{\re{E}}$, for $\re{E} \in \re{RatE} A^*$, and which is defined by induction:
 \begin{align*}
     &\text{if } \re{E} = \re{0}, \re{E} = \re{1} \text{ or } \re{E} = a, \text{ for } a \in A \; , & &\h{\re{E}} = 0 \; , \\
     &\text{if } \re{E} = \re{F} + \re{G} \text{ or } \re{E} = \re{F} \cdot \re{G}\; , & &\h{\re{E}} = \max{(\h{\re{F}}, \h{\re{G}})} \; , \\
@@ -155,7 +155,7 @@ Of all the operators defined for rational expressions, $*$ is the only one that 
 
 The star height of a rational language $L$ over $A^*$, written $\h{L}$, is the minimum of the star heights of the rational expressions that denote $L$:
 \[
-    \h{L} = \min \{ \h{\re{E}} \mid \re{E} \in \re{RatE} A^*: L[\re{E}] \} \; .
+    \h{L} = \min \{ \h{\re{E}} \mid \re{E} \in \re{RatE} A^*: L = L[\re{E}] \} \; .
 \]
 
 \begin{lemma}\label{lm:star_height_distributivity}
