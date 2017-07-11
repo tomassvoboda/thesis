@@ -98,19 +98,50 @@ We say that a language of $A^*$ is \emph{rational} if and only if it is denoted 
 
 Two rational expressions are \emph{equivalent} if they denote the same language. That means $\re{E}$ and $\re{F}$ are equivalent if $L[\re{E}] = L[\re{F}]$ and we write it as $\re{E} \equiv \re{F}$.
 
-\subsubsection*{Classical identities}
+\subsubsection*{Identities}
 
-The series of following identities expresses the fact that expressions will be \emph{interpreted in a semiring}. That means, that the defined function symbols \X{?} will satisfy the corresponding axioms: $+$ and $\cdot$ are associative, $+$ is commutative, $\re{0}$ is an identity element for $+$ and a zero for $\cdot \:$, $\re{1}$ is an identity element for $\cdot$, and $\cdot$ is left and right distributive over $+$:
-\begin{gather*}
-    (\re{E} + \re{F}) + \re{G} \equiv \re{E} + (\re{F} + \re{G}) \; , \quad \text{and} \quad (\re{E} \cdot \re{F}) \cdot \re{G} \equiv \re{E} \cdot (\re{F} \cdot \re{G}) \; ,\\[1ex]
-    \re{E} + \re{F} \equiv \re{F} + \re{E} \; ,\\[1ex]
-    \re{E} + \re{0} \equiv \re{0} + \re{E} \equiv \re{E} \; , \quad \re{E} \cdot \re{0} \equiv \re{0} \cdot \re{E} \equiv \re{0} \; , \quad \re{E} \cdot \re{1} \equiv \re{1} \cdot \re{E} \equiv \re{E} \; ,\\[1ex]
-    \re{E} \cdot (\re{F} + \re{G}) \equiv \re{E} \cdot \re{F} + \re{E} \cdot \re{G} \; , \quad \text{and} \quad (\re{E} + \re{F}) \cdot \re{G} \equiv \re{E} \cdot \re{G} + \re{F} \cdot \re{G} \; .
-\end{gather*}
+Let us state a few identities of rational expressions that will be often used without explicit mention.
 
-By the definition of star, we also have
+\begin{lemma}\label{lm:expression_identities}
+    \begin{gather*}
+        (\re{E} + \re{F}) + \re{G} \equiv \re{E} + (\re{F} + \re{G}) \; , \quad \text{and} \quad (\re{E} \cdot \re{F}) \cdot \re{G} \equiv \re{E} \cdot (\re{F} \cdot \re{G}) \; ,\\[1ex]
+        \re{E} + \re{F} \equiv \re{F} + \re{E} \; ,\\[1ex]
+        \re{E} + \re{0} \equiv \re{0} + \re{E} \equiv \re{E} \; , \quad \re{E} \cdot \re{0} \equiv \re{0} \cdot \re{E} \equiv \re{0} \; , \quad \re{E} \cdot \re{1} \equiv \re{1} \cdot \re{E} \equiv \re{E} \; ,\\[1ex]
+        \re{E} \cdot (\re{F} + \re{G}) \equiv \re{E} \cdot \re{F} + \re{E} \cdot \re{G} \; , \quad \text{and} \quad (\re{E} + \re{F}) \cdot \re{G} \equiv \re{E} \cdot \re{G} + \re{F} \cdot \re{G} \; .
+    \end{gather*}
+\end{lemma}
+
+\begin{proof}
+    \begin{align*}
+        L[(\re{E} + \re{F}) + \re{G}] &= L[\re{E} + \re{F}] \cup L[\re{G}] = L[\re{E}] \cup L[\re{F}] \cup L[\re{G}] = L[\re{E}] \cup L[\re{F} + \re{G}] \\
+        &= L[\re{E} + (\re{F} + \re{G})] \; , \\
+        \\
+        L[(\re{E} \cdot \re{F}) \cdot \re{G}] &= L[\re{E} \cdot \re{F}] \cdot L[\re{G}] = L[\re{E}] \cdot L[\re{F}] \cdot L[\re{G}] = L[\re{E}] \cdot L[\re{F} \cdot \re{G}] \\
+        &= L[\re{E} \cdot (\re{F} \cdot \re{G})] \; , \\
+        \\
+        L[\re{E} + \re{F}] &= L[\re{E}] \cup L[\re{F}] = L[\re{F}] \cup L[\re{E}] = L[\re{F} + \re{E}] \; , \\
+        \\
+        L[\re{E} + \re{0}] &= L[\re{E}] \cup L[\re{0}] = L[\re{E}] = L[\re{0}] \cup L[\re{E}] = L[\re{0} + \re{E}] \; , \\
+        \\
+        L[\re{E} \cdot \re{0}] &= L[\re{E}] \cdot L[\re{0}] = L[\re{0}] = L[\re{0}] \cdot L[\re{E}] = L[\re{0} \cdot \re{E}] \; , \\
+        \\
+        L[\re{E} \cdot \re{1}] &= L[\re{E}] \cdot L[\re{1}] = L[\re{E}] = L[\re{1}] \cdot L[\re{E}] = L[\re{1} \cdot \re{E}] \; , \\
+        \\
+        L[\re{E} \cdot (\re{F} + \re{G})] &= L[\re{E}] \cdot L[\re{F} + \re{G}] = L[\re{E}] \cdot (L[\re{F}] \cup L[\re{G}]) = L[\re{E}] \cdot L[\re{F}] \cup L[\re{E}] \cdot L[\re{G}] \\
+        &= L[\re{E} \cdot \re{F}] \cup L[\re{E} \cdot \re{G}] = L[\re{E} \cdot \re{F} + \re{E} \cdot \re{G}] \; , \\
+        \\
+        L[(\re{E} + \re{F}) \cdot \re{G}] &= L[\re{E} + \re{F}] \cdot L[\re{G}] = (L[\re{E}] \cup L[\re{F}]) \cdot L[\re{G}] = L[\re{E}] \cdot L[\re{G}] \cup L[\re{F}] \cdot L[\re{G}] \\
+        &= L[\re{E} \cdot \re{G}] \cup L[\re{F} \cdot \re{G}] = L[\re{E} \cdot \re{G} + \re{F} \cdot \re{G}] \; .
+    \end{align*}
+\end{proof}
+
+We also have
 \[
-    \re{0}^* \equiv \re{1}.
+    \re{0}^* \equiv \re{1} \; ,
+\]
+since
+\[
+    L[\re{0}^*] = \emptyset^* = \{ 1 \} = L[\re{1}] \; .
 \]
 
 \section{Star height}
