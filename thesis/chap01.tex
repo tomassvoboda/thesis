@@ -196,7 +196,9 @@ Let $A$ be a finite alphabet. We call an automaton over $A$ \emph{finite} if set
 
 If $e = (p, \re{E}, q)$ is a transition of $\aut{A}$, that is, if $e$ is in $E$, we say that $\re{E}$ is the \emph{label} of $e$ and we will write $p \tr{\re{E}} q$, or $p \tr[\aut{A}]{\re{E}} q$ where it might be ambiguous which automaton we are considering. We also say that $p$ is the \emph{source} and $q$ the \emph{destination} of the transition $e$. Transition is a \emph{loop}, if its source and destination are the same state. When transition has label $\re{1}$, it is called \emph{spontaneous}.
 
-Note that we can always assume that there is, between each pair of states of an automaton, \emph{at most one transition}. This is because we chose rational expressions as the labels of transitions, rather than the usual letters of $A$.
+Note that we can always assume that there is, between each pair of states of an automaton, \emph{at most one transition}. This is because we chose rational expressions as the labels of transitions, rather than the usual letters of $A$. We make this generalisation to be able to represent any automaton by a single transition, as was shown to by possible by Kleene~\cite{Kleene56}. Similar generalisation was first introduced by Brzozowski and McCluskey~\cite{BrzozowskiMcCluskey64}.
+
+When appropriate, we can even assume that there is, between each pair of states of an automaton, \emph{exactly one transition}, since if for some pair of states, there is no transition in the automaton, we can add a transition labelled with $\re{0}$.
 
 A \emph{computation} $c$ in $A$ is a sequence of transitions where the source of each is the destination of the previous one, which can be written as:
 \[
