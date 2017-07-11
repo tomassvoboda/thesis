@@ -7,10 +7,10 @@
     // words - list of words to be always considered correct
     "words": [
         "pdfx", "defn", "multline",
-        
+
         "Tomáš", "Svoboda", "Štěpán", "Holub",
         "recognised", "bijection", "distributivity",
-        "Eggan", "Eggan's", "Dejean", "Schützenberger", "Kleene"
+        "Eggan", "Eggan's", "Dejean", "Schützenberger", "Kleene", "Brzozowski", "Cluskey"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
