@@ -260,51 +260,57 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
 
 \subsubsection*{State removal \X{algorithm?}}
 
-\X{Move into proper lemma and proof?}
+\begin{lemma}\label{lm:state_removal_lemma}
+    Let $\aut{A} = \langle Q, A, E, I, T \rangle$ be an~automaton with $n$ states which has at least one state that is neither initial nor accepting, that means $Q \setminus (I \cup T) \neq \emptyset$. An~automaton $\aut{B}$ with $n - 1$ states exists such that $L(\aut{B}) = L(\aut{A})$.
+\end{lemma}
 
-Let $\aut{A} = \langle Q, A, E, I, T \rangle$ be an~automaton with $n$ states, which has at least one state that is neither initial nor accepting, that means $Q \setminus (I \cup T) \neq \emptyset$. We show that we can find an~automaton $\aut{B}$ with $n - 1$ states such that $L(\aut{B}) = L(\aut{A})$. Let $q$ be a~state in $Q \setminus (I \cup T)$. Next, we consider the transitions
-\[
-    (p_1, \re{E}_1, q), \dotsc, (p_k, \re{E}_k, q), (q, \re{G}_1, r_1), \dotsc, (q, \re{G}_l, r_l), \text{ and } (q, \re{F}, q),
-\]
-where each $p_h \neq q$, and $r_j \neq q$. These are all the different transitions of $\aut{A}$ with $q$ as a destination, source, or both respectively. Note that $\re{F}$ may be $\re{1}$, since every state has at least spontaneous loop. To create the automaton $\aut{B}$, we remove all the mentioned transitions and the state $q$, and for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ and $1 \leq j \leq l$, we replace the transition $(p_h, \re{H}, r_j)$ with $(p_h, \re{H} + \re{E}_h\re{F}^*\re{G}_j, r_j)$. Note that $\re{H}$ may be $\re{0}$ for some state pairs.
+\begin{proof}
+    Let $q$ be a~state in $Q \setminus (I \cup T)$. Next, we consider the transitions
+    \[
+        (p_1, \re{E}_1, q), \dotsc, (p_k, \re{E}_k, q), (q, \re{G}_1, r_1), \dotsc, (q, \re{G}_l, r_l), \text{ and } (q, \re{F}, q),
+    \]
+    where each $p_h \neq q$, and $r_j \neq q$. These are all the different transitions of $\aut{A}$ with $q$ as a destination, source, or both respectively. Note that $\re{F}$ may be $\re{1}$, since every state has at least spontaneous loop. To create the automaton $\aut{B}$, we remove all the mentioned transitions and the state $q$, and for each pair of states $(p_h, r_j)$, $1 \leq h \leq k$ and $1 \leq j \leq l$, we replace the transition $(p_h, \re{H}, r_j)$ with $(p_h, \re{H} + \re{E}_h\re{F}^*\re{G}_j, r_j)$. Note that $\re{H}$ may be $\re{0}$ for some state pairs.
 
-Now we verify that $L(\aut{B}) = L(\aut{A})$. Let $f$ be a~word accepted by $\aut{A}$. A~computation that accepts $f$ can be written as
-\[
-    i \tr{\re{A}_1} s_1 \tr{\re{A}_2} s_2 \tr{\re{A}_3} \dotsm \tr{\re{A}_{N-1}} s_{N-1} \tr{\re{A}_N} t.
-\]
-If some $s_M = q$, there are integers $K$ and $L$ such that
-\[
-    s_{M-K} = s_{M-K+1} = \dotsb = s_{M-1} = s_M = s_{M+1} = \dotsb = s_{M+L-1} = s_{M+L} = q,
-\]
-and the computation accepting $f$ is
-\[
-    i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} p_h \tr{\re{E}_h} q \tr{\overbrace{\scriptstyle \re{F} \dotsm \re{F}}^{\scriptstyle K+L \text{ times}}} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t,
-\]
-therefore a~factorisation of $f$ exists such that $f = u_1 u_2 v_1 \dotsm v_{K + L} w_1 w_2$, where $u_1 \in L[\re{A}_1 \dotsm \re{A}_{M-K-1}], u_2 \in L[\re{E}_h], v_1, \dotsc, v_{K+L} \in L[\re{F}], w_1 \in L[\re{G}_j], \text{ and } w_2 \in L[\re{A}_{M+L+2} \dotsm \re{A}_N]$. It follows that, for every integer $J$ and any words $g_1, \dotsc, g_J \in L[\re{F}]$, the word $u_1 u_2 g_1 \dotsm g_J w_1 w_2$ is also in $L(\aut{A})$. Specifically it is accepted by computations:
-\begin{align*}
-    i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h} q \tr{\overbrace{\scriptstyle \re{F} \dotsm \re{F}}^{\scriptstyle J \text{ times}}} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t \; , \\
-    i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h} q \tr{\re{F}^*} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t \; , \\
-    i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t,
-\end{align*}
-but also by
-\[
-    i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-1}} p_h \tr{\re{H} + \re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t,
-\]
-which is a successful computation is $\aut{B}$ and therefore $f$ is accepted by $\aut{B}$.
+    Now we verify that $L(\aut{B}) = L(\aut{A})$. Let $f$ be a~word accepted by $\aut{A}$. A~computation that accepts $f$ can be written as
+    \[
+        i \tr{\re{A}_1} s_1 \tr{\re{A}_2} s_2 \tr{\re{A}_3} \dotsm \tr{\re{A}_{N-1}} s_{N-1} \tr{\re{A}_N} t.
+    \]
+    If some $s_M = q$, there are integers $K$ and $L$ such that
+    \[
+        s_{M-K} = s_{M-K+1} = \dotsb = s_{M-1} = s_M = s_{M+1} = \dotsb = s_{M+L-1} = s_{M+L} = q,
+    \]
+    and the computation accepting $f$ is
+    \[
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} p_h \tr{\re{E}_h} q \tr{\overbrace{\scriptstyle \re{F} \dotsm \re{F}}^{\scriptstyle K+L \text{ times}}} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t,
+    \]
+    therefore a~factorisation of $f$ exists such that $f = u_1 u_2 v_1 \dotsm v_{K + L} w_1 w_2$, where $u_1 \in L[\re{A}_1 \dotsm \re{A}_{M-K-1}], u_2 \in L[\re{E}_h], v_1, \dotsc, v_{K+L} \in L[\re{F}], w_1 \in L[\re{G}_j], \text{ and } w_2 \in L[\re{A}_{M+L+2} \dotsm \re{A}_N]$. It follows that, for every integer $J$ and any words $g_1, \dotsc, g_J \in L[\re{F}]$, the word $u_1 u_2 g_1 \dotsm g_J w_1 w_2$ is also in $L(\aut{A})$. Specifically it is accepted by computations:
+    \begin{align*}
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h} q \tr{\overbrace{\scriptstyle \re{F} \dotsm \re{F}}^{\scriptstyle J \text{ times}}} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t \; , \\
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h} q \tr{\re{F}^*} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t \; , \\
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t,
+    \end{align*}
+    but also by
+    \[
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-1}} p_h \tr{\re{H} + \re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t,
+    \]
+    which is a successful computation is $\aut{B}$ and therefore $f$ is accepted by $\aut{B}$.
 
-Otherwise, if every state $s_M \neq q$, but there are some states $s_M = p_h$ and $s_{M+1} = r_j$, then $f$ is accepted by a successful computation:
-\[
-    i \tr{\re{A}_1} \dotsm \tr{\re{A}_M} p_h \tr{\re{H}} r_j \tr{\re{A}_{M+2}} \dotsm \tr{\re{A}_N} t,
-\]
-therefore $f$ is also accepted by a successful computation in $\aut{B}$:
-\[
-    i \tr{\re{A}_1} \dotsm \tr{\re{A}_M} p_h \tr{\re{H} + \re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+2}} \dotsm \tr{\re{A}_N} t.
-\]
+    Otherwise, if every state $s_M \neq q$, but there are some states $s_M = p_h$ and $s_{M+1} = r_j$, then $f$ is accepted by a successful computation:
+    \[
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_M} p_h \tr{\re{H}} r_j \tr{\re{A}_{M+2}} \dotsm \tr{\re{A}_N} t,
+    \]
+    therefore $f$ is also accepted by a successful computation in $\aut{B}$:
+    \[
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_M} p_h \tr{\re{H} + \re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+2}} \dotsm \tr{\re{A}_N} t.
+    \]
 
-If neither of the above cases are true, that means every $s_M \neq q$ and if any $s_M = p_h$ then $s_{M+1} \neq r_j$, the word $f$ is also accepted by
-\[
-    i \tr[\aut{B}]{\re{A}_1} s_1 \tr[\aut{B}]{\re{A}_2} s_2 \tr[\aut{B}]{\re{A}_3} \dotsm \tr[\aut{B}]{\re{A}_{N-1}} s_{N-1} \tr[\aut{B}]{\re{A}_N} t,
-\]
-which is successful computation in $\aut{B}$, therefore $f \in L[\aut{B}]$.
+    If neither of the above cases are true, that means every $s_M \neq q$ and if any $s_M = p_h$ then $s_{M+1} \neq r_j$, the word $f$ is also accepted by
+    \[
+        i \tr[\aut{B}]{\re{A}_1} s_1 \tr[\aut{B}]{\re{A}_2} s_2 \tr[\aut{B}]{\re{A}_3} \dotsm \tr[\aut{B}]{\re{A}_{N-1}} s_{N-1} \tr[\aut{B}]{\re{A}_N} t,
+    \]
+    which is successful computation in $\aut{B}$, therefore $f \in L[\aut{B}]$.
 
-This shows that every word accepted by $\aut{A}$ is also accepted by $\aut{B}$.
+    This shows that every word accepted by $\aut{A}$ is also accepted by $\aut{B}$.
+\end{proof}
+
+By iterating the removal of states by Lemma~\ref*{lm:state_removal_lemma} on $\aut{A} = \langle Q, A, E, I, T \rangle$, we can create an automaton with only $|I \cup T|$ number of states that accepts $L(\aut{A})$. It is important to note that depending on the order of the states chosen to be removed, we obtain different automata.
