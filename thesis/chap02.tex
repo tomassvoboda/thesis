@@ -129,17 +129,27 @@ The proof has two parts. First we find a~rational expression of star height~$q$,
 We have found a~rational expression of star height $q$ denoting the language $W_q$, which means that the star height of the language will not be higher then $q$. We proceed to show that it also has to be at least $q$. First let us present a few definitions and observe some of their properties that will be useful to us later.
 
 \begin{defn}
-    For~each integer~$n$ we define the~sequence $w_{0,n}, w_{1,n}, \dotsc , w_{q-1,n}$ of $q$~words in~$W_q$ recursively:
+    For any non-negative integers $k$ and $n$, \emph{witness word $w_{k,n}$} is a word defined recursively as:
     \begin{alignat*}{2}
         w_{0,n} &= ab,\\
-        w_{1,n} &= a^2{(ab)}^{n}b^2{(ab)}^{n},\\
+        w_{1,n} &= a^2 {(ab)}^n b^2 {(ab)}^n,\\
                 &\; \vdots \\
-        w_{k,n} &= a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n},\\
-                &\; \vdots \\
-        w_{q-1,n} &= a^{2^{q-1}}{(w_{q-2,n})}^{n}b^{2^{q-1}}{(w_{q-2,n})}^{n}.
+        w_{k,n} &= a^{2^k} {(w_{k-1,n})}^n b^{2^k} {(w_{k-1,n})}^n.
     \end{alignat*}
-    We call these words \emph{witness words}.
 \end{defn}
+
+\begin{lemma}\label{lm:witness_words_in_W_q}
+    For any non-negative integers $q, k$, and $n$, witness word $w_{k,n}$ is in $W_q$.
+\end{lemma}
+
+\begin{proof}
+    By induction on $k$. For $k = 0$, $|ab|_a \equiv |ab|_b \pmod{2^q}$ for all $q$ and regardless of $n$. The word $w_{k,n}$ consists wholly of factors $a^{2^k}, \: b^{2^k}$, and two ${(w_{k-1,n})}^n$. Given the induction hypothesis for some $k - 1$, $w_{k-1,n}$ is in $W_q$, therefore $|w_{k-1,n}|_a - |w_{k-1,n}|_b \equiv 0 \pmod{2^q}$. Thus, due to the equalities:
+    \begin{multline*}
+        |w_{k,n}|_a - |w_{k,n}|_b = |a^{2^k} b^{2^k}|_a + 2|{(w_{k-1,n})}^n|_a - |a^{2^k} b^{2^k}|_b - 2|{(w_{k-1,n})}^n|_b \\
+        = 2^k - 2^k + 2 \, n \, ( \, |w_{k-1,n}|_a - |w_{k-1,n}|_b \, ),
+    \end{multline*}
+    $w_{k,n}$ is also in $W_q$.
+\end{proof}
 
 \begin{lemma}\label{lm:witness_words_inequalities}
     Any left factor $u$ and right factor $v$ of ${(w_{k,n})}^n$ satisfy the equations:
