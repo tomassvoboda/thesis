@@ -138,33 +138,44 @@ We have found a~rational expression of star height $q$ denoting the language $W_
     \end{alignat*}
 \end{defn}
 
-\begin{lemma}\label{lm:witness_words_in_W_q}
-    For any non-negative integers $q, k$, and $n$, witness word $w_{k,n}$ is in $W_q$.
+\begin{lemma}\label{lm:witness_words_equality}
+    For any non-negative integers $k$ and $n$, $|w_{k,n}|_a = |w_{k,n}|_b$.
 \end{lemma}
 
 \begin{proof}
-    By induction on $k$. For $k = 0$, $|ab|_a \equiv |ab|_b \pmod{2^q}$ for all $q$ and regardless of $n$. The word $w_{k,n}$ consists wholly of factors $a^{2^k}, \: b^{2^k}$, and two ${(w_{k-1,n})}^n$. Given the induction hypothesis for some $k - 1$, $w_{k-1,n}$ is in $W_q$, therefore $|w_{k-1,n}|_a - |w_{k-1,n}|_b \equiv 0 \pmod{2^q}$. Thus, due to the equalities:
+    By induction on $k$. For $k = 0$, $|ab|_a - |ab|_b = 0$ regardless of $n$. Given the induction hypothesis for some $k - 1$, $|w_{k-1,n}|_a - |w_{k-1,n}|_b = 0$. The word $w_{k,n}$ consists wholly of factors $a^{2^k}, \: b^{2^k}$, and two ${(w_{k-1,n})}^n$. Thus:
     \begin{multline*}
-        |w_{k,n}|_a - |w_{k,n}|_b = |a^{2^k} b^{2^k}|_a + 2|{(w_{k-1,n})}^n|_a - |a^{2^k} b^{2^k}|_b - 2|{(w_{k-1,n})}^n|_b \\
-        = 2^k - 2^k + 2 \, n \, ( \, |w_{k-1,n}|_a - |w_{k-1,n}|_b \, ),
+        |w_{k,n}|_a - |w_{k,n}|_b = |a^{2^k}|_a + 2|{(w_{k-1,n})}^n|_a + |b^{2^k}|_a - |a^{2^k}|_b - 2|{(w_{k-1,n})}^n|_b - |b^{2^k}|_b \\
+        = 2^k + 2 \, n \, |w_{k-1,n}|_a + 2^k - 2^k - 2 \, n \, |w_{k-1,n}|_b - 2^k = 2 \, n \, ( \, |w_{k-1,n}|_a - |w_{k-1,n}|_b \, ) = 0.
     \end{multline*}
-    $w_{k,n}$ is also in $W_q$.
 \end{proof}
 
+From Lemma~\ref*{lm:witness_words_equality} it follows that any witness word $w_{k,n}$ is in any language $W_q$.
+
 \begin{lemma}\label{lm:witness_words_inequalities}
-    Any left factor $u$ and right factor $v$ of ${(w_{k,n})}^n$ satisfy the equations:
+    Any prefix $u$ and suffix $v$ of ${(w_{k,n})}^n$ satisfy the equations:
     \[
         0 \leq |u|_a - |u|_b \leq 2^{k+1}-1 \; , \qquad 0 \leq |v|_b - |v|_a \leq 2^{k+1}-1.
     \]
 \end{lemma}
 
 \begin{proof}
-    We immediately see that $|w_{k,n}|_a = |w_{k,n}|_b$, therefore any whole word $w_{k,n}$ that is a factor of either $u$ or $v$ does not affect the inequalities we are trying to prove. We only need to examine the differences in the frequency of letters of the left, or~right, factor of the word $w_{k,n}$. We proceed by induction on~$k$. Trivially the inequalities hold for $w_{0,n}$. The word
+    First we prove the inequalities for the prefix $u$. Let $u = {(w_{k,n})}^i u'$ such that $u'$ is a~proper prefix of $w_{k,n}$. Since
+    \begin{multline*}
+        |u|_a - |u|_b = |{(w_{k,n})}^i|_a + |u'|_a - |{(w_{k,n})}^i|_b - |u'|_b \\
+        = i \, ( \, |w_{k,n}|_a - |w_{k,n}|_b \, ) + |u'|_a - |u'|_b = |u'|_a - |u'|_b,
+    \end{multline*}
+    we only need to prove that the inequalities hold for a prefix of $w_{k,n}$. This lets us assume, without loss of generality, that $u$ is proper prefix of $w_{k,n}$. We proceed by induction on $k$. For $k = 0$, $u$ is a~prefix of $ab$ and we can see that the assertion is true. Given the induction hypothesis for some $k - 1$, a prefix of $w_{k-1,n}$ has between $0$ and $2^k-1$ more $a$'s than $b$'s. The word
     \[
-        w_{k,n} = a^{2^k}{(w_{k-1,n})}^{n}b^{2^k}{(w_{k-1,n})}^{n}
-    \] begins with $2^k$ $a$'s and from the induction hypothesis, we know that $w_{k-1,n}$ can have at most $2^k-1$ more $a$'s than $b$'s. We can also see that in the left factor $u$ there is always at least as many $a$'s as there is $b$'s. That proves the inequalities fot the left factor.
+        w_{k,n} = a^{2^k} {(w_{k-1,n})}^n b^{2^k} {(w_{k-1,n})}^n
+    \]
+    begins with $2^k$ $a$'s, therefore if $u$ is a~prefix of $a^{2^k} {(w_{k-1,n})}^n$, $0 \leq |u|_a - |u|_b \leq 2^k+2^k-1 = 2^{k+1}-1$. That proves the inequalities fot the prefix $u$.
 
-    Similarly we prove the case for the right factor $v$. From the induction hypothesis we know that the right factor of $w_{k-1,n}$ can have at most $2^k-1$ more $b$'s than $a$'s. Therefore if $b^{2^k}{(w_{k-1,n})}^{n}$ is a right factor of $v$, we can assume that the right factor of ${(w_{k-1,n})}^{n}$ is the left factor of $v$. From this fallows, that $|v|_b - |v|_a \leq 2^k + 2^k -1$. The fact, that there is at least as many $b$'s as there is $a$'s in the right factor $v$ is obvious.
+    For the proof of inequalities of suffix $v$, we write $w_{k,n}$ as $w_{k,n} = uv$. Since $0 = |w_{k,n}|_b - |w_{k,n}|_a = |u|_b + |v|_b - |u|_a - |v|_a$,
+    \[
+        |v|_b - |v|_a = |u|_a - |u|_b.
+    \]
+    Therefore $0 \leq |v|_b - |v|_a \leq 2^{k+1}-1$.
 \end{proof}
 
 Next we use the witness words to define a property of languages.
