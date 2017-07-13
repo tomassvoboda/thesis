@@ -299,10 +299,11 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     \[
         i \tr{\re{A}_1} \dotsm \tr{\re{A}_M} p_h \tr{\re{H}} r_j \tr{\re{A}_{M+2}} \dotsm \tr{\re{A}_N} t,
     \]
-    therefore $f$ is also accepted by a successful computation in $\aut{B}$:
+    therefore $f$ is also accepted by $\aut{B}$, since
     \[
-        i \tr{\re{A}_1} \dotsm \tr{\re{A}_M} p_h \tr{\re{H} + \re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+2}} \dotsm \tr{\re{A}_N} t.
+        i \tr{\re{A}_1} \dotsm \tr{\re{A}_M} p_h \tr{\re{H} + \re{E}_h\re{F}^*\re{G}_j} r_j \tr{\re{A}_{M+2}} \dotsm \tr{\re{A}_N} t
     \]
+    is a successful computation in $\aut{B}$.
 
     If neither of the above cases are true, that means every $s_M \neq q$ and if any $s_M = p_h$ then $s_{M+1} \neq r_j$, the word $f$ is also accepted by
     \[
@@ -313,4 +314,4 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     This shows that every word accepted by $\aut{A}$ is also accepted by $\aut{B}$.
 \end{proof}
 
-By iterating the removal of states by Lemma~\ref*{lm:state_removal_lemma} on $\aut{A} = \langle Q, A, E, I, T \rangle$, we can create an automaton with only $|I \cup T|$ number of states that accepts $L(\aut{A})$. It is important to note that depending on the order of the states chosen to be removed, we obtain different automata.
+By iterating the removal of states in Lemma~\ref*{lm:state_removal_lemma} on $\aut{A} = \langle Q, A, E, I, T \rangle$, we can create an automaton with only $|I \cup T|$ states that accepts $L(\aut{A})$. It is important to note that depending on the order of the states chosen to be removed, we obtain different automata.
