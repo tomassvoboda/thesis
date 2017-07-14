@@ -200,7 +200,7 @@ Note that we can always assume that there is, between each pair of states of an 
 
 When appropriate, we can even assume that there is, between each pair of states of an automaton, \emph{exactly one transition}, since if for some pair of states, there is no transition in the automaton, we can add a transition labelled with $\re{0}$.
 
-A \emph{computation} $c$ in $A$ is a sequence of transitions where the source of each is the destination of the previous one, which can be written as:
+A \emph{computation} in $\aut{A}$ is a sequence of transitions where the source of each transition is the destination of the previous one, which can be written as:
 \[
     p_0 \tr{\re{E}_1} p_1 \tr{\re{E}_2} p_2 \tr{\re{E}_3} \dotsm \tr{\re{E}_{n-1}} p_{n-1} \tr{\re{E}_n} p_n,
 \]
@@ -208,7 +208,7 @@ or
 \[
     p_0 \tr{\re{E}_1 \re{E}_2 \dotsm \re{E}_n} p_n.
 \]
-The state $p_0$ is the \emph{source} of the computation $c$, and $p_n$ its \emph{destination}. The \emph{length} of the computation $c$ is $n$, the number of transitions which make up $c$. The \emph{label} of $c$ is the product of the labels of the transitions of $c$. In the above case, the label of $c$ is $\re{E}_1 \re{E}_2 \dotsm \re{E}_n$.
+We say that \emph{computation is in $\aut{A}$} if every transition of the computation is in $\aut{A}$. The state $p_0$ is the \emph{source} of the computation $c$, and $p_n$ its \emph{destination}. The \emph{length} of the computation $c$ is $n$, the number of transitions which make up $c$. The \emph{label} of $c$ is the product of the labels of the transitions of $c$. In the above case, the label of $c$ is $\re{E}_1 \re{E}_2 \dotsm \re{E}_n$.
 
 A computation in $\aut{A}$ is \emph{successful} if its source is an initial state and its destination is a final state. A word in $A^*$ is called \emph{accepted} or \emph{recognised} by $\aut{A}$ if it is in a language denoted by a label of a successful computation in $\aut{A}$.
 
