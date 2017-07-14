@@ -258,6 +258,24 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     \end{figure}
 \end{example}
 
+\begin{lemma}\label{lm:R_n_computation_existence}
+    Let $\aut{R}(n)$ be a ring automaton. For any $m, r$, and $t$ in $\Z_n$, if the computation $r \tr{\re{H}} t$ is in $\aut{R}(n)$ then $r+m \tr{\re{H}} t+m$ is also in $\aut{R}(n)$.
+\end{lemma}
+
+\begin{proof}
+    The computation $r \tr{\re{H}} t$ can be written as a sequence of transitions:
+    \[
+        r \tr{\re{X}_1} s_1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} \tr{\re{X}_m} t \, ,
+    \]
+    where each $\re{X}_k$ is either a letter $a$ or $b$. Since, for any state $s \in \aut{R}(n)$, transitions $(s, a, s+1)$ and $(s, b, s-1)$ are in $\aut{R}(n)$, computation
+    \begin{align*}
+       r + 1 &\tr{\re{X}_1} s_1 + 1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} + 1 \tr{\re{X}_m} t + 1 \\
+    \intertext{is also in $\aut{R}(n)$. After $m$ iterations, we obtain a computation}
+       r + m &\tr{\re{X}_1} s_1 + m \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} + m \tr{\re{X}_m} t + m \, ,
+    \end{align*}
+    which can be written as $r+m \tr{\re{H}} t+m$.
+\end{proof}
+
 \subsubsection*{State removal \X{algorithm?}}
 
 \begin{lemma}\label{lm:state_removal_lemma}
