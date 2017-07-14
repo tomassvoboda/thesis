@@ -15,7 +15,56 @@ This chapter focuses on languages of a~particular form. The following definition
     The language $W_q$ has star height~$q$.
 \end{thm}
 
-The proof has two parts. First we find a~rational expression of star height~$q$, denoting $W_q$, and then we show that the star height of the language has to be at~least $q$. The first part is done as Lemma~\ref*{lm:expression_existence}, which leaves the second part to be done in the Proof of~\autoref*{thm:main}.
+The proof has three parts. First, we find an automaton that recognises $W_q$ in Lemma~\ref*{lm:W_q_recognised_by_R2q}. Second, we infer a~rational expression of star height~$q$, denoting $W_q$, in Lemma~\ref*{lm:expression_existence}. And lastly, we show that the star height of the language has to be at~least $q$.
+
+\begin{lemma}\label{lm:W_q_recognised_by_R2q}
+    Language $W_q$ is recognised by an automaton~$\aut{R}(2^q)$.
+\end{lemma}
+
+\begin{proof}
+    We show that each word in $W_q$ is accepted by a~successful computation in $\aut{R}(2^q)$. Let $f$ be a~word in $W_q$. Since $f$ has even length, let $k$ be such that $2k = |f|$. Since $f \in W_q$, $|f|_a - |f|_b = n 2^q$ for some integer $n$.
+
+    For $n=0$, $|f|_a = |f|_b$. We use induction on $k$ to show that for every factorisation $f = uvw$, if $f$ is accepted by $\aut{R}(2^q)$, $uavbw$ and $ubvaw$ are also. For $k = 0$, empty word is accepted since the initial state is also final and both computations $0 \tr{a} 1 \tr{b} 0$, and $0 \tr{b} 2^q-1 \tr{a} 0$ are successful in $\aut{R}(2^q)$. Given the induction hypothesis for some $k - 1$, every word $f = uvw$ of length $2k - 2$ such that $|f|_a = |f|_b$ is accepted by computation
+    \[
+        0 \tr{\re{E}} i \tr{\re{F}} j \tr{\re{G}} 0 \, ,
+    \]
+    where $u \in L[\re{E}], v \in L[\re{F}]$, and $v \in L[\re{G}]$. We need to show that computations
+    \begin{align*}
+        0 &\tr{\re{E}} i \tr{a} i+1 \tr{\re{F}} j+1 \tr{b} j \tr{\re{G}} 0 \, , \quad \text{and} \\
+        0 &\tr{\re{E}} i \tr{b} i-1 \tr{\re{F}} j-1 \tr{a} j \tr{\re{G}} 0 \, ,
+    \end{align*}
+    are successful. For any two states $r$ and $t$ of $\aut{R}(2^q)$, the computation $r \tr{\re{H}} t$ can be written as a sequence of transitions:
+    \[
+        r \tr{\re{X}_1} s_1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} \tr{\re{X}_m} t \, ,
+    \]
+    where each $\re{X}_l$ is either a letter $a$ or $b$. Due to Lemma~\ref*{lm:R_n_computation_existence}, computations
+    \begin{align*}
+        r + 1 &\tr{\re{X}_1} s_1 + 1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} + 1 \tr{\re{X}_m} t + 1 \, , \quad \text{and} \\
+        r - 1 &\tr{\re{X}_1} s_1 - 1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} - 1 \tr{\re{X}_m} t - 1 \\
+    \intertext{are also in $\aut{R}(2^q)$, and so are}
+        r \tr{a} r + 1 &\tr{\re{X}_1} s_1 + 1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} + 1 \tr{\re{X}_m} t + 1 \tr{b} t \, , \quad \text{and} \\
+        r \tr{b} r - 1 &\tr{\re{X}_1} s_1 - 1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} - 1 \tr{\re{X}_m} t - 1 \tr{a} t \, .
+    \end{align*}
+    If we take computation $i \tr{\re{F}} j$ in place of $r \tr{\re{H}} t$, the assertion is proved.
+
+    For $n \neq 0$, $|f|_a - |f|_b = n 2^q$. Let $g$ be a word such that $|g|_a = |g|_b$, therefore $g$ is accepted by $\aut{R}(2^q)$. Computation accepting $g$ can be written as
+    \[
+        0 \tr{\re{X}_1} s_1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} \tr{\re{X}_m} 0 \, ,
+    \]
+    where each $\re{X}_l$ is either a letter $a$ or $b$. Let $\re{Y}_1, \dotsc, \re{Y}_{m+1}$ be expressions such that $f$ is in $L[\re{Y}_1 \re{X}_1 \dotsm \re{Y}_m \re{X}_m \re{Y}_{m+1}]$. Let $e_h$ be in $L[\re{Y}_h]$ for $1 \leq h \leq m+1$.
+    \[
+        n 2^q = |f|_a - |f|_b = |g|_a + \sum_{h=1}^{m+1} |e_h|_a - |g|_b - \sum_{h=1}^{m+1} |e_h|_b = \sum_{h=1}^{m+1} (|e_h|_a - |e_h|_b) \, .
+    \]
+    By $m + 1$ iterations of Lemma~\ref*{lm:R_n_computation_existence}, it follows that computation
+    \begin{multline*}
+        0 \tr{\re{Y}_1 \re{X}_1} p_1 + (|e_1|_a - |e_1|_b) \tr{\re{Y}_2 \re{X}_2} p_2 + \sum_{h=1}^{2} (|e_h|_a - |e_h|_b) \tr{\re{Y}_3 \re{X}_3} \dotsb \\
+        \dotsb \tr{\re{Y}_{m-1} \re{X}_{m-1}} p_{m-1} + \sum_{h=1}^{m-1} (|e_h|_a - |e_h|_b) \tr{\re{Y}_m \re{X}_m \re{Y}_{m+1}} \sum_{h=1}^{m+1} (|e_h|_a - |e_h|_b) \, .
+    \end{multline*}
+    is in $\aut{R}(2^q)$. It is successful computation in $\aut{R}(2^q)$ because
+    \[
+        n 2^q = \sum_{h=1}^{m+1} (|e_h|_a - |e_h|_b) \equiv 0 \pmod{2^q}.
+    \]
+\end{proof}
 
 \begin{lemma}\label{lm:expression_existence}
     Language $W_q$ is denoted by a rational expression of star height $q$.
