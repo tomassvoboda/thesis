@@ -71,65 +71,79 @@ The proof has three parts. First, we find an automaton that recognises $W_q$ in 
 \end{lemma}
 
 \begin{proof}
-    $W_q$ is recognised by an automaton~${\mathcal{R}(2^q)}$. The rational expression of star height $q$ will be obtained by applying the state removal algorithm on~${\mathcal{R}(2^q)}$. That means that the only transition left in the final automaton will be labelled by the desired rational expression. First we inductively define the following rational expressions:
+    Due to Lemma~\ref*{lm:W_q_recognised_by_R2q}, language $W_q$ is recognised by an~automaton $\aut{R}(2^q)$. By iterative application of the state removal algorithm, we will obtain an~automaton with only one state. First, we inductively define the following rational expressions:
     \begin{align*}
-        \re{X}_0 &= a, & \re{Y}_0 &= b, & &\text{ and } & \re{Z}_0 &= \re{0}, \\
-        \re{X}_1 &= a^2, & \re{Y}_1 &= b^2, & &\text{ and } & \re{Z}_1 &= ab+ba, \\
+        \re{X}_0 &= a \, , & \re{Y}_0 &= b \, , & &\text{ and } & \re{Z}_0 &= \re{0} \, , \\
+        \re{X}_1 &= a^2 \, , & \re{Y}_1 &= b^2 \, , & &\text{ and } & \re{Z}_1 &= ab+ba \, , \\
         &\; \vdots & &\; \vdots & & & &\; \vdots \\
-        \re{X}_{n+1} &= \re{X}_n \re{Z}_n^* \re{X}_n, & \re{Y}_{n+1} &= \re{Y}_n \re{Z}_n^* \re{Y}_n, & &\text{ and } & \re{Z}_{n+1} &= \re{Z}_n + \re{X}_n \re{Z}_n^* \re{Y}_n + \re{Y}_n \re{Z}_n^* \re{X}_n.
+        \re{X}_{n+1} &= \re{X}_n \re{Z}_n^* \re{X}_n \, , & \re{Y}_{n+1} &= \re{Y}_n \re{Z}_n^* \re{Y}_n \, , & &\text{ and } & \re{Z}_{n+1} &= \re{Z}_n + \re{X}_n \re{Z}_n^* \re{Y}_n + \re{Y}_n \re{Z}_n^* \re{X}_n \, .
+    \end{align*}
+    Second, we define automaton $\aut{A}_k$ as $\aut{A}_k = \langle \Z_{2^{q-k}}, A, E, \{0\}, \{0\} \rangle$ such that any state $p$ in $\aut{A}_k$ is source of exactly three transitions in $\aut{A}_k$:
+    \[
+        p \tr{\re{X}_k} p+1 \, , \quad p \tr{\re{Y}_k} p-1 \, , \quad \text{and} \quad p \tr{\re{Z}_k} p \, .
+    \]
+    By induction on $k$, we show that $W_q$, accepted by $\aut{R}(2^q)$, is also accepted by $\aut{A}_k$.
+
+    Let $k = 0$. Note that for each state $p$ in $\aut{A}_0$, transitions
+    \[
+        p \tr{\re{X}_0} p+1 \, , \quad p \tr{\re{Y}_0} p-1 \, , \quad \text{and} \quad p \tr{\re{Z}_0} p
+    \]
+    are in $\aut{R}(2^q)$. Similarly, for any state $r$ in $\aut{R}(2^q)$, transitions
+    \[
+        r \tr{a} r+1 \, , \quad r \tr{b} r-1
+    \]
+    are in $\aut{A}_0$. Therefore $\aut{R}(2^q)$ is equivalent to $\aut{A}_0$.
+
+    Given the induction hypothesis for some $k - 1$, $W_q$ is accepted by $\aut{A}_{k-1}$. Automaton $\aut{A}_k$ is obtained by $2^{q-k}$ iterations of the state removal algorithm. The set of states of $\aut{A}_{k-1}$ is $\Z_{2^{q-k+1}}$. Consecutively, in the increasing order, we remove all the odd states of $\aut{A}_{k-1}$, that means states $1, 3, 5, \dotsc, 2^{q-k+1}-1$. Let $m$ be the removed odd state.
+
+    For $m = 1$, the transitions that have $1$ as a source, destination, or both are:
+    \[
+        1 \tr{\re{X}_{k-1}} 2 \, , \quad 1 \tr{\re{Y}_{k-1}} 0 \, , \quad 0 \tr{\re{X}_{k-1}} 1 \, , \quad 2 \tr{\re{Y}_{k-1}} 1 \, , \quad \text{and} \quad 1 \tr{\re{Z}_{k-1}} 1 \, .
+    \]
+    Those transitions are removed, in accordance with the state removal algorithm. For each pair of states, $(0,0), (0,2), (2,0), (2,2)$, these transitions are replaced:
+    \begin{align*}
+        &0 \tr{\re{Z}_{k-1}} 0 & &\text{replaced by} & &0 \tr{\re{Z}_{k-1} \: + \: \re{X}_{k-1}\re{Z}_{k-1}^*\re{Y}_{k-1}} 0 \, , \\
+        &0 \tr{\re{E}} 2 & &\text{replaced by} & &0 \tr{\re{E} \: + \: \re{X}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}} 2 \, , \\
+        &2 \tr{\re{E}} 0 & &\text{replaced by} & &2 \tr{\re{E} \: + \: \re{Y}_{k-1}\re{Z}_{k-1}^*\re{Y}_{k-1}} 0 \, , \\
+        &2 \tr{\re{Z}_{k-1}} 2 & &\text{replaced by} & &2 \tr{\re{Z}_{k-1} \: + \: \re{Y}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}} 2 \, .
     \end{align*}
 
-    Next, we look at constructing an~automaton, which we will call ${\mathcal{R}(2^q)}_0$, from ${\mathcal{R}(2^q)}$. The construction is shown in~\autoref*{fig:construction_of_R2q_0}. Every transition labelled~$a$ is replaced by one labelled $\re{X}_0$, every transition labelled~$b$ is replaced by one labelled $\re{Y}_0$, and a~loop labelled $\re{Z}_0$ is added to every state. Finally, we add two new distinct states $i$ and $t$, and related spontaneous transitions, in the same way as in the beginning of the state removal algorithm. It is clear, that ${\mathcal{R}(2^q)}_0$ accepts the same language as ${\mathcal{R}(2^q)}$.
+    For $3 \leq m \leq 2^{q-k+1}-3$, the states $1, 3, \dotsc, m-2$ are already removed. The transitions that have $m$ as a source, destination, or both are:
+    \begin{multline*}
+        m \tr{\re{X}_{k-1}} m+1 \, , \quad m \tr{\re{Y}_{k-1}} m-1 \, , \quad m-1 \tr{\re{X}_{k-1}} m \, , \\
+        m+1 \tr{\re{Y}_{k-1}} m \, , \quad \text{and} \quad m \tr{\re{Z}_{k-1}} m \, .
+    \end{multline*}
+    As in the case $m = 1$, those transitions are removed. For each pair of states, $(m-1,m-1), (m-1,m+1), (m+1,m-1), (m+1,m+1)$, these transitions are replaced:
+    \begin{align*}
+        &m \! - \! 1 \tr{\re{Z}_{k-1} \: + \: \re{Y}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}} m \! - \! 1 & &\text{replaced by} & &m \! - \! 1 \tr{\re{Z}_k} m-1 \, , \\
+    \intertext{since $\re{Z}_k = (\re{Z}_{k-1} + \re{Y}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}) + \re{X}_{k-1}\re{Z}_{k-1}^*\re{Y}_{k-1} \, $,}
+        &m \! - \! 1 \tr{\re{E}} m+1 & &\text{replaced by} & &m \! - \! 1 \tr{\re{E} \: + \: \re{X}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}} m+1 \, , \\
+        &m \! + \! 1 \tr{\re{E}} m-1 & &\text{replaced by} & &m \! + \! 1 \tr{\re{E} \: + \: \re{Y}_{k-1}\re{Z}_{k-1}^*\re{Y}_{k-1}} m-1 \, , \\
+        &m \! + \! 1 \tr{\re{Z}_{k-1}} m+1 & &\text{replaced by} & &m \! + \! 1 \tr{\re{Z}_{k-1} \: + \: \re{Y}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}} m \! + \! 1.
+    \end{align*}
 
-    \begin{figure}[h]%
-        \centering
-        \subfloat[An automaton~${\mathcal{R}(2^q)}$]{%
-            \input{./figures/automaton_R2q}}%
-        \hspace{60pt}%
-        \subfloat[An automaton~${\mathcal{R}(2^q)}_0$]{%
-            \input{./figures/automaton_R2q_0}}
-        \caption{Construction of ${\mathcal{R}(2^q)}_0$ from ${\mathcal{R}(2^q)}$}\label{fig:construction_of_R2q_0}%
-    \end{figure}
+    Lastly for $m = 2^{q-k+1}-1$,  the states $1, 3, \dotsc, 2^{q-k+1}-3$ are already removed. Since $m = 2^{q-k+1}-1$, the state $m+1$ is $0 \equiv 2^{q-k+1} \pmod{2^{q-k+1}}$. The transitions that have $m$ as a source, destination, or both are:
+    \begin{multline*}
+        m \tr{\re{X}_{k-1}} 0 \, , \quad m \tr{\re{Y}_{k-1}} m-1 \, , \quad m-1 \tr{\re{X}_{k-1}} m \, , \\
+        0 \tr{\re{Y}_{k-1}} m \, , \quad \text{and} \quad m \tr{\re{Z}_{k-1}} m \, .
+    \end{multline*}
+    As for every $m \leq 2^{q-k+1}-3$, these transitions are removed. For each pair of states, $(m-1,m-1), (m-1,0), (0,m-1), (0,0)$, these transitions are replaced:
+    \begin{align*}
+        m \! - \! 1 &\tr{\re{Z}_{k-1} \: + \: \re{Y}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}} m \! - \! 1 & &\text{replaced by} & m \! - \! 1 &\tr{\re{Z}_k} m-1 \, , \\
+        m \! - \! 1 &\tr{\re{E}} 0 & &\text{replaced by} & m \! - \! 1 &\tr{\re{E} \: + \: \re{X}_{k-1}\re{Z}_{k-1}^*\re{X}_{k-1}} 0 \, , \\
+        0 &\tr{\re{E}} m-1 & &\text{replaced by} & 0 &\tr{\re{E} \: + \: \re{Y}_{k-1}\re{Z}_{k-1}^*\re{Y}_{k-1}} m \! - \! 1 \, , \\
+        0 &\tr{\re{Z}_{k-1} \: + \: \re{X}_{k-1}\re{Z}_{k-1}^*\re{Y}_{k-1}} 0 & &\text{replaced by} & 0 &\tr{\re{Z}_k} 0 \, .
+    \end{align*}
 
-    This phase of the proof has $q-2$ steps. In each step $i$, for $1 \leq i \leq q-2$, we construct ${\mathcal{R}(2^q)}_i$ from ${\mathcal{R}(2^q)}_{i-1}$ without changing the recognised language. Each step $i$ of this phase comprises of $2^{q-i}$ steps of the state removal algorithm. The states removed are all the odd states of the ${\mathcal{R}(2^q)}_{i-1}$ automaton. That means that if ${\mathcal{R}(2^q)}$ has $2^q$ states, then ${\mathcal{R}(2^q)}_0$ has $2^q + 2$ states, ${\mathcal{R}(2^q)}_1$ has $2^{q-1} + 2$ states, and so on, which leaves the automaton produced by the last step of this phase, ${\mathcal{R}(2^q)}_{q-2}$, with $2^{q-(q-2)} + 2 = 6$ states. After the removal of the $2^{q-i}$ odd states, the remaining $2^{q-i}$ even states, that is excluding the two special states~$i$ and~$t$, are renamed as members of $\Z_{2^{q-i}}$. \autoref*{fig:construction_of_R2q_i} illustrates the $i$th step of this phase.
+    Thus, after $2^{q-k}$ odd states removed, we have automaton with $2^{q-k}$ states, all non-negative even numbers $\leq 2^{q-k+1}-2$, that accepts $W_q$. To complete the inductive step, create automaton $\aut{A}_k$, we `rename' each state $2t$ as $t$, $t \in \{ 0, 1, 2, \dotsc, 2^{q-k}-1 \}$, meaning we replace each state $2t$ with $t$, each transition $2t \tr{\re{E}} s$ with $t \tr{\re{E}} s$, and $s \tr{\re{E}} 2t$ with $s \tr{\re{E}} t$, for every state $s$.
 
-    \begin{figure}[h]%
-        \centerline{
-            \hspace{-25pt}%
-            \subfloat[An automaton~${\mathcal{R}(2^q)}_{i-1}$]{%
-                \input{./figures/automaton_R2q_i-1}}%
-            \quad
-            \subfloat[${\mathcal{R}(2^q)}_{i-1}$ after $2^{q-i}$ steps of the state removal algorithm]{\label{fig:odd_states_removed}%
-                \input{./figures/automaton_R2q_i_before_renaming}}
-            \quad
-            \subfloat[Automaton from figure~\ref*{fig:odd_states_removed} with renamed states, which is an automaton~${\mathcal{R}(2^q)}_i$]{%
-                \input{./figures/automaton_R2q_i}}%
-        }
-        \caption{Construction of ${\mathcal{R}(2^q)}_i$ from ${\mathcal{R}(2^q)}_{i-1}$\\ \X{Can the image overflow the text margins?}}\label{fig:construction_of_R2q_i}%
-    \end{figure}
-
-    The result of the $q-2$ steps described above is an automaton~${\mathcal{R}(2^q)}_{q-2}$, shown in Figure~\ref*{fig:automaton_R2q_q-2}. ${\mathcal{R}(2^q)}_{q-1}$ is clearly a result of the states $1$, and $3$ being removed from the automaton~${\mathcal{R}(2^q)}_{q-2}$ by the state removal algorithm. The equivalence
+    After $q$ steps of the induction on $k$ we cannot further reduce the states of $\aut{A}_q$ since it only has one state. This automaton has also only one transition, a loop on the state $0$, with label $\re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1})$. Note the following equivalence:
     \[
-        {(\re{Z}_{q-1} + {(\re{X}_{q-1} + \re{Y}_{q-1})}\re{Z}_{q-1}^*{(\re{X}_{q-1} + \re{Y}_{q-1})})}^* = {(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*
+        \re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1}) \equiv \re{X}_q + \re{Y}_q + \re{Z}_q \, . \\
     \]
-    shows, that after applying the state removal algorithm on the state $1$ of ${\mathcal{R}(2^q)}_{q-1}$, we get ${\mathcal{R}(2^q)}_{q}$. These two last steps are shown in the~\autoref*{fig:construction_of_R2q_q}.
+    Since $0 \tr{\re{X}_q + \re{Y}_q + \re{Z}_q} 0$ is the only transition in $\aut{A}_q$ and $0$ is initial and accepting state, $W_q = L(\aut{A}_q) = L[{(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*]$.
 
-    \begin{figure}[h]%
-        \centerline{
-            \hspace{-25pt}%
-            \subfloat[An automaton~${\mathcal{R}(2^q)}_{q-2}$]{\label{fig:automaton_R2q_q-2}%
-                \input{./figures/automaton_R2q_q-2}}%
-            \quad
-            \subfloat[An automaton~${\mathcal{R}(2^q)}_{q-1}$]{%
-                \input{./figures/automaton_R2q_q-1}}%
-            \quad
-            \subfloat[An automaton~${\mathcal{R}(2^q)}_{q}$]{%
-                \input{./figures/automaton_R2q_q}}%
-        }
-        \caption{Steps $q-2, \: q-1$, and $q$ of the construction of ${\mathcal{R}(2^q)}_q$\\ \X{Fix the vertical space of the subfigures!}}\label{fig:construction_of_R2q_q}%
-    \end{figure}
-
-    Each of the rational expressions $\re{X}_q, \re{Y}_q$, and $\re{Z}_q$ has star height of $q-1$, therefore ${(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*$ has star height of $q$. Since none of the automaton constructions changed the recognised language, it follows that $W_q$ is denoted by ${(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*$.
+    The fact that $\h{{(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*} = q$ proves the lemma.
 \end{proof}
 
 \begin{example}
