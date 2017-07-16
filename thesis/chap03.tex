@@ -1,3 +1,43 @@
-\chapter{Further developments}
+\chapter{Generalisation}
 
-In the previous chapter we have shown how to calculate the star height of a particular family of languages. K. Hashiguchi gave the solution of the general case in~\cite{Hashiguchi1988}, but it was described on multiple occasions as very difficult to read. D. Kirsten presented several papers, including~\cite{Kirsten05}, with a new proof of Hashiguchi's result which seems far more intelligible.
+In this chapter we provide a few generalisations of constructs from the first chapter and discuss how they are different from the original ones.
+
+\begin{defn}
+    \emph{A generalised rational expression over $A$} is a formula obtained inductively from the letters of $A$ and the symbols $\{ \: \re{0} \: , \: \re{1} \: , \: + \: , \: \cdot \: , * \: , \: - \: , \: \wedge \: , \: ^{\prime} \: \}$ by the following process:
+    \begin{itemize}
+        \item[(i)] $\re{0}, \re{1}$, and $a$, for $a$ in $A$, are rational expressions,
+        \item[(ii)] if $\re{E}$ and $\re{F}$ are rational expressions, then
+            \[
+                (\re{E} + \re{F}) \; , \quad (\re{E} \cdot \re{F}) \; , \quad (\re{E}^*) \; , \quad (\re{E} - \re{F}) \; , \quad (\re{E} \wedge \re{F}) \; , \quad (\re{E}^{\prime})
+            \]
+             are rational expressions.
+    \end{itemize}
+    We write $\re{GRatE} A^*$ for the set of generalised rational expressions over $A$.
+\end{defn}
+
+The languages denoted by generalised rational expressions are the same as for the rational expressions plus, to accommodate the added symbols, we let:
+\[
+    L[\re{E} - \re{F}] = L[\re{E}] \setminus L[\re{F}] \; , \quad L[\re{E} \wedge \re{F}] = L[\re{E}] \cap L[\re{E}] \; , \quad L[\re{E}^{\prime}] = \complement_{A^*} L[\re{E}].
+\]
+
+\begin{defn}
+    Let $\re{E} \in \re{GRatE} A^*$. \emph{Generalised star height} is, by induction on the complexity of expressions:
+    \begin{align*}
+        &\text{if } \re{E} = \re{0}, \; \re{E} = \re{1} \; \text{ or } \; \re{E} = a, \text{ for } a \in A \; , & &\gh{\re{E}} = 0 \; , \\
+        &\text{if } \re{E} = \re{F} + \re{G} \; \text{ or } \; \re{E} = \re{F} \cdot \re{G}\; , & &\gh{\re{E}} = \max{(\gh{\re{F}}, \gh{\re{G}})} \; , \\
+        &\text{if } \re{E} = \re{F}^* \; , & &\gh{\re{E}} = 1 + \gh{\re{F}} \; , \\
+        &\text{if } \re{F} = \re{E}^{\prime} \; , & &\gh{\re{E}} = \gh{\re{F}} \; .
+    \end{align*}
+\end{defn}
+For $\re{E} = \re{F} - \re{G}$, or $\re{E} = \re{F} \wedge \re{G}$, due to De Morgan's laws, identities exist:
+\[
+    \re{F} - \re{G} \equiv \re{F} \wedge \re{G}^{\prime} \; , \quad \text{and} \quad \re{F} \wedge \re{G} \equiv {(\re{F}^{\prime} + \re{G}^{\prime})}^{\prime} \;
+\]
+thus $\gh{\re{E}} = \max{(\gh{\re{F}}, \gh{\re{G}})}$. The generalised star height of rational language $L$ over $A^*$, written $\gh{L}$, is the minimum of the generalised star heights of the generalised rational expressions that denote $L$:
+\[
+    \gh{L} = \min \{ \gh{\re{E}} \mid \re{E} \in \re{GRatE} A^*: L = L[\re{E}] \} \; .
+\]
+
+The determination of the star height of a~rational language, however a~difficult problem, has been solved. The determination of the generalised star height still remains to be solved. Two open questions, that are raised by the definition of generalised star height of rational language, are namely the existence of an~infinite hierarchy and the computation of generalised star height.
+
+Not only do we not know whether there are rational languages with arbitrarily large generalised star height, but even language with generalised star height greater than 1 has not yet been shown. On the other hand, for languages whose generalised star height is equal to 0, or so called \emph{star-free languages}, Schützenberger~\cite{Schutzenberger65} provided an algebraic characterization.
