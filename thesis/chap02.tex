@@ -217,10 +217,11 @@ We have found a~rational expression of star height $q$ denoting the language $W_
 
 \begin{proof}
     By induction on $k$. For $k = 0$, $|ab|_a - |ab|_b = 0$ regardless of $n$. Given the induction hypothesis for some $k - 1$, $|w_{k-1,n}|_a - |w_{k-1,n}|_b = 0$. The word $w_{k,n}$ consists wholly of factors $a^{2^k}, \: b^{2^k}$, and two ${(w_{k-1,n})}^n$. Thus:
-    \begin{multline*}
-        |w_{k,n}|_a - |w_{k,n}|_b = |a^{2^k}|_a + 2|{(w_{k-1,n})}^n|_a + |b^{2^k}|_a - |a^{2^k}|_b - 2|{(w_{k-1,n})}^n|_b - |b^{2^k}|_b \\
-        = 2^k + 2 \, n \, |w_{k-1,n}|_a + 2^k - 2^k - 2 \, n \, |w_{k-1,n}|_b - 2^k = 2 \, n \, ( \, |w_{k-1,n}|_a - |w_{k-1,n}|_b \, ) = 0.
-    \end{multline*}
+    \begin{align*}
+        |w_{k,n}|_a - |w_{k,n}|_b &= |a^{2^k}|_a + 2|{(w_{k-1,n})}^n|_a + |b^{2^k}|_a - |a^{2^k}|_b - 2|{(w_{k-1,n})}^n|_b - |b^{2^k}|_b \\
+        &= 2^k + 2 \, n \, |w_{k-1,n}|_a + 2^k - 2^k - 2 \, n \, |w_{k-1,n}|_b - 2^k \\
+        &= 2 \, n \, ( \, |w_{k-1,n}|_a - |w_{k-1,n}|_b \, ) = 0.
+    \end{align*}
 \end{proof}
 
 From Lemma~\ref*{lm:witness_words_equality} it follows that any witness word $w_{k,n}$ is in any language $W_q$.
@@ -234,10 +235,11 @@ From Lemma~\ref*{lm:witness_words_equality} it follows that any witness word $w_
 
 \begin{proof}
     First, we prove the inequalities of the prefix $u$. Let $u = {(w_{k,n})}^i u'$ such that $u'$ is a~proper prefix of $w_{k,n}$. Since
-    \begin{multline*}
-        |u|_a - |u|_b = |{(w_{k,n})}^i|_a + |u'|_a - |{(w_{k,n})}^i|_b - |u'|_b \\
-        = i \, ( \, |w_{k,n}|_a - |w_{k,n}|_b \, ) + |u'|_a - |u'|_b = |u'|_a - |u'|_b,
-    \end{multline*}
+    \begin{align*}
+        |u|_a - |u|_b &= |{(w_{k,n})}^i|_a + |u'|_a - |{(w_{k,n})}^i|_b - |u'|_b \\
+        &= i \, ( \, |w_{k,n}|_a - |w_{k,n}|_b \, ) + |u'|_a - |u'|_b \\
+        &= |u'|_a - |u'|_b,
+    \end{align*}
     we only need to prove that the inequalities hold for a prefix of $w_{k,n}$. This lets us assume, without loss of generality, that $u$ is proper prefix of $w_{k,n}$. We proceed by induction on $k$. For $k = 0$, $u$ is a~prefix of $ab$ and we can see that the assertion is true. Given the induction hypothesis for some $k - 1$, a prefix of $w_{k-1,n}$ has between $0$ and $2^k-1$ more $a$'s than $b$'s. The word
     \[
         w_{k,n} = a^{2^k} {(w_{k-1,n})}^n b^{2^k} {(w_{k-1,n})}^n
