@@ -10,7 +10,7 @@
 
         "Tomáš", "Svoboda", "Štěpán", "Holub",
         "recognised", "bijection", "distributivity",
-        "Eggan", "Eggan's", "Dejean", "Schützenberger", "Sakarovitch", "Kleene", "Brzozowski", "Cluskey", "McNaughton", "Hashiguchi"
+        "Eggan", "Eggan's", "Dejean", "Schützenberger", "Sakarovitch", "Kleene", "Brzozowski", "Cluskey", "McNaughton", "Hashiguchi", "Hashiguchi's"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
