@@ -157,43 +157,43 @@ The proof has three parts. First, we find an automaton that recognises $W_q$ in 
 \end{proof}
 
 \begin{example}
-    According to the procedure described in the Proof of~Lemma~\ref*{lm:expression_existence}, we apply the state removal algorithm on the automaton~${\mathcal{R}(8)}$, recognising language~$W_3$. The steps of the creation of rational expression ${(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*$, denoting $W_3$, are shown in~\autoref*{fig:automaton_R8_state_removal_steps}.
+    Language $W_3$ is recognised by $\aut{R}(8)$. In~\autoref*{fig:automaton_R8_state_removal_steps}, we show how the rational expression $\re{X}_3 + \re{Y}_3 + \re{Z}_3$ is derived. Then $W_3 = L[{(\re{X}_3 + \re{Y}_3 + \re{Z}_3)}^*]$.
 
     \begin{figure}[h]%
         \centerline{
             \hspace{-15mm}%
-            \subfloat[An automaton~${\mathcal{R}(8)}$]{%
+            \subfloat[Automaton~$\aut{R}(8)$]{%
                 \input{./figures/automaton_R8}}%
             \qquad
-            \subfloat[An automaton~${\mathcal{R}(8)}_0$]{%
-                \input{./figures/automaton_R8_0}}%
+            \subfloat[Automaton~$\aut{A}_0$]{%
+                \input{./figures/automaton_R8_A_0}}%
             \qquad
             \subfloat[]{%
-                \input{./figures/automaton_R8_0_removed1}}
+                \input{./figures/automaton_R8_A_0_removed1}}
         }
         \vspace{5mm}
         \centerline{
             \hspace{-15mm}%
             \subfloat[]{%
-                \input{./figures/automaton_R8_0_removed2}}%
+                \input{./figures/automaton_R8_A_0_removed2}}%
             \quad
             \subfloat[]{%
-                \input{./figures/automaton_R8_0_removed3}}
+                \input{./figures/automaton_R8_A_0_removed3}}
             \quad
-            \subfloat[An automaton~${\mathcal{R}(8)}_1$]{%
-                \input{./figures/automaton_R8_1}}
+            \subfloat[Automaton~$\aut{A}_1$]{%
+                \input{./figures/automaton_R8_A_1}}
         }
         \vspace{5mm}
         \centerline{
             \hspace{-15mm}%
             \subfloat[]{%
-                \input{./figures/automaton_R8_1_removed1}}%
+                \input{./figures/automaton_R8_A_1_removed1}}%
             \quad
-            \subfloat[An automaton~${\mathcal{R}(8)}_2$]{%
-                \input{./figures/automaton_R8_2}}
+            \subfloat[Automaton~$\aut{A}_2$]{%
+                \input{./figures/automaton_R8_A_2}}
             \quad
-            \subfloat[An automaton~${\mathcal{R}(8)}_3$]{%
-                \input{./figures/automaton_R8_3}}
+            \subfloat[Automaton~$\aut{A}_3$]{%
+                \input{./figures/automaton_R8_A_3}}
         }
         \caption{Steps of the state removal algorithm on $\aut{R}(8)$ executed in the order described in the Proof of~Lemma~\ref*{lm:expression_existence}}\label{fig:automaton_R8_state_removal_steps}%
     \end{figure}

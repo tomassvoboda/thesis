@@ -3,12 +3,9 @@
     \tikzstyle{initial}=[my_initial_state]
     \tikzstyle{accepting}=[my_accepting_state]
     %\draw[help lines] (-1.8,1.8) grid (1.8,-1.8);
-    \node[state] (0) at (1.8,0) {0};
+    \node[state, initial, accepting] (0) at (1.8,0) {0};
     \node[state] (2) at (1.8,-3.6) {2};
     \node[state] (3) at (0,-1.8) {3};
-
-    \node[state, initial] (i) at (0,0) {$i$};
-    \node[state, accepting] (t) at (3.6,0) {$t$};
 
     \path
         (0) edge [loop above] node {$ab+ba+a^2{(ab+ba)}^*b^2$} ()
@@ -20,8 +17,5 @@
         (3) edge [loop left] node [below left=-2mm] {$ab+ba$} ()
         (3) edge [bend left] node [left=-0.5mm] {$a^2$} (0)
         (0) edge [bend left] node [above] {$b^2$} (3)
-
-        (i) edge node [above] {$\re{1}$} (0)
-        (0) edge node [above] {$\re{1}$} (t)
     ;
 \end{tikzpicture}
