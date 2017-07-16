@@ -276,7 +276,7 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     which can be written as $r+m \tr{\re{H}} t+m$.
 \end{proof}
 
-\subsubsection*{State removal \X{algorithm?}}
+\subsubsection*{State removal algorithm}
 
 \begin{lemma}\label{lm:state_removal_lemma}
     Let $\aut{A} = \langle Q, A, E, I, T \rangle$ be an~automaton with $n$ states which has at least one state that is neither initial nor accepting, that means $Q \setminus (I \cup T) \neq \emptyset$. An~automaton $\aut{B}$ with $n - 1$ states exists such that $L(\aut{B}) = L(\aut{A})$.
@@ -332,4 +332,4 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     This shows that every word accepted by $\aut{A}$ is also accepted by $\aut{B}$.
 \end{proof}
 
-By iterating the removal of states in Lemma~\ref*{lm:state_removal_lemma} on $\aut{A} = \langle Q, A, E, I, T \rangle$, we can create an automaton with only $|I \cup T|$ states that accepts $L(\aut{A})$. It is important to note that depending on the order of the states chosen to be removed, we obtain different automata.
+By iterating the removal of states in Lemma~\ref*{lm:state_removal_lemma} on $\aut{A} = \langle Q, A, E, I, T \rangle$, we can create an automaton with only $|I \cup T|$ states that accepts $L(\aut{A})$. It is important to note that depending on the order of the states chosen to be removed, we may obtain different automata.
