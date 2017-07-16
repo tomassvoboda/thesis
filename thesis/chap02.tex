@@ -94,7 +94,7 @@ The proof has three parts. First, we find an automaton that recognises $W_q$ in 
     \]
     are in $\aut{A}_0$. Therefore $\aut{R}(2^q)$ is equivalent to $\aut{A}_0$.
 
-    Given the induction hypothesis for some $k - 1$, $W_q$ is accepted by $\aut{A}_{k-1}$. Automaton $\aut{A}_k$ is obtained by $2^{q-k}$ iterations of the state removal algorithm. The set of states of $\aut{A}_{k-1}$ is $\Z_{2^{q-k+1}}$. Consecutively, in the increasing order, we remove all the odd states of $\aut{A}_{k-1}$, that means states $1, 3, 5, \dotsc, 2^{q-k+1}-1$. Let $m$ be the removed odd state.
+    Given the induction hypothesis for some $k - 1$, $W_q$ is accepted by $\aut{A}_{k-1}$. By $2^{q-k}$ iterations of the state removal algorithm an automaton with $2^{q-k}$ states is obtained. The set of states of $\aut{A}_{k-1}$ is $\Z_{2^{q-k+1}}$. Consecutively, in the increasing order, we remove all the odd states of $\aut{A}_{k-1}$, that is, states $1, 3, 5, \dotsc, 2^{q-k+1}-1$. Let $m$ be the removed odd state.
 
     For $m = 1$, the transitions that have $1$ as a source, destination, or both are:
     \[
@@ -135,13 +135,16 @@ The proof has three parts. First, we find an automaton that recognises $W_q$ in 
         0 &\tr{\re{Z}_{k-1} \: + \: \re{X}_{k-1}\re{Z}_{k-1}^*\re{Y}_{k-1}} 0 & &\text{replaced by} & 0 &\tr{\re{Z}_k} 0 \, .
     \end{align*}
 
-    Thus, after $2^{q-k}$ odd states removed, we have automaton with $2^{q-k}$ states, all non-negative even numbers $\leq 2^{q-k+1}-2$, that accepts $W_q$. To complete the inductive step, create automaton $\aut{A}_k$, we `rename' each state $2t$ as $t$, $t \in \{ 0, 1, 2, \dotsc, 2^{q-k}-1 \}$, meaning we replace each state $2t$ with $t$, each transition $2t \tr{\re{E}} s$ with $t \tr{\re{E}} s$, and $s \tr{\re{E}} 2t$ with $s \tr{\re{E}} t$, for every state $s$.
+    Thus, after $2^{q-k}$ odd states removed, we have automaton with $2^{q-k}$ states, all non-negative even numbers $\leq 2^{q-k+1}-2$, that accepts $W_q$. To complete the inductive step, create automaton $\aut{A}_k$, we `rename' each state $2t$ as $t$, $t \in \{ 0, 1, 2, \dotsc, 2^{q-k}-1 \}$, meaning we replace each state $2t$ with $t$, each transition $2t \tr{\re{F}} s$ with $t \tr{\re{F}} s$, and $s \tr{\re{F}} 2t$ with $s \tr{\re{F}} t$, for every state $s$.
 
     After $q$ steps of the induction on $k$ we cannot further reduce the states of $\aut{A}_q$ since it only has one state. This automaton has also only one transition, a loop on the state $0$, with label $\re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1})$. Note the following equivalence:
     \[
         \re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1}) \equiv \re{X}_q + \re{Y}_q + \re{Z}_q \, . \\
     \]
-    Since $0 \tr{\re{X}_q + \re{Y}_q + \re{Z}_q} 0$ is the only transition in $\aut{A}_q$ and $0$ is initial and accepting state, $W_q = L(\aut{A}_q) = L[{(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*]$.
+    Therefore
+    \[
+        W_q = L(\aut{A}_q) = L[{(\re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1}))}^*] = L[{(\re{X}_q \! + \! \re{Y}_q \! + \! \re{Z}_q)}^*].
+    \]
 
     The fact that $\h{{(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*} = q$ proves the lemma.
 \end{proof}
