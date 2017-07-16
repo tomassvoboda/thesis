@@ -146,7 +146,14 @@ The proof has three parts. First, we find an automaton that recognises $W_q$ in 
         W_q = L(\aut{A}_q) = L[{(\re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1}))}^*] = L[{(\re{X}_q \! + \! \re{Y}_q \! + \! \re{Z}_q)}^*].
     \]
 
-    The fact that $\h{{(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*} = q$ proves the lemma.
+    By induction on $i$, we show, that $\h{\re{X}_i} = \h{\re{Z}_i} = \h{\re{Z}_i} = i-1$. Let $i=1$. $\h{a^2} = \h{b^2} = \h{ab+ba} = 0$. Given the induction hypothesis for some $i - 1$,
+    $\h{\re{Z}_{i-1}} = i-1$. Therefore
+    \begin{align*}
+        \h{\re{Z}_{i-1}^*} = i &= \h{\re{X}_{i-1} \re{Z}_{i-1}^* \re{X}_{i-1}} = \h{\re{X}_i} \\
+        &= \h{\re{Y}_{i-1} \re{Z}_{i-1}^* \re{Y}_{i-1}} = \h{\re{Y}_i} \\
+        &= \h{\re{Z}_{i-1} + \re{X}_{i-1} \re{Z}_{i-1}^* \re{Y}_{i-1} + \re{Y}_{i-1} \re{Z}_{i-1}^* \re{X}_{i-1}} = \h{\re{Z}_i} \, .
+    \end{align*}
+    We conclude that $\h{{(\re{X}_q + \re{Y}_q + \re{Z}_q)}^*} = q$, which proves the lemma.
 \end{proof}
 
 \begin{example}
