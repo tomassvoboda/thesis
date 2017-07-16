@@ -237,7 +237,7 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     \[
         i \tr{\re{E}} q_0 \tr{\re{F}_1 \re{F}_2 \dotsm \re{F}_j} p \tr{\re{F}_{j+1} \dotsm \re{F}_k} p \tr{\re{F}_{k+1} \dotsm \re{F}_N} q_N \tr{\re{G}} t,
     \]
-    where $L[\re{F}_{j+1} \dotsm \re{F}_k]$ contains the non-empty word $v_{j+1} \dotsm v_k$. Hence, for every integer $n$,
+    where $L[\re{F}_{j+1} \dotsm \re{F}_k]$ contains the non-empty word $v_{j+1} \dotsm v_k$. Hence, for every non-negative integer $n$,
     \[
         i \tr{\re{E}} q_0 \tr{\re{F}_1 \re{F}_2 \dotsm \re{F}_j} p \tr{{(\re{F}_{j+1} \dotsm \re{F}_k)}^n} p \tr{\re{F}_{k+1} \dotsm \re{F}_N} q_N \tr{\re{G}} t,
     \]
@@ -293,7 +293,7 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     \[
         i \tr{\re{A}_1} s_1 \tr{\re{A}_2} s_2 \tr{\re{A}_3} \dotsm \tr{\re{A}_{N-1}} s_{N-1} \tr{\re{A}_N} t.
     \]
-    If some $s_M = q$, there are integers $K$ and $L$ such that
+    If some $s_M = q$, there are non-negative integers $K$ and $L$ such that
     \[
         s_{M-K} = s_{M-K+1} = \dotsb = s_{M-1} = s_M = s_{M+1} = \dotsb = s_{M+L-1} = s_{M+L} = q,
     \]
@@ -301,7 +301,7 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     \[
         i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} p_h \tr{\re{E}_h} q \tr{\overbrace{\scriptstyle \re{F} \dotsm \re{F}}^{\scriptstyle K+L \text{ times}}} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t,
     \]
-    therefore a~factorisation of $f$ exists such that $f = u_1 u_2 v_1 \dotsm v_{K + L} w_1 w_2$, where $u_1 \in L[\re{A}_1 \dotsm \re{A}_{M-K-1}], u_2 \in L[\re{E}_h], v_1, \dotsc, v_{K+L} \in L[\re{F}], w_1 \in L[\re{G}_j], \text{ and } w_2 \in L[\re{A}_{M+L+2} \dotsm \re{A}_N]$. It follows that, for every integer $J$ and any words $g_1, \dotsc, g_J \in L[\re{F}]$, the word $u_1 u_2 g_1 \dotsm g_J w_1 w_2$ is also in $L(\aut{A})$. Specifically it is accepted by computations:
+    therefore a~factorisation of $f$ exists such that $f = u_1 u_2 v_1 \dotsm v_{K + L} w_1 w_2$, where $u_1 \in L[\re{A}_1 \dotsm \re{A}_{M-K-1}], u_2 \in L[\re{E}_h], v_1, \dotsc, v_{K+L} \in L[\re{F}], w_1 \in L[\re{G}_j], \text{ and } w_2 \in L[\re{A}_{M+L+2} \dotsm \re{A}_N]$. It follows that, for every non-negative integer $J$ and any words $g_1, \dotsc, g_J \in L[\re{F}]$, the word $u_1 u_2 g_1 \dotsm g_J w_1 w_2$ is also in $L(\aut{A})$. Specifically it is accepted by computations:
     \begin{align*}
         i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h} q \tr{\overbrace{\scriptstyle \re{F} \dotsm \re{F}}^{\scriptstyle J \text{ times}}} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t \; , \\
         i \tr{\re{A}_1} \dotsm \tr{\re{A}_{M-K-1}} &p_h \tr{\re{E}_h} q \tr{\re{F}^*} q \tr{\re{G}_j} r_j \tr{\re{A}_{M+L+2}} \dotsm \tr{\re{A}_N} t \; , \\
