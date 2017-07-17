@@ -280,6 +280,8 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
 
 \subsubsection*{State removal algorithm}
 
+Brzozowski and McCluskey~\cite{BrzozowskiMcCluskey64} used generalised forms of automata to show that there is a~simple algorithm that takes a~finite automaton and returns a~rational expression denoting the same language that is accepted by the automaton. This algorithm is used in Lemma~\ref*{lm:expression_existence} to find a~rational expression denoting the language recognised by a~ring automaton.
+
 \begin{lemma}\label{lm:state_removal_lemma}
     Let $\aut{A} = \langle Q, A, E, I, T \rangle$ be an~automaton with $n$ states which has at least one state that is neither initial nor accepting, that means $Q \setminus (I \cup T) \neq \emptyset$. An~automaton $\aut{B}$ with $n - 1$ states exists such that $L(\aut{B}) = L(\aut{A})$.
 \end{lemma}
