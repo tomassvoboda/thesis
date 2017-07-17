@@ -271,7 +271,7 @@ Note that if $L$ satisfies $P_k$, it also satisfies $P_l$ for $l < k$ since ${(w
         \item[(iii)] $L$ has a minimum star height of any language satisfying the first two conditions.
     \end{itemize}
 
-    Let $h_k$ be the common value of the star height of the languages in $\mathfrak{W}_k$. Languages in $\mathfrak{W}_0$ are necessarily infinite, therefore $0 < h_0$. $P_k$ implies $P_{k-1}$, which means that $h_{k-1} \leq h_k$. $W_q$ obviously satisfies (i). It also satisfies $P_{q-1}$ since $|{(w_{q-1,n})}^n|_a = |{(w_{q-1,n})}^n|_b$ for each $n$. Because we have found a~rational expression of star height $q$ denoting $W_q$, it follows that $h_{q-1} \leq q$. Therefore we have
+    Let $h_k$ be the common value of the star height of the languages in $\mathfrak{W}_k$. Languages in $\mathfrak{W}_0$ are necessarily infinite, therefore $0 < h_0$. $P_k$ implies $P_{k-1}$, which means that $h_{k-1} \leq h_k$. $W_q$ obviously satisfies (i). It also satisfies $P_{q-1}$ since $|{(w_{q-1,n})}^n|_a = |{(w_{q-1,n})}^n|_b$ for every $n$. Because we have found a~rational expression of star height $q$ denoting $W_q$, it follows that $h_{q-1} \leq q$. Therefore we have
     \[
         0 < h_0 \leq h_1 \leq \dotsb \leq h_{q-1} \leq q.
     \]
@@ -284,7 +284,7 @@ Note that if $L$ satisfies $P_k$, it also satisfies $P_l$ for $l < k$ since ${(w
 
     For each word $g$ in $H_i$, words $u_0 u_1 \dotsm u_m$ and $u_0 u_1 \dotsm u_{i-1} g u_i \dotsm u_m$ are both in language $L$. Therefore, because it has to be true that $|g|_a \equiv |g|_b \pmod{2^q}$, $H_i \subseteq W_q$.
 
-    Since $L$ is of a minimal star height to satisfy $P_k$, none of the $H_i$ satisfies $P_k$. Now we need to show that some $H_i$ satisfies $P_{k-1}$. As a matter of fact, we will have $h_{k-1} \leq h_k - 1$.
+    Since $L$ is of a minimal star height to satisfy $P_k$, none of the $H_i$ satisfies $P_k$. Now we need to show that some $H_i$ satisfies $P_{k-1}$. In fact, we will have $h_{k-1} \leq h_k - 1$.
 
     $L$ satisfies $P_k$, therefore words ${(w_{k,n})}^n$ are factors of~$L$ for arbitrarily large $n$. Lemma~\ref*{lm:block_star_lemma} shows that we can find $N$ large enough, such that there is infinitely many $n' \geq N$, that ${(w_{k,n'})}^{n'}$ is a factor of $L$, and, for each $n'$, we have infinitely many $l$'s, that ${(w_{k,n'})}^l$ is a factor of $L$.
 
