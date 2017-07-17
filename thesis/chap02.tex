@@ -219,7 +219,7 @@ We have found a~rational expression of star height $q$ denoting the language $W_
     By induction on $k$. For $k = 0$, $|ab|_a - |ab|_b = 0$ regardless of $n$. Given the induction hypothesis for some $k - 1$, $|w_{k-1,n}|_a - |w_{k-1,n}|_b = 0$. The word $w_{k,n}$ consists wholly of factors $a^{2^k}, \: b^{2^k}$, and two ${(w_{k-1,n})}^n$. Thus:
     \begin{align*}
         |w_{k,n}|_a - |w_{k,n}|_b &= |a^{2^k}|_a + 2|{(w_{k-1,n})}^n|_a + |b^{2^k}|_a - |a^{2^k}|_b - 2|{(w_{k-1,n})}^n|_b - |b^{2^k}|_b \\
-        &= 2^k + 2 \, n \, |w_{k-1,n}|_a + 2^k - 2^k - 2 \, n \, |w_{k-1,n}|_b - 2^k \\
+        &= 2^k + 2 \, n \, |w_{k-1,n}|_a - 2 \, n \, |w_{k-1,n}|_b - 2^k \\
         &= 2 \, n \, ( \, |w_{k-1,n}|_a - |w_{k-1,n}|_b \, ) = 0.
     \end{align*}
 \end{proof}
