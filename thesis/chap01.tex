@@ -246,6 +246,8 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     Automaton $\langle \Z_n, \{a,b\}, E, \{0\}, \{0\} \rangle$ is called \emph{ring automaton~${\aut{R}(n)}$}, if for each state $z \in \Z_n$ there are exactly two transitions with $z$ as a~source and they are $(z, a, z+1)$ and $(z, b, z-1)$.
 \end{defn}
 
+Note that if state is a~member of $\Z_n$ we often denote it by some addition. For example, let $s, r$ by states of $\aut{R}(n)$. Then $s \tr{\re{E}} s+r$ denotes transition $(s, \re{E}, s+r)$, and $s \tr{\re{E}} s+r \tr{\re{F}} s+2$ denotes computation consisting of transitions $(s, \re{E}, s+r)$ and $(s+r, \re{F}, s+2)$.
+
 \begin{example}
     \autoref*{fig:automaton_R8} shows ring automaton~${\aut{R}(8)}$.
 
