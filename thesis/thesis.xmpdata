@@ -2,6 +2,6 @@
 
 \Author{Tomáš Svoboda}
 \Title{Star height}
-\Keywords{keywords\sep more such\sep yet another}
-\Subject{Abstract of thesis}
+\Keywords{star height \sep infinite hierarchy \sep automata \sep rational expressions}
+\Subject{We present a certain family of languages and show that for those languages infinite hierarchy of star heights exists. The proof was first devised by Dejean and Schützenberger. More recently it was reformulated by Sakarovitch, who left some of the parts of the proof the the reader for more careful consideration. This thesis expands on those parts and provides more detailed proofs. We mainly focus on construction of rational expression with the star height of the given language. We also compare the star height and generalised star height and the difference in achieved results for those two similar concepts.}
 \Publisher{Charles University}
