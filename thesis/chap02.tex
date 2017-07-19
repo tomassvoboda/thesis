@@ -15,7 +15,9 @@ The family of languages provided by Dejean and Schützenberger is the following:
     The language $W_q$ has star height~$q$.
 \end{thm}
 
-The proof has three parts. First, we find an automaton that recognises $W_q$ in Lemma~\ref*{lm:W_q_recognised_by_R2q}. Second, we infer a~rational expression of star height~$q$, denoting $W_q$, in Lemma~\ref*{lm:expression_existence}. And lastly, we show that the star height of the language has to be at~least $q$.
+The proof has three parts. First, we find an~automaton that recognises $W_q$ in Lemma~\ref*{lm:W_q_recognised_by_R2q}. Second, we infer a~rational expression of star height~$q$, denoting $W_q$, in Lemma~\ref*{lm:expression_existence}. And lastly, we show that the star height of the language has to be at~least $q$.
+
+\section{Automaton recognising $W_q$}
 
 \begin{lemma}\label{lm:W_q_recognised_by_R2q}
     Language $W_q$ is recognised by an automaton~$\aut{R}(2^q)$.
@@ -65,6 +67,10 @@ The proof has three parts. First, we find an automaton that recognises $W_q$ in 
         n 2^q = \sum_{h=1}^{m+1} (|e_h|_a - |e_h|_b) \equiv 0 \pmod{2^q}.
     \]
 \end{proof}
+
+\section{Rational expression denoting $W_q$}
+
+We have just proved that language $W_q$ is recognised by the ring automaton $\aut{R}(2^q)$. We have also shown that the state removal algorithm takes an~automaton and finds another one with one less state, that recognises the same language. We combine these results to find an~automaton with only one state, that recognises $W_q$.
 
 \begin{lemma}\label{lm:expression_existence}
     Language $W_q$ is denoted by a rational expression of star height $q$.
@@ -199,7 +205,9 @@ The proof has three parts. First, we find an automaton that recognises $W_q$ in 
     \end{figure}
 \end{example}
 
-We have found a~rational expression of star height $q$ denoting the language $W_q$, which means that the star height of the language will not be higher then $q$. We proceed to show that it also has to be at least $q$. First let us present a few definitions and observe some of their properties that will be useful to us later.
+\section{Witness words}
+
+We have found a~rational expression of star height $q$ denoting the language $W_q$, which means that the star height of the language will not be higher then $q$. In the following sections we proceed to show that it also has to be at least $q$. First, to simplify the proof, we define a~special words, show that they are in every language $W_q$, and show some properties of factors of those words.
 
 \begin{defn}
     For any non-negative integers $k$ and $n$, \emph{witness word $w_{k,n}$} is a word defined recursively as:
@@ -253,7 +261,9 @@ From Lemma~\ref*{lm:witness_words_equality} it follows that any witness word $w_
     Therefore $0 \leq |v|_b - |v|_a \leq 2^{k+1}-1$.
 \end{proof}
 
-Next we use the witness words to define a property of languages.
+\section{Infinite hierarchy}
+
+We use the witness words from the previous section to define properties of languages. Each of those properties specifies a~family of languages with a~common star height that are all subsets of $W_q$. We show that for the language $W_q$, there are $q$ different families, each with the common star height strictly higher then the previous one, proving that $W_q$ itself has to have star height of at least $q$.
 
 \begin{defn}
     We say that language $L$ \emph{satisfies property $P_k$} if there exists an infinite number of values of $n$ such that ${(w_{k,n})}^n$ is a~factor of at~least one word in~$L$.
