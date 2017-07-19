@@ -17,7 +17,7 @@ The family of languages provided by Dejean and Schützenberger is the following:
 
 The proof has three parts. First, we find an~automaton that recognises $W_q$ in Lemma~\ref*{lm:W_q_recognised_by_R2q}. Second, we infer a~rational expression of star height~$q$, denoting $W_q$, in Lemma~\ref*{lm:expression_existence}. And lastly, we show that the star height of the language has to be at~least $q$.
 
-\section{Automaton recognising $W_q$}
+\section{Automaton recognising $W_q$}\label{section:automaton_recognising_W_q}
 
 \begin{lemma}\label{lm:W_q_recognised_by_R2q}
     Language $W_q$ is recognised by an automaton~$\aut{R}(2^q)$.
@@ -68,7 +68,7 @@ The proof has three parts. First, we find an~automaton that recognises $W_q$ in 
     \]
 \end{proof}
 
-\section{Rational expression denoting $W_q$}
+\section{Rational expression denoting $W_q$}\label{section:rational_expression_denoting_W_q}
 
 We have just proved that language $W_q$ is recognised by the ring automaton $\aut{R}(2^q)$. We have also shown that the state removal algorithm takes an~automaton and finds another one with one less state, that recognises the same language. We combine these results to find an~automaton with only one state, that recognises $W_q$.
 
@@ -207,7 +207,7 @@ We have just proved that language $W_q$ is recognised by the ring automaton $\au
 
 \newpage\openright
 
-\section{Witness words}
+\section{Witness words}\label{section:witness_words}
 
 We have found a~rational expression of star height $q$ denoting the language $W_q$, which means that the star height of the language will not be higher then $q$. In the following sections we proceed to show that it also has to be at least $q$. First, to simplify the proof, we define a~special words, show that they are in every language $W_q$, and show some properties of factors of those words.
 
