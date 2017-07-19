@@ -23,7 +23,7 @@ The languages denoted by generalised rational expressions are the same as for th
 \]
 
 \begin{defn}
-    Let $\re{E} \in \re{GRatE} A^*$. \emph{Generalised star height} is, by induction on the complexity of expressions:
+    Let $\re{E} \in \re{GRatE} A^*$. \emph{Generalised star height}, written $\gh{\re{E}}$, is defined by induction on the complexity of expressions:
     \begin{align*}
         &\text{if } \re{E} = \re{0}, \; \re{E} = \re{1} \; \text{ or } \; \re{E} = a, \text{ for } a \in A \; , & &\gh{\re{E}} = 0 \; , \\
         &\text{if } \re{E} = \re{F} + \re{G} \; \text{ or } \; \re{E} = \re{F} \cdot \re{G}\; , & &\gh{\re{E}} = \max{(\gh{\re{F}}, \gh{\re{G}})} \; , \\
@@ -33,7 +33,7 @@ The languages denoted by generalised rational expressions are the same as for th
 \end{defn}
 For $\re{E} = \re{F} - \re{G}$, or $\re{E} = \re{F} \wedge \re{G}$, due to De Morgan's laws, identities exist:
 \[
-    \re{F} - \re{G} \equiv \re{F} \wedge \re{G}^{\prime} \; , \quad \text{and} \quad \re{F} \wedge \re{G} \equiv {(\re{F}^{\prime} + \re{G}^{\prime})}^{\prime} \;
+    \re{F} - \re{G} \equiv \re{F} \wedge \re{G}^{\prime} \; , \quad \text{and} \quad \re{F} \wedge \re{G} \equiv {(\re{F}^{\prime} + \re{G}^{\prime})}^{\prime} \; ,
 \]
 thus $\gh{\re{E}} = \max{(\gh{\re{F}}, \gh{\re{G}})}$. The generalised star height of rational language $L$ over $A^*$, written $\gh{L}$, is the minimum of the generalised star heights of the generalised rational expressions that denote $L$:
 \[
