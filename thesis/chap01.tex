@@ -242,6 +242,8 @@ Two automata are \emph{equivalent} if they recognise the same language. If $L$ i
     is a successful computation of $\aut{A}$ and $u v_1 v_2 \dotsm v_j {(v_{j+1} \dotsm v_k)}^n v_{k+1} \dotsm v_N w$ is accepted by $\aut{A}$.
 \end{proof}
 
+Let $\Z_n$ be finite cyclic group of order $n$. When using $\Z_n$ as a~set of states of an~automaton, we consider integers $\{0, 1, 2, \dotsc, n-1\}$ to be the underlying set of the group and we utilise the group operations modulo $n$ when enumerating the states.
+
 \begin{defn}
     Automaton $\langle \Z_n, \{a,b\}, E, \{0\}, \{0\} \rangle$ is called \emph{ring automaton~${\aut{R}(n)}$}, if for each state $z \in \Z_n$ there are exactly two transitions with $z$ as a~source and they are $(z, a, z+1)$ and $(z, b, z-1)$.
 \end{defn}
