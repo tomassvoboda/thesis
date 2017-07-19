@@ -263,17 +263,19 @@ Note that if state is a~member of $\Z_n$ we often denote it by some addition. Fo
 \end{lemma}
 
 \begin{proof}
-    The computation $r \tr{\re{H}} t$ can be written as a sequence of transitions:
+    By induction on $m$. Let $m = 0$. Since state $r+0$ is the same as $r$ and $s+0$ is the same as $s$, the proposition holds. Given the induction hypothesis for some $m - 1$, let the computation $r \tr{\re{H}} t$ be written as a sequence of transitions:
     \[
-        r \tr{\re{X}_1} s_1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} \tr{\re{X}_m} t \, ,
+        s_0 \tr{\re{X}_1} s_1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{k-1}} s_{k-1} \tr{\re{X}_k} s_k \, ,
     \]
-    where each $\re{X}_k$ is either a letter $a$ or $b$. Since, for any state $s \in \aut{R}(n)$, transitions $(s, a, s+1)$ and $(s, b, s-1)$ are in $\aut{R}(n)$, computation
-    \begin{align*}
-       r + 1 &\tr{\re{X}_1} s_1 + 1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} + 1 \tr{\re{X}_m} t + 1 \\
-    \intertext{is also in $\aut{R}(n)$. After $m$ iterations, we obtain a computation}
-       r + m &\tr{\re{X}_1} s_1 + m \tr{\re{X}_2} \dotsb \tr{\re{X}_{m-1}} s_{m-1} + m \tr{\re{X}_m} t + m \, ,
-    \end{align*}
-    which can be written as $r+m \tr{\re{H}} t+m$.
+    where $s_0 = r \, , \; s_k = t$, and each $\re{X}_i$ is either a~letter $a$ or $b$. Then computation
+    \[
+        s_0 + m - 1 \tr{\re{X}_1} s_1 + m - 1 \tr{\re{X}_2} \dotsb \tr{\re{X}_{k-1}} s_{k-1} + m - 1 \tr{\re{X}_k} s_k + m - 1
+    \]
+    is in $\aut{R}(n)$. For any state $p \in \aut{R}(n)$, transitions $(p, a, p+1)$ and $(p, b, p-1)$ are in $\aut{R}(n)$, thus, if $(s_i+m-1, \re{X_i}, s_i+m-1)$ is in $\aut{R}(n)$, so is $(s_i+m, \re{X_i}, s_i+m)$, for $0 \leq i \leq k$. Therefore
+    \[
+        s_0 + m \tr{\re{X}_1} s_1 + m \tr{\re{X}_2} \dotsb \tr{\re{X}_{k-1}} s_{k-1} + m \tr{\re{X}_k} s_k + m \, ,
+    \]
+    which is the computation $r+m \tr{\re{H}} t+m$, is also in $\aut{R}(n)$.
 \end{proof}
 
 \subsubsection*{State removal algorithm}
