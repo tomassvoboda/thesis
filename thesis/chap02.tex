@@ -99,7 +99,7 @@ We have just proved that language $W_q$ is recognised by the ring automaton $\au
     \]
     are in $\aut{A}_0$. Therefore $\aut{R}(2^q)$ is equivalent to $\aut{A}_0$.
 
-    Given the induction hypothesis for some $k - 1$, $W_q$ is accepted by $\aut{A}_{k-1}$. By $2^{q-k}$ iterations of the state removal algorithm an automaton with $2^{q-k}$ states is obtained. The set of states of $\aut{A}_{k-1}$ is $\Z_{2^{q-k+1}}$. Consecutively, in the increasing order, we remove all the odd states of $\aut{A}_{k-1}$, that is, states $1, 3, 5, \dotsc, 2^{q-k+1}-1$. Let $m$ be the removed odd state.
+    Given the induction hypothesis for some $k - 1$, $W_q$ is accepted by $\aut{A}_{k-1}$. By $2^{q-k}$ iterations of the state removal algorithm an automaton with $2^{q-k}$ states is obtained. The set of states of $\aut{A}_{k-1}$ is $\Z_{2^{q-k+1}}$. Consecutively, in the increasing order, we remove all the odd states of $\aut{A}_{k-1}$, that is, states $1, 3, 5, \dotsc, 2^{q-k+1}-1$. Let $m$ be the removed odd state. The process of removing the state is technically the same for all the states, but in the interest of clarity, we will differentiate between $m$ being equal to $1$, being between $3$ and $2^{q-k+1}-3$, and being equal $2^{q-k+1}-1$.
 
     For $m = 1$, the transitions that have $1$ as a source, destination, or both are:
     \[
