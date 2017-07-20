@@ -237,7 +237,7 @@ We have found a~rational expression of star height $q$ denoting the language $W_
 From Lemma~\ref*{lm:witness_words_equality} it follows that any witness word $w_{k,n}$ is in any language $W_q$.
 
 \begin{lemma}\label{lm:witness_words_inequalities}
-    Any prefix $u$ and suffix $v$ of ${(w_{k,n})}^n$ satisfy the equations:
+    Any prefix $u$ and suffix $v$ of ${(w_{k,n})}^n$ satisfy the inequalities:
     \[
         0 \leq |u|_a - |u|_b \leq 2^{k+1}-1 \; , \qquad 0 \leq |v|_b - |v|_a \leq 2^{k+1}-1.
     \]
@@ -250,17 +250,39 @@ From Lemma~\ref*{lm:witness_words_equality} it follows that any witness word $w_
         &= i \, ( \, |w_{k,n}|_a - |w_{k,n}|_b \, ) + |u'|_a - |u'|_b \\
         &= |u'|_a - |u'|_b,
     \end{align*}
-    we only need to prove that the inequalities hold for a prefix of $w_{k,n}$. This lets us assume, without loss of generality, that $u$ is proper prefix of $w_{k,n}$. We proceed by induction on $k$. For $k = 0$, $u$ is a~prefix of $ab$ and we can see that the assertion is true. Given the induction hypothesis for some $k - 1$, a prefix of $w_{k-1,n}$ has between $0$ and $2^k-1$ more $a$'s than $b$'s. The word
-    \[
-        w_{k,n} = a^{2^k} {(w_{k-1,n})}^n b^{2^k} {(w_{k-1,n})}^n
-    \]
-    begins with $2^k$ $a$'s, therefore if $u$ is a~prefix of $a^{2^k} {(w_{k-1,n})}^n$, $0 \leq |u|_a - |u|_b \leq 2^k+2^k-1 = 2^{k+1}-1$. That proves the inequalities of the prefix $u$.
+    we only need to prove that the inequalities hold for a prefix of $w_{k,n}$. This lets us assume, without loss of generality, that $u$ is proper prefix of $w_{k,n}$. We proceed by induction on $k$. For $k = 0$, $u$ is a~prefix of $ab$ and we can see that the assertion is true. Given the induction hypothesis for some $k - 1$, a prefix of $w_{k-1,n}$ has between $0$ and $2^k-1$ more $a$'s than $b$'s. There are four possibilities:
+    \begin{itemize}
+        \item[(i)] $u$ is a~prefix of $a^{2^k}$,
+        \item[(ii)] $a^{2^k}$ is a~prefix of $u$ and $u$ is a~prefix of $a^{2^k} {(w_{k-1,n})}^n$,
+        \item[(iii)] $a^{2^k} {(w_{k-1,n})}^n$ is a~prefix of $u$ and $u$ is a prefix of $a^{2^k} {(w_{k-1,n})}^n b^{2^k}$,
+        \item[(iv)] $a^{2^k} {(w_{k-1,n})}^n b^{2^k}$ is a~prefix of $u$ and $u$ is a prefix of $a^{2^k} {(w_{k-1,n})}^n b^{2^k} {(w_{k-1,n})}^n$.
+    \end{itemize}
 
-    For the proof of inequalities of suffix $v$, we write $w_{k,n}$ as $w_{k,n} = uv$. Since $0 = |w_{k,n}|_b - |w_{k,n}|_a = |u|_b + |v|_b - |u|_a - |v|_a$,
+    For (i), let $u = a^i$, for $0 \leq i \leq 2^k$. Then $0 \leq |u|_a - |u|_b = |u|_a \leq 2^k < 2^{k+1}-1$.
+
+    For (ii), let $u = a^{2^k} {(w_{k-1,n})}^i g$, for $0 \leq i \leq n$, such that word $g$ is a~prefix of $w_{k-1,n}$. Then $0 < 2^k \leq |u|_a - |u|_b \leq 2^k+2^k-1 = 2^{k+1}-1$.
+
+    For (iii), let $u = a^{2^k} {(w_{k-1,n})}^n b^i$, for $0 \leq i \leq 2^k$. Then
+    \begin{align*}
+        |u|_a - |u|_b &= |a^{2^k}|_a + |{(w_{k-1,n})}^n|_a + |b^i|_a - |a^{2^k}|_b - |{(w_{k-1,n})}^n|_b - |b^i|_b \\
+        &= 2^k - i \, .
+    \end{align*}
+    Therefore $0 \leq |u|_a - |u|_b \leq 2^k < 2^{k+1}-1$.
+
+    For (iv), let $u = a^{2^k} {(w_{k-1,n})}^n b^{2^k} {(w_{k-1,n})}^i g$, for $0 \leq i \leq n$, such that word $g$ is a~prefix of $w_{k-1,n}$. Then
+    \begin{align*}
+        |u|_a - |u|_b = \quad &|a^{2^k}|_a + |{(w_{k-1,n})}^n|_a + |b^{2^k}|_a + |{(w_{k-1,n})}^i|_a + |g|_a \\
+        - &|a^{2^k}|_b - |{(w_{k-1,n})}^n|_b - |b^{2^k}|_b - |{(w_{k-1,n})}^i|_b - |g|_b \\
+        = \quad &2^k + |g|_a + (n+i)(|w_{k-1,n}|_a - |w_{k-1,n}|_b) - 2^k - |g|_b \\
+        = \quad &|g|_a - |g|_b \, .
+    \end{align*}
+    Therefore $0 \leq |u|_a - |u|_b \leq 2^k - 1 < 2^{k+1}-1$.
+
+    For the proof of inequalities of suffix $v$, we write $w_{k,n}$ as $w_{k,n} = gv$. Since $0 = |w_{k,n}|_b - |w_{k,n}|_a = |g|_b + |v|_b - |g|_a - |v|_a$,
     \[
-        |v|_b - |v|_a = |u|_a - |u|_b.
+        |v|_b - |v|_a = |g|_a - |g|_b.
     \]
-    Therefore $0 \leq |v|_b - |v|_a \leq 2^{k+1}-1$.
+    Word $g$ is a~prefix of $w_{k,n}$, therefore $0 \leq |v|_b - |v|_a \leq 2^{k+1}-1$.
 \end{proof}
 
 \section{Infinite hierarchy}
