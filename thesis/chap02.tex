@@ -77,11 +77,10 @@ We have just proved that language $W_q$ is recognised by the ring automaton $\au
 \end{lemma}
 
 \begin{proof}
-    Due to Lemma~\ref*{lm:W_q_recognised_by_R2q}, language $W_q$ is recognised by an~automaton $\aut{R}(2^q)$. By iterative application of the state removal algorithm, we will obtain an~automaton with only one state. First, we inductively define the following rational expressions:
+    Due to Lemma~\ref*{lm:W_q_recognised_by_R2q}, language $W_q$ is recognised by an~automaton $\aut{R}(2^q)$. By iterative application of the state removal algorithm, we will obtain an~automaton with only one state. First, we set
     \begin{align*}
         \re{X}_0 &= a \, , & \re{Y}_0 &= b \, , & &\text{ and } & \re{Z}_0 &= \re{0} \, , \\
-        \re{X}_1 &= a^2 \, , & \re{Y}_1 &= b^2 \, , & &\text{ and } & \re{Z}_1 &= ab+ba \, , \\
-        &\; \vdots & &\; \vdots & & & &\; \vdots \\
+    \intertext{then, for every non-negative integer $n$,}
         \re{X}_{n+1} &= \re{X}_n \re{Z}_n^* \re{X}_n \, , & \re{Y}_{n+1} &= \re{Y}_n \re{Z}_n^* \re{Y}_n \, , & &\text{ and } & \re{Z}_{n+1} &= \re{Z}_n + \re{X}_n \re{Z}_n^* \re{Y}_n + \re{Y}_n \re{Z}_n^* \re{X}_n \, .
     \end{align*}
     Second, we define automaton $\aut{A}_k$ as $\aut{A}_k = \langle \Z_{2^{q-k}}, A, E, \{0\}, \{0\} \rangle$ such that any state $p$ in $\aut{A}_k$ is source of exactly three transitions in $\aut{A}_k$:
@@ -143,7 +142,16 @@ We have just proved that language $W_q$ is recognised by the ring automaton $\au
 
     Thus, after $2^{q-k}$ odd states removed, we have automaton with $2^{q-k}$ states, all non-negative even numbers $\leq 2^{q-k+1}-2$, that accepts $W_q$. To complete the inductive step, create automaton $\aut{A}_k$, we `rename' each state $2t$ as $t$, $t \in \{ 0, 1, 2, \dotsc, 2^{q-k}-1 \}$, meaning we replace each state $2t$ with $t$, each transition $2t \tr{\re{F}} s$ with $t \tr{\re{F}} s$, and $s \tr{\re{F}} 2t$ with $s \tr{\re{F}} t$, for every state $s$.
 
-    After $q$ steps of the induction on $k$ we cannot further reduce the states of $\aut{A}_q$ since it only has one state. This automaton has also only one transition, a loop on the state $0$, with label $\re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1})$. Note the following equivalence:
+    For $k = q-2$, automaton $\aut{A}_2$ has two states. Note that, to conform with the definition of $\aut{A}_2$, it should have six distinct transitions,
+    \begin{align*}
+        0 \tr{\re{X}_k} 1 \, , \quad 1 \tr{\re{Y}_k} 0 \, , \quad 0 \tr{\re{Z}_k} 0 \, , \\
+        1 \tr{\re{X}_k} 0 \, , \quad 0 \tr{\re{Y}_k} 1 \, , \quad 1 \tr{\re{Z}_k} 1 \, .
+    \end{align*}
+    We can see that the pair of transitions, $0 \tr{\re{X}_k} 1$ and $0 \tr{\re{Y}_k} 1$, can be replaced by $0 \tr{\re{X}_k + \re{Y}_k} 1$, and the pair of transitions, $1 \tr{\re{X}_k} 0$ and $1 \tr{\re{Y}_k} 0$ can be replaced by $1 \tr{\re{X}_k + \re{Y}_k} 0$.
+
+    Automaton $\aut{A}_2$ is reduced into one state automaton by application of the state removal algorithm on the state $1$. Thus creating a~loop labelled with $\re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1})$ on the state $0$.
+
+    Note the following equivalence:
     \[
         \re{Z}_{q-1} + (\re{X}_{q-1} + \re{Y}_{q-1})\re{Z}_{q-1}^*(\re{X}_{q-1} + \re{Y}_{q-1}) \equiv \re{X}_q + \re{Y}_q + \re{Z}_q \, . \\
     \]
@@ -198,7 +206,7 @@ We have just proved that language $W_q$ is recognised by the ring automaton $\au
             \subfloat[Automaton~$\aut{A}_2$]{%
                 \input{./figures/automaton_R8_A_2}}
             \quad
-            \subfloat[Automaton~$\aut{A}_3$]{%
+            \subfloat[]{%
                 \input{./figures/automaton_R8_A_3}}
         }
         \caption{Steps of the state removal algorithm on $\aut{R}(8)$}\label{fig:automaton_R8_state_removal_steps}%
