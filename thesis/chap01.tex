@@ -338,4 +338,4 @@ Brzozowski and McCluskey~\cite{BrzozowskiMcCluskey64} used generalised forms of 
     This shows that every word accepted by $\aut{A}$ is also accepted by $\aut{B}$.
 \end{proof}
 
-By iterating the removal of states in Lemma~\ref*{lm:state_removal_lemma} on $\aut{A} = \langle Q, A, E, I, T \rangle$, we can create an~automaton with only $|I \cup T|$ states that accepts $L(\aut{A})$. We call this iteration \emph{state removal algorithm}. It is important to note that depending on the order of the states chosen to be removed, we may obtain different automata, in other words, the state removal algorithm is non-deterministic.
+The process of removing the state described in the Proof of Lemma~\ref*{lm:state_removal_lemma} is called \emph{state removal algorithm}. By iterating the state removal algorithm on $\aut{A} = \langle Q, A, E, I, T \rangle$, we can create an~automaton with only $|I \cup T|$ states that accepts $L(\aut{A})$. It is important to note that depending on the order of the states chosen to be removed, we may obtain different automata, in other words, an~algorithm containing an~iteration of the state removal algorithm is non-deterministic.
