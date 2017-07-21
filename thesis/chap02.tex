@@ -5,7 +5,7 @@ In this chapter we present an answer to the question whether there are rational 
 The family of languages provided by Dejean and Schützenberger is the following:
 
 \begin{defn}
-    Let $q$ be a~non-negative integer, then $W_q$ denotes language, such that
+    Let $q$ be a~non-negative integer, then $W_q$ is a~language, such that
     \[
         W_q = \{ f \in {\{a, b\}}^* \mid |f|_a \equiv |f|_b \pmod{2^q} \} \, .
     \]
@@ -26,7 +26,7 @@ The proof has three parts. First, we find an~automaton that recognises $W_q$ in 
 \begin{proof}
     We show that each word in $W_q$ is accepted by a~successful computation in $\aut{R}(2^q)$. Let $f$ be a~word in $W_q$. Since $f$ has even length, let $k$ be such that $2k = |f|$. Since $f \in W_q$, $|f|_a - |f|_b = n 2^q$ for some integer $n$.
 
-    For $n=0$, $|f|_a = |f|_b$. We use induction on $k$ to show that for every factorisation $f = uvw$, if $f$ is accepted by $\aut{R}(2^q)$, $uavbw$ and $ubvaw$ are also. For $k = 0$, empty word is accepted since the initial state is also final and both computations $0 \tr{a} 1 \tr{b} 0$, and $0 \tr{b} 2^q-1 \tr{a} 0$ are successful in $\aut{R}(2^q)$. Given the induction hypothesis for some $k - 1$, every word $f = uvw$ of length $2k - 2$ such that $|f|_a = |f|_b$ is accepted by computation
+    For $n=0$, $|f|_a = |f|_b$. We use induction on $k$ to show that for every factorisation $f = uvw$, if $f$ is accepted by $\aut{R}(2^q)$, words $uavbw$ and $ubvaw$ are also accepted by $\aut{R}(2^q)$. For $k = 0$, empty word is accepted since the initial state is also final and both computations $0 \tr{a} 1 \tr{b} 0$, and $0 \tr{b} 2^q-1 \tr{a} 0$ are successful in $\aut{R}(2^q)$. Given the induction hypothesis for some $k - 1$, every word $f = uvw$ of length $2k - 2$ such that $|f|_a = |f|_b$ is accepted by computation
     \[
         0 \tr{\re{E}} i \tr{\re{F}} j \tr{\re{G}} 0 \, ,
     \]
