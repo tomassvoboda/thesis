@@ -1,0 +1,90 @@
+%%% The main file. It contains definitions of basic parameters and includes all other parts.
+
+%% Settings for single-side (simplex) printing
+% Margins: left 40mm, right 25mm, top and bottom 25mm
+% (but beware, LaTeX adds 1in implicitly)
+\documentclass[12pt,a4paper]{report}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\setlength\oddsidemargin{15mm}
+\setlength\evensidemargin{15mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+% \openright makes the following text appear on a right-hand page
+\let\openright=\clearpage
+
+%% Settings for two-sided (duplex) printing
+% \documentclass[12pt,a4paper,twoside,openright]{report}
+% \setlength\textwidth{145mm}
+% \setlength\textheight{247mm}
+% \setlength\oddsidemargin{14.2mm}
+% \setlength\evensidemargin{0mm}
+% \setlength\topmargin{0mm}
+% \setlength\headsep{0mm}
+% \setlength\headheight{0mm}
+% \let\openright=\cleardoublepage
+
+%% Generate PDF/A-2u
+\usepackage[a-2u]{pdfx}
+
+%% Character encoding: usually latin2, cp1250 or utf8:
+\usepackage[utf8]{inputenc}
+
+%% Prefer Latin Modern fonts
+\usepackage{lmodern}
+
+%% Further useful packages (included in most LaTeX distributions)
+\usepackage{amsmath}        % extensions for typesetting of math
+\usepackage{amsfonts}       % math fonts
+\usepackage{amsthm}         % theorems, definitions, etc.
+\usepackage{amssymb}
+\usepackage{bbding}         % various symbols (squares, asterisks, scissors, ...)
+\usepackage{bm}             % boldface symbols (\bm)
+\usepackage{graphicx}       % embedding of pictures
+\usepackage{fancyvrb}       % improved verbatim environment
+\usepackage{natbib}         % citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
+\usepackage[nottoc]{tocbibind} % makes sure that bibliography and the lists
+			    % of figures/tables are included in the table
+			    % of contents
+\usepackage{dcolumn}        % improved alignment of table columns
+\usepackage{booktabs}       % improved horizontal lines in tables
+\usepackage{paralist}       % improved enumerate and itemize
+\usepackage[usenames]{xcolor}  % typesetting in color
+
+\usepackage{tikz}
+\usetikzlibrary{automata}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\tikzset{my_automaton/.style={->,>=latex,semithick,bend angle=20}}
+\tikzset{my_state/.style={circle, very thick, minimum size=0.4cm}}
+\tikzset{my_named_state/.style={circle, thick, minimum size=0.7cm, inner sep=0.05cm}}
+\tikzset{my_initial_state/.style={initial by arrow, initial text=}}
+\tikzset{my_accepting_state/.style={accepting by double, thick}}
+
+\usepackage{subfig}
+\captionsetup{format=hang,margin=5pt}
+
+\usepackage{etoolbox}
+
+%% The hyperref package for clickable links in PDF and also for storing
+%% metadata to PDF (including the table of contents).
+%% Most settings are pre-set by the pdfx package.
+\hypersetup{unicode}
+\hypersetup{breaklinks=true}
+
+% Definitions of macros (see description inside)
+\input{../thesis/macros}
+
+% Title page and various mandatory informational pages
+\begin{document}
+
+\begin{lemma}\label{lm:W_q_recognised_by_R2q}
+    Language $W_q$ is recognised by an automaton~$\aut{R}(2^q)$.
+\end{lemma}
+
+\begin{proof}
+\end{proof}
+
+\openright
+\end{document}
