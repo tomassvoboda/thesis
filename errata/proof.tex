@@ -84,6 +84,21 @@
 \end{lemma}
 
 \begin{proof}
+    For each $k$, $0 \leq k \leq 2^q - 1$, we define two languages, $L_k$ and $S_k$, and we show that they are equal. Let $L_k$ be a~language of words that are labels of computations in $\aut{R}(2^q)$, that have $0$ as a~source and $k$ as a~destination. That is:
+    \[
+        L_k = \{ w \mid 0 \tr[\aut{R}(2^q)]{w} k \} \, .
+    \]
+    Since $0$ is the only final state of $\aut{R}(2^q)$, $L_0 = L[\aut{R}(2^q)]$. Let $S_k$ be a~language of words, that contain, modulo $2^q$, $k$ more $a$'s than $b$'s. That is:
+    \[
+        S_k = \{ w \mid |w|_a - |w|_b \equiv k \pmod{2^q} \} \, .
+    \]
+    From definition it is clear that $S_0 = W_q$. Let $w$ be a~word in ${\{a, b\}}^*$.
+
+    Let $n$ be the length of $w$. By induction on $n$, we show that $w$ is in $L_k$ if and only if it is in $S_k$. For $n = 0$, $w = 1$. Since computation $0 \tr{1} 0$ is in $\aut{R}(2^q)$, $w$ is in $L_0$. Since $|w|_a - |w|_b \equiv 0 \pmod{2^q}$, $w$ is in $S_0$, which proves the base case of the induction. Given the induction hypothesis for some $n$, every word of length $n$, is in $L_k$ if and only if it is in $S_k$. Since transitions $(k, a, k+1)$ and $(k, b, k-1)$ are in $\aut{R}(2^q)$, computations $0 \tr{wa} k+1$ and $0 \tr{wb} k-1$ are in $\aut{R}(2^q)$, therefore $wa$ is in $L_{k+1}$, and $wb$ is in $L_{k-1}$. If $|w|_a - |w|_b \equiv k \pmod{2^q}$, then
+    \[
+        |wa|_a - |wa|_b \equiv k+1 \pmod{2^q} \qquad \text{and} \qquad |wb|_a - |wb|_b \equiv k-1 \pmod{2^q} \, ,
+    \]
+    therefore $wa$ is in $S_{k+1}$ and $wb$ is in $S_{k-1}$.
 \end{proof}
 
 \openright
