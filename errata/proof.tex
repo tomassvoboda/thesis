@@ -84,7 +84,7 @@
 \end{lemma}
 
 \begin{proof}
-    Let $w$ be a~word in ${\{a, b\}}^*$, $n$ the length of $w$. For each $k$, $0 \leq k \leq 2^q - 1$, we show that if $k \equiv |w|_a - |w|_b \pmod{2^q}$, computation $0 \tr{w} k$ is in $\aut{R}(2^q)$. By induction on $n$. The proposition is true for $n = 0$, since $w = 1$.
+    Let $w$ be a~word in ${\{a, b\}}^*$, $n$ the length of $w$. For each $k$, $0 \leq k \leq 2^q - 1$, we show that, if $k \equiv |w|_a - |w|_b \pmod{2^q}$, then computation $0 \tr{w} k$ is in $\aut{R}(2^q)$. By induction on $n$. The proposition is true for $n = 0$, since $w = 1$.
 
     Let $n$ be at least $1$. Word $w$ is either equal to $ua$, or $ub$, where $|u| = n-1$. Since the computation $0 \tr{u} k$ and the transitions $(k, a, k+1)$ and $(k, b, k-1)$ are in $\aut{R}(2^q)$, the computations
     \begin{align*}
@@ -94,5 +94,4 @@
     are also in $\aut{R}(2^q)$. Thus the computation $0 \tr{w} k$ is in $\aut{R}(2^q)$.
 \end{proof}
 
-\openright
 \end{document}
