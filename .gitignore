@@ -7,3 +7,7 @@
 
 # Validation Script
 /validation/verapdf
+
+# Auxiliary presentation files
+/slides/*.nav
+/slides/*.snm
