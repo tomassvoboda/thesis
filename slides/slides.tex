@@ -3,11 +3,20 @@
 \usepackage[czech]{babel}
 \usepackage{palatino}
 
+\usepackage{tikz}
+\usetikzlibrary{automata}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\tikzset{my_automaton/.style={->,>=latex,semithick,bend angle=20}}
+\tikzset{my_state/.style={circle, very thick, minimum size=0.4cm}}
+\tikzset{my_named_state/.style={circle, thick, minimum size=0.7cm, inner sep=0.05cm}}
+\tikzset{my_initial_state/.style={initial by arrow, initial text=}}
+\tikzset{my_accepting_state/.style={accepting by double, thick}}
+
 \usetheme{Rochester}
-\usecolortheme{dove}
-\title[Star height]{Star height}
+\title[Hvězdná výška]{Hvězdná výška}
 \author[Tomáš Svoboda]{Tomáš Svoboda}
-\institute{Department of Algebra}
+\institute{Katedra algebry}
 \date{2017}
 
 \usefonttheme{professionalfonts}
@@ -22,328 +31,183 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Language}
+\begin{frame}{Definice}
+      \begin{exampleblock}{Abeceda}
+            \centering
+            $\{ a, b, c, d \}, \: \{a, b\}$
+      \end{exampleblock}
+
+      \pause
+
+      \begin{exampleblock}{Slovo}
+            \centering
+            $aaa, \: abcb, \: d, \: 1$
+      \end{exampleblock}
+
+      \pause
+
+      \begin{exampleblock}{Jazyk}
+            \centering
+            $\{ aaa, \: abcb, \: d \}, \: \{ 1, \: ab, \: abab, \: ababab, \: \dots \}$
+      \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Definice}
+      \begin{exampleblock}{Racionální výraz}
+            \vspace{-5mm}%
+            \begin{align*}
+                  &L[\re{0}] = \emptyset \\
+                  &L[\re{1}] = \{1\} \\
+                  &L[a] = \{a\} \quad \text{pro každé $a$ v $A$} \\
+                  \\
+                  &L[a(a+b) + b] = \{aa, \: ab, \: b\} \\
+                  \\
+                  &L[{(ab)}^*] = \{\re{1}, \: ab, \: abab , \: \dots \}
+            \end{align*}
+      \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Hvězdná výška}
+      \begin{exampleblock}{Příklad}
+            \vspace{-5mm}%
+            \begin{align*}
+                  \h{a(a+b) + b} &= 0 \\
+                  \h{(a+b)^*} &= 1 \\
+                  \h{a^*(ba^*)^*} &= 2 \\
+                  \h{a^* + b(ab^*a + ba^*b)^*ba^*} &= 2
+            \end{align*}
+      \end{exampleblock}
+
+      ~
+
+      \only<2>
+      {
+            \begin{exampleblock}{Příklad}
+                  \vspace{-5mm}%
+                  \begin{align*}
+                        \h{a^* + b(ab^{\color{red}\boldsymbol{*}}a + ba^*b)^{\color{red}\boldsymbol{*}}ba^*} &= 2 \\
+                        \h{a^* + b(ab^*a + ba^{\color{red}\boldsymbol{*}}b)^{\color{red}\boldsymbol{*}}ba^*} &= 2
+                  \end{align*}
+            \end{exampleblock}
+      }
+      \only<3>
+      {
+            \begin{block}{Hvězdná výška jazyka}
+                  Minimum hvězdných výšek všech výrazů, které popisují daný jazyk.
+            \end{block}
+      }
+\end{frame}
+
+\begin{frame}{Kontext}
+      \begin{block}{Otázka}
+            Existuje jazyk s hvězdnou výškou $n$, pro každé přirozené $n$?
+      \end{block}
+
+      ~
+
       \begin{itemize}
-            \item An~\emph{alphabet} is a~non-empty set of symbols.
-            \item The elements of alphabet, the symbols, are called \emph{letters}.
-            \item Finite sequences of letters are called \emph{words}.
-            \item The set of words over $A$, is written $A^*$.
+            \item Výsledek z roku 1966
+            \item Tato práce přispívá detailnější důkazy
       \end{itemize}
+\end{frame}
+
+\begin{frame}{Automat}
+      \begin{exampleblock}{Automat~$\aut{A}$}
+            \centering
+            \input{./example_automaton}
+      \end{exampleblock}
 
       ~
       \pause
 
-      \begin{itemize}
-            \item A \emph{language over $A$}, or \emph{language of $A^*$}, is any set of words written in the alphabet $A$.
-      \end{itemize}
-\end{frame}
-
-\begin{frame}{Product}
-      \begin{itemize}
-            \item \emph{Product} on the set of words is equivalent to the operation of concatenation.
-            \begin{itemize}
-                  \item $(a_1, \dotsc, a_n) \cdot (b_1, \dotsc, b_m) = (a_1, \dotsc, a_n, b_1, \dotsc, b_m).$
-            \end{itemize}
-            \pause
-            \item The empty sequence or empty word, written as $1$, or $1_{A^*}$, is the neutral element of concatenation.
-            \pause
-            \item Each word is a product of its letters.
-            \begin{itemize}
-                  \item $f = (a_1, a_2, \dotsc, a_n) = (a_1) \cdot (a_2) \dotsm (a_n) = a_1 a_2 \dotsm a_n.$
-            \end{itemize}
-            \pause
-            \item Product of two words $f$ and $g$ is written as $fg$.
-      \end{itemize}
-\end{frame}
-
-\begin{frame}{Product}
-      \begin{itemize}
-            \item The product of words extends to a product of languages.
-            \begin{itemize}
-                  \item $X \cdot Y = \{ f \cdot g \mid f \in X \, , \; g \in Y \}.$
-            \end{itemize}
-            \pause
-            \item The $n$-th power of $X$ is defined by induction on $n$.
-            \begin{itemize}
-                  \item $X^0 = \{1_{A^*}\} \: ,$
-                  \item $X^{n+1} = X \cdot X^n = X^n \cdot X.$
-            \end{itemize}
-            \item For $\emptyset \in \ps{A^*}$ we get $\emptyset^0 = \{1_{A^*}\}$
-
-            ~
-            \pause
-
-            \item \emph{The star of a~language $X$} is the union of all the powers of $X$, and is written as $X^*$
-            \begin{itemize}
-                  \item $X^* = \bigcup_{n \in \N} X^n.$
-            \end{itemize}
-      \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Rational expressions}
-      \begin{itemize}
-            \item A \emph{rational expression over $A$} is a~formula obtained inductively from the letters of $A$ and the symbols $\{\re{0}, \re{1}, +, \cdot, *\}$.
-            \begin{itemize}
-                  \item $\re{0}, \re{1}$, and $a$, for $a$ in $A$, are rational expressions.
-                  \item If $\re{E}$ and $\re{F}$ are rational expressions, then $(\re{E} + \re{F})$, $(\re{E} \cdot \re{F})$, and $(\re{E}^*)$ are rational expressions.
-            \end{itemize}
-            ~
-            \item The set of rational expressions over $A$ is written as $\re{RatE} A^*$.
-      \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Star Height}
-      \emph{Star height}, written as $\h{\re{E}}$, for $\re{E} \in \re{RatE} A^*$, is defined by induction:
-      \begin{align*}
-          &\text{if } \re{E} = \re{0}, \re{E} = \re{1} \text{ or } \re{E} = a, \text{ for } a \in A \; , & &\h{\re{E}} = 0 \; , \\
-          &\text{if } \re{E} = \re{F} + \re{G} \text{ or } \re{E} = \re{F} \cdot \re{G}\; , & &\h{\re{E}} = \max{(\h{\re{F}}, \h{\re{G}})} \; , \\
-          &\text{if } \re{E} = \re{F}^* \; , & &\h{\re{E}} = 1 + \h{\re{F}} \; .
-      \end{align*}
-\end{frame}
-
-\begin{frame}{Odevzdávání práce}
-
-Formality určují Směrnice děkana 8/2010, 2/2015 a 7/2016
-a Opatření rektora 13/2017.
-
-~
-
-Papírová verze:
-
-\begin{itemize}
-\item 3 výtisky: vedoucí, oponent, knihovna
-\item Oponentský výtisk se po obhajobě vrací autorovi
-\item Požadována pevná vazba
-\item Odevzdává se paní Košnářové z~KTIML
-\end{itemize}
-
-~
-
-Elektronická verze:
-
-\begin{itemize}
-\item PDF/A (level 1a nebo 2u) + přílohy (omezení formátů!)
-\item Odevzdává se do SISu
-\item Pokud jsou přílohy příliš velké, odevzdává se též
-      na DVD vlepeném do desek papírové verze
-\end{itemize}
+      \begin{block}{Jazyk příjímaný automatem}
+            Cesta $p \tr{a} r \tr{bb} q \tr{aa+b} p \tr{a} q$. \\
+            Konkatenace: $a \cdot bb \cdot (aa+b) \cdot a = abb(aa+b)a$. \\
+            Sjednocení jazyků: $L[abb(aa+b)a]$.
+      \end{block}
 
 \end{frame}
 
-\begin{frame}{Úprava práce}
-
-Povinná úprava práce:
-
-\begin{itemize}
-\item Směrnice děkana 1/2015 a 5/2016
-\item Formát papíru a vazba
-\item Formality: desky, titulní strana, informační strana, \dots
-\end{itemize}
-
-Doporučená úprava práce:
-
-\begin{itemize}
-\item \url{http://www.mff.cuni.cz/studium/bcmgr/prace/}
-\item Upřesňuje formát: okraje, velikost písma
-\item Jednostranný / oboustranný tisk (u delších prací)
-\item Obsah, seznam zkratek, obrázků a tabulek, \dots
-\item {\it Chcete-li něco dělat jinak, poraďte se s vedoucím.}
-\end{itemize}
-
-K~dispozici je šablona pro \LaTeX:
-
-\begin{itemize}
-\item Pracovní verze na \url{http://mj.ucw.cz/vyuka/bc/}
-\end{itemize}
-
+\begin{frame}{Reprezentace jazyka}
+      \begin{block}{Kleeneova věta}
+            Třída jazyků popsatelných racionálním výrazem je stejná jako třída jazyků příjímaných automatem.
+      \end{block}
 \end{frame}
 
-\begin{frame}{Jazykové zákoutí}
-
-\begin{itemize}
-\item Jakým jazykem: CS / SK / EN; jiný se souhlasem děkana
-   \begin{itemize}
-   \item Bakalářka by neměla být vaším prvním anglickým textem
-   \end{itemize}
-\item Jazyková kultura:
-   \begin{itemize}
-   \item Spisovný a přesný jazyk (žádná barbarština)
-   \item Terminologie: vyhýbejte se czengličtině i hyperkorektnosti
-   \item Slovosled (HTTP protokol, kompaktní CD disk)
-   \item Pravopys a syntaxe
-   \end{itemize}
-\item Obvykle píše{\bf me} v~1. osobě množného čísla.
-\item Vyhýbejte se složitým větám, potažmo souvětím (a~spoustě
-   závorek (že?)), jakož i dlouhatánským odstavcům.
-\item Nepište detektivky. Hned řekněte, že vrah je zahradník.
-\item Zamyslete se nad pořadím. Dopředné odkazy radši ne.
-\item Pište jednotně.
-\end{itemize}
-
+\begin{frame}{Prstencový automat}
+      \begin{exampleblock}{Prstencový automat~$\aut{R}(8)$}
+            \begin{center}
+                  \input{../thesis/figures/automaton_R8}
+            \end{center}
+      \end{exampleblock}
 \end{frame}
 
-\begin{frame}{Jazykové zákoutí 2}
+\begin{frame}{Jazyk $W_q$}
+      \begin{block}{Definice}
+            $W_q$ je jazyk na ${\{a, b\}}$ obsahující všechna slova jejichž počet písmen $a$ je kongruentní počtu písmen $b$ modulo $2^q$.
+      \end{block}
 
-\begin{itemize}
-\item Rozmyslete si, pro koho píšete:
-   \begin{itemize}
-   \item Pro kolegu matfyzáka (oponent, váš spolužák, \dots)
-   \item Čtenář má obecné informatické vzdělání (není třeba definovat graf),
-         ale není expertem přes váš obor.
-   \end{itemize}
-\item Stručnost je sestra talentu.
-\item Zkuste si text přečíst nahlas.
-\item Testujte na lidech.
-\item Vnímejte, jak píši jiní. Ale s~rozmyslem.
-\end{itemize}
+      ~
+      \pause
 
+      \begin{block}{Lemma}
+            Prstencový automat~$\aut{R}(2^q)$ rozpoznává jazyk $W_q$.
+      \end{block}
 \end{frame}
 
-\begin{frame}{Typografické zákoutí}
+\begin{frame}{Hvězdná výška $W_q$}
+      \begin{block}{Lemma}
+            Jazyk $W_q$ je označován racionálním výrazem hvězdné výšky~$q$.
+      \end{block}
 
-\begin{itemize}
-\item Použijte program určený k~sazbě textu (\TeX, Scribus, \dots),
-   Word v~nouzi poslouží, ale výstup obvykle vypadá hrozně.
-\item Zvolte si typ písma pro {\bf definice,} {\tt identifikátory,} {\it zvýraznění\/} \dots{} a
-   dodržujte ho v~celém textu.
-\item S~typy písma a barvami to nepřehánějte.
-\item Různé typy pomlček: Fordův-Fulkersonův, 100--200 bitů, případně -- jako tady -- kolem vsuvky.
-\item Desetinné tečky {\it xor\/} čárky.
-\item \clqq~české uvozovky \crqq
-\item Nedělitelné mezery: u{\tt\char32}předložek, vrchol{\tt\char32}$v$, a{\tt\char32}proto.
-\item Obrázky nejlépe vektorové nebo bitmapy ve~vysokém rozlišení. JPEG jen na fotky.
-\end{itemize}
+      ~
+      \pause
 
+      \begin{block}{Algoritmus odstraňování stavů}
+            Nechť $n$ stavový automat má alespoň jeden stav, který není počáteční, ani koncový. Pak existuje automat s $n-1$ stavy příjímající stejný jazyk.
+      \end{block}
 \end{frame}
 
-\begin{frame}{Formát práce: PDF/A}
-
-\begin{itemize}
-\item PDF/A je profil formátu PDF určený pro archivaci
-\item Různé varianty: na UK povoleno PDF/A-1a nebo PDF/A-2u
-\item Nesmí obsahovat:
-	\begin{itemize}
-	\item odkazy na externí fonty (včetně systémových)
-	\item audio, video, skripty, obskurnosti
-	\item transparentní vrstvy (povoleny ve 2u)
-	\end{itemize}
-\item Musí obsahovat:
-	\begin{itemize}
-	\item deklarace barevných prostorů
-	\item meta-data ve formátu XMP
-	\end{itemize}
-\item Ve všelijakých officech alespoň formálně OK
-\item V~\LaTeX{}u použijte balíček {\bf pdfx} (viz šablona)
-\item Pozor na vložené obrázky (záchrana GhostScriptem)
-\item Kontrola pomocí VeraPDF (\url{http://verapdf.org/})
-\end{itemize}
-
+\begin{frame}{Redukovaný automat}
+      \begin{exampleblock}{Redukovaný automat~$\aut{R}(2^q)$}
+            \begin{center}
+                  \input{./example_automaton_reduced}
+            \end{center}
+      \end{exampleblock}
 \end{frame}
 
-\begin{frame}{Formát práce: Přílohy}
+\begin{frame}{Odpovědi}
+      \pause
 
-Povolené formáty příloh jsou tyto:
+      \begin{block}{Lemma 5}
+            Část, že $L(\aut{B}) \subseteq L(\aut{A})$ pro $n-1$ stavový $\aut{B}$ a $n$ stavový $\aut{A}$.
+      \end{block}
 
-\begin{itemize}
-\item Text: PDF/A
-\item Obrázky: JPEG, PDF/A
-\item Zvuk: WAV, MP3
-\item Video: MPEG2, MPEG4
-\item Tabulky: CSV, XML, TXT
-\end{itemize}
-
-Ostatní po schválení fakultním koordinátorem.
-
+      \begin{block}{Důkaz}
+            Nechť $i \tr{\re{E}} t$ je úspěšný výpočet v $\aut{B}$. \\
+            \quad $i \tr{\re{E}} t$ je úspěšný v $\aut{A}$ se stejnou faktorizací jako v $\aut{B}$. \\
+            \quad Existuje $\re{E} = \re{F}{\re{G}}^*\re{H}$, že $i \tr{\re{F}} q \tr{\re{G}} \dotsm \tr{\re{G}} q \tr{\re{H}} t$. \\
+            Pak je $i \tr{\re{F}} q \tr{\re{G}} \dotsm \tr{\re{G}} q \tr{\re{H}} t$ úspěšný v $\aut{A}$ \\
+      \end{block}
 \end{frame}
 
-\begin{frame}{Citace: Proč}
+\begin{frame}{Odpovědi}
+      \begin{block}{Lemma 7}
+            Prstencový automat~$\aut{R}(2^q)$ rozpoznává jazyk $W_q$.
+      \end{block}
 
-\begin{block}{Příklad}
-Největší problém citátů na internetu je ten,
-že nevíte, jestli jsou pravé.
-
-\rightline{\it Josef Čapek\qquad}
-\end{block}
-
-\end{frame}
-
-\begin{frame}{Citace: Co a jak}
-
-\begin{itemize}
-\item Za~cizí myšlenky se nestyďte, ale správně je citujte.
-   \begin{itemize}
-   \item Použité věty, algoritmy, důkazy
-   \item Celá pasáž cizího textu -- měla by být jasně ohraničena
-   \end{itemize}
-\item Odkazy: \uv{$\,$O~{\it temnu\/} píší jak Balcar se Štěpánkem [1], tak Jirásek [2].}
-\item {\bf Špatně:} \uv{$\,$Jak najdeme v~[3]}
-\item Číslování: abecedně nebo podle pořadí odkazování
-\item Alternativně: [BŠ2005]~~~(hodí se, máte-li odkazů hodně)
-\end{itemize}
-
-\begin{itemize}
-\item Vhodné zdroje (kriteria: kredit, spolehlivost, dostupnost):
-   \begin{itemize}
-   \item Původní publikace (typicky článek)
-   \item Monografie
-   \item Učebnice
-   \item Lze i osobní komunikace :)
-   \item Raději ne encyklopedie
-   \item Rozhodně ne náhodné webové stránky
-   \end{itemize}
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Citace: Formát bibliografie}
-
-\begin{itemize}
-\item Je doporučeno držet se ISO 690.
-\item Norma je ovšem obtížně dostupná (kdo ji četl?).
-\item Praxe: různé výtahy, třeba na \url{http://citace.com/}
-\item Pozor na rozpory normy se zvyklostmi oboru.
-\end{itemize}
-
-\vfill
-
-{\sc Balcar}, Bohuslav a {\sc Štěpánek}, Petr. {\it Teorie množin.\/}
-2.~vydání. Praha: Academia, 2005. ISBN 80-200-0470-X.
-
-\medskip
-
-{\sc Marný}, Tomáš. Tužkožrout obecný: tajuplný obyvatel akademické půdy.
-In: {\it Časopis pro pěstování strašidel.} \\
-2010, č.~5, s.~60--69. ISSN 1234-5678.
-
-\medskip
-
-{\sc Munroe,} Randall. Random Number.
-In: {\it XKCD: A~webcomic of romance, sarcasm, math and language\/} [online].
-2010 \hfil\break
-[cit. 2011-10-04]. Dostupné~z: \url{http://xkcd.com/221/}
-\end{frame}
-
-\begin{frame}{Citace: Nástroje}
-
-\begin{itemize}
-\item Formátování bibliografie:
-   \begin{itemize}
-   \item Bib\TeX{} -- poněkud obskurní, ale účinný
-   \item Bib\LaTeX{} -- novější, ohebnější
-   \item Pybibliographer -- pokud nepoužíváte \TeX
-   \end{itemize}
-\bigskip
-\item Sběr bibliografie:
-   \begin{itemize}
-   \item citeulike.org
-   \item Google Scholar
-   \item Citeseer
-   \item \dots{} každopádně nutno upravovat ručně
-   \end{itemize}
-\end{itemize}
-
+      \begin{block}{Důkaz}
+            Nechť $w$ je slovo na $\{a,b\}$ délky $n$. \\
+            Ukážeme, že pro $k \equiv |w|_a - |w|_b \pmod{2^q}$ je $0 \tr{w} k$ v $\aut{R}(2^q)$.\\
+            Platí pro $n = 0$, protože $w = 1$. \\
+            Nechť $u$ je prefix $w$ délky $n-1$. Pak $w$ je buď $ua$, nebo $ub$. \\
+            Nechť $l \equiv |u|_a - |u|_b \pmod{2^q}$. \\
+            \quad Pro $w = ua$, $l \equiv k-1 \pmod{2^q}$ \\
+            \quad Pro $w = ub$, $l \equiv k+1 \pmod{2^q}$ \\
+            $0 \tr{u} l, \; k-1 \tr{a} k, \; k+1 \tr{b} k \;$ jsou v $\aut{R}(2^q)$. \\
+            \quad Pro $w = ua$, $0 \tr{u} k-1 \tr{a} k$ je v $\aut{R}(2^q)$. \\
+            \quad Pro $w = ub$, $0 \tr{u} k+1 \tr{b} k$ je v $\aut{R}(2^q)$. \\
+      \end{block}
 \end{frame}
 
 \end{document}
